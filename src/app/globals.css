@@ -1,26 +1,359 @@
 @import "tailwindcss";
 
+/* Values mirror src/design/tokens.ts (PALETTE + TINTS) - change them there
+   first, then here, so SVG illustrations and utility classes never drift.
+
+   The register is a 1970s field guide: parchment paper with a faint ruled
+   grain, letterpress rules, dark-green linework, muted print inks. */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --color-paper: #f4ead4;
+  --color-sand: #e3d5b4;
+  --color-plate: #fbf4e4;
+  --color-terracotta: #a8482a;
+  --color-clay: #8a361d;
+  --color-sage: #6e7f4c;
+  --color-forest: #3a4a31;
+  --color-outline: #1f3d2c;
+  --color-sky: #3e6e68;
+  --color-sky-deep: #2c514d;
+  --color-sun: #be8a2c;
+  --color-honey: #7a5a16;
+  --color-blossom: #c4766a;
+  --color-lavender: #7e6f92;
+  --color-ink: #20291f;
+
+  /* Pale washes of the accent hues - card/surface backgrounds only. Each is
+     a low-chroma parchment tone, so they read as different papers rather
+     than colored panels. */
+  --color-terracotta-tint: #f2dcc9;
+  --color-sage-tint: #e4e6cd;
+  --color-sky-tint: #dce7e5;
+  --color-sun-tint: #f5e7c4;
+  --color-blossom-tint: #f2dbd1;
+  --color-lavender-tint: #e3dcdf;
+
+  --background: var(--color-paper);
+  --foreground: var(--color-ink);
 }
 
 @theme inline {
+  --color-paper: var(--color-paper);
+  --color-sand: var(--color-sand);
+  --color-plate: var(--color-plate);
+  --color-terracotta: var(--color-terracotta);
+  --color-clay: var(--color-clay);
+  --color-sage: var(--color-sage);
+  --color-forest: var(--color-forest);
+  --color-outline: var(--color-outline);
+  --color-sky: var(--color-sky);
+  --color-sky-deep: var(--color-sky-deep);
+  --color-sun: var(--color-sun);
+  --color-honey: var(--color-honey);
+  --color-blossom: var(--color-blossom);
+  --color-lavender: var(--color-lavender);
+  --color-ink: var(--color-ink);
+
+  --color-terracotta-tint: var(--color-terracotta-tint);
+  --color-sage-tint: var(--color-sage-tint);
+  --color-sky-tint: var(--color-sky-tint);
+  --color-sun-tint: var(--color-sun-tint);
+  --color-blossom-tint: var(--color-blossom-tint);
+  --color-lavender-tint: var(--color-lavender-tint);
+
   --color-background: var(--background);
   --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: var(--font-alegreya);
+  --font-display: var(--font-alegreya);
+  --font-label: var(--font-alegreya-sans);
+  --font-mono: var(--font-roboto-mono);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* Plain-tag defaults belong in Tailwind's `base` layer, not left unlayered -
+   unlayered CSS beats every `@layer` (including Tailwind's own `utilities`
+   layer) regardless of selector specificity, so an unlayered `a { color }`
+   would silently win over every `text-*` utility applied to a <Link>/<a>
+   anywhere in the app. Layering these correctly lets a component's own
+   text-color utility override the tag default, as expected. */
+@layer base {
+  body {
+    /* Parchment with a faint horizontal ruled grain - the paper the whole
+       guide is printed on. Replaces the old watercolor gradient washes:
+       this register wants flat stock, not atmosphere. */
+    background-color: var(--background);
+    background-image: repeating-linear-gradient(
+      0deg,
+      rgba(32, 41, 31, 0.035) 0px,
+      rgba(32, 41, 31, 0.035) 1px,
+      transparent 1px,
+      transparent 4px
+    );
+    color: var(--foreground);
+    font-family: var(--font-alegreya), Georgia, serif;
+    /* iOS Safari specifics: no gray flash on tap, no accidental pinch-zoom
+       from double-tapping buttons/links (this is an app-like hub, not a
+       document meant to be zoomed). */
+    -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
+  }
+
+  /* Links get explicit colors so any link added later never renders browser
+     default blue on parchment. */
+  a {
+    color: var(--color-terracotta);
+  }
+  a:hover {
+    color: var(--color-clay);
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+/* ---------------------------------------------------------------------
+   Field-guide typographic primitives. Used by src/components/ui/Plate.tsx
+   and available to any view that needs the register directly.
+   --------------------------------------------------------------------- */
+
+/* The small uppercase letterspaced eyebrow above a heading. */
+.plate-label {
+  font-family: var(--font-roboto-mono), ui-monospace, monospace;
+  font-size: 0.5625rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: color-mix(in srgb, var(--color-ink) 55%, transparent);
+}
+
+/* Section heading rule - a letterpress line under an uppercase sans label. */
+.plate-rule {
+  font-family: var(--font-alegreya-sans), system-ui, sans-serif;
+  font-weight: 800;
+  font-size: 0.8125rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--color-forest);
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid color-mix(in srgb, var(--color-forest) 30%, transparent);
+}
+
+/* ---------------------------------------------------------------------
+   Clinic sprite animation states. Generic on purpose: every animal
+   archetype in src/components/clinic/sprites tags its own eye shape(s)
+   with class="sprite-eye" and wraps its whole drawing in class="sprite-
+   frame", so these keyframes apply to any sprite without per-species CSS.
+   `data-state` on the frame picks which state plays; "idle" always runs
+   the breathing+blink loop underneath it.
+
+   The painted portraits reuse the same classes on a wrapping <div>, so the
+   breathing and wiggle apply to them too (they have no .sprite-eye, so the
+   blink simply doesn't play).
+   --------------------------------------------------------------------- */
+.sprite-frame {
+  transform-box: fill-box;
+  transform-origin: 50% 100%;
+  animation: sprite-breathe 3.4s ease-in-out infinite;
+}
+.sprite-frame[data-state="happy"] {
+  animation: sprite-wiggle 0.6s ease-in-out 2;
+}
+.sprite-frame[data-state="reassure"] {
+  animation: sprite-sway 2.6s ease-in-out infinite;
+}
+.sprite-eye {
+  transform-box: fill-box;
+  transform-origin: 50% 50%;
+  animation: sprite-blink 4.5s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sprite-frame,
+  .sprite-eye {
+    animation: none;
+  }
+}
+
+@keyframes sprite-breathe {
+  0%,
+  100% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(1.02);
+  }
+}
+
+@keyframes sprite-blink {
+  0%,
+  92%,
+  100% {
+    transform: scaleY(1);
+  }
+  96% {
+    transform: scaleY(0.12);
+  }
+}
+
+@keyframes sprite-wiggle {
+  0%,
+  100% {
+    transform: rotate(0deg) scale(1);
+  }
+  25% {
+    transform: rotate(-7deg) scale(1.04);
+  }
+  75% {
+    transform: rotate(7deg) scale(1.04);
+  }
+}
+
+@keyframes sprite-sway {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  50% {
+    transform: translateX(4px);
+  }
+}
+
+/* The weekly dachshund's entrance - waddles in from the side rather than
+   just appearing. */
+.dachshund-enter {
+  animation: waddle-in 1.1s ease-out both;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .dachshund-enter {
+    animation: none;
+  }
+}
+
+@keyframes waddle-in {
+  0% {
+    transform: translateX(-70px) rotate(0deg);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  30% {
+    transform: translateX(-46px) translateY(-4px) rotate(-4deg);
+  }
+  50% {
+    transform: translateX(-24px) translateY(0) rotate(4deg);
+  }
+  70% {
+    transform: translateX(-8px) translateY(-3px) rotate(-3deg);
+  }
+  100% {
+    transform: translateX(0) translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+/* ---------------------------------------------------------------------
+   Home page's weather-based ambience (src/components/home/WeatherEffect.tsx).
+   Particle elements set their own left/size/duration/delay inline; these
+   classes only own the animation shape itself.
+   --------------------------------------------------------------------- */
+.weather-drop {
+  animation: weather-fall linear infinite;
+}
+.weather-flake {
+  animation: weather-fall-drift linear infinite;
+}
+.weather-star {
+  animation: weather-twinkle ease-in-out infinite;
+}
+.weather-cloud {
+  animation: weather-cloud-drift linear infinite;
+}
+.weather-glow {
+  animation: weather-glow-pulse ease-in-out infinite;
+}
+.weather-flash {
+  animation: weather-flash 9s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .weather-drop,
+  .weather-flake,
+  .weather-star,
+  .weather-cloud,
+  .weather-glow,
+  .weather-flash {
+    animation: none;
+  }
+}
+
+@keyframes weather-fall {
+  0% {
+    transform: translateY(-10vh);
+    opacity: 0;
+  }
+  8% {
+    opacity: 0.7;
+  }
+  100% {
+    transform: translateY(110vh);
+    opacity: 0.5;
+  }
+}
+
+@keyframes weather-fall-drift {
+  0% {
+    transform: translate(0, -10vh) rotate(0deg);
+    opacity: 0;
+  }
+  8% {
+    opacity: 0.9;
+  }
+  100% {
+    transform: translate(24px, 110vh) rotate(80deg);
+    opacity: 0.7;
+  }
+}
+
+@keyframes weather-twinkle {
+  0%,
+  100% {
+    opacity: 0.15;
+  }
+  50% {
+    opacity: 0.9;
+  }
+}
+
+@keyframes weather-cloud-drift {
+  0% {
+    transform: translateX(-25vw);
+  }
+  100% {
+    transform: translateX(125vw);
+  }
+}
+
+@keyframes weather-glow-pulse {
+  0%,
+  100% {
+    opacity: 0.45;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.75;
+    transform: scale(1.08);
+  }
+}
+
+@keyframes weather-flash {
+  0%,
+  96%,
+  100% {
+    opacity: 0;
+  }
+  97% {
+    opacity: 0.55;
+  }
+  98% {
+    opacity: 0;
+  }
+  99% {
+    opacity: 0.25;
+  }
 }
