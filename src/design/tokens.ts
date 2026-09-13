@@ -62,7 +62,6 @@ export const SECTION_HUE: Record<string, PaletteColor> = {
   animals: "clay",
   plants: "sage",
   kitchen: "sun",
-  trails: "forest",
   discover: "sky",
   mind: "lavender",
   us: "blossom",

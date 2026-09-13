@@ -6,7 +6,6 @@ export type IconKind =
   | "animals"
   | "plants"
   | "kitchen"
-  | "trails"
   | "discover"
   | "mind"
   | "us";
@@ -74,16 +73,6 @@ function KitchenGlyph({ className }: IconProps) {
   );
 }
 
-function TrailsGlyph({ className }: IconProps) {
-  return (
-    <svg {...shared} className={className} aria-hidden="true">
-      <path d="M3 19 9.5 6l3 5.5L15 8l6 11" />
-      <path d="M11 19h2" />
-      <circle cx="17.5" cy="5.5" r="1.4" />
-    </svg>
-  );
-}
-
 function DiscoverGlyph({ className }: IconProps) {
   return (
     <svg {...shared} className={className} aria-hidden="true">
@@ -118,7 +107,6 @@ const GLYPHS: Record<IconKind, (props: IconProps) => React.ReactElement> = {
   animals: AnimalsGlyph,
   plants: PlantsGlyph,
   kitchen: KitchenGlyph,
-  trails: TrailsGlyph,
   discover: DiscoverGlyph,
   mind: MindGlyph,
   us: UsGlyph,

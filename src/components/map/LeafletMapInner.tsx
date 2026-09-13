@@ -52,7 +52,7 @@ export default function LeafletMapInner({
   heightClassName?: string;
 }) {
   return (
-    <div className={`w-full overflow-hidden rounded-3xl border border-sand ${heightClassName}`}>
+    <div className={`isolate w-full overflow-hidden rounded-3xl border border-sand ${heightClassName}`}>
       <MapContainer center={center} zoom={zoom} className="h-full w-full" scrollWheelZoom={false}>
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'

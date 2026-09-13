@@ -109,7 +109,7 @@ exactly where to edit it.
 
 ### `src/config/site.ts`
 - `anniversaryDate` - currently `null`. Set it to `"YYYY-MM-DD"` to turn on the Us section's days-together counter (it shows a "needs setup" note until you do).
-- `homeCoordinates` - set to Argyroupoli's suburb center, not your exact address (that street didn't resolve precisely in OpenStreetMap). Replace with an exact lat/lon if you want Discover/Trails/Plants-watering centered more precisely - drop a pin in Google Maps and copy the coordinates.
+- `homeCoordinates` - set to Argyroupoli's suburb center, not your exact address (that street didn't resolve precisely in OpenStreetMap). Replace with an exact lat/lon if you want Discover/Plants-watering centered more precisely - drop a pin in Google Maps and copy the coordinates.
 - `herName` - already set to "κοριτσάκι μου".
 
 ### `src/content/memories.json` (Us section - "Σαν σήμερα" card)

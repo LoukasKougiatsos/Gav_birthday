@@ -16,7 +16,7 @@ export interface SiteConfig {
   anniversaryDate: string | null;
 
   /** PLACEHOLDER: home coordinates in Attica, used for weather, the plants'
-   * watering adjustment, the Discover bounding box, and Trails. */
+   * watering adjustment, and the Discover bounding box. */
   homeCoordinates: { lat: number; lon: number } | null;
 }
 

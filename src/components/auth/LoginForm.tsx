@@ -36,11 +36,14 @@ export function LoginForm() {
     <form onSubmit={handleSubmit} className="flex w-full max-w-xs flex-col gap-3">
       <input
         type="password"
+        inputMode="numeric"
+        pattern="[0-9]*"
+        maxLength={4}
         value={password}
-        onChange={(e) => setPassword(e.target.value)}
+        onChange={(e) => setPassword(e.target.value.replace(/\D/g, "").slice(0, 4))}
         placeholder="Κωδικός"
         autoFocus
-        className="w-full rounded-xl border border-sand bg-white/70 px-3 py-2 text-sm text-ink focus:border-terracotta/50 focus:outline-none"
+        className="w-full rounded-xl border border-sand bg-white/70 px-3 py-2 text-center text-lg tracking-[0.5em] text-ink focus:border-terracotta/50 focus:outline-none"
       />
       {error && <p className="text-xs text-clay">{error}</p>}
       <button

@@ -1,8 +1,8 @@
 /**
  * Deterministic date seeding, shared by every feature that needs "the same
  * pick all day" (Clinic's daily animal, Home's daily quote) or "the same
- * picks all week, new on Monday" (Discover's place of the week, Trails'
- * featured three, the weekly meal plan, the weekly dachshund's day).
+ * picks all week, new on Monday" (Discover's place of the week, the weekly
+ * meal plan, the weekly dachshund's day).
  *
  * Callers are responsible for filtering out already-done/visited items
  * *before* calling these - the pool passed in should already be the

@@ -65,7 +65,7 @@ interface WeatherMeaning {
 }
 
 /** WMO weather codes, as used by Open-Meteo. The labels are the Greek text
- * shown in the UI (WeatherCard, Trails' weekend widget). */
+ * shown in the UI (WeatherCard). */
 const WEATHER_CODES: Record<number, WeatherMeaning> = {
   0: { label: "Καθαρός ουρανός", icon: "sun", outdoorFriendly: true },
   1: { label: "Σχεδόν αίθριος", icon: "sun", outdoorFriendly: true },
@@ -154,50 +154,6 @@ export function suggestActivity(
     return { type: "hot", message: seededPick(HOT_SUGGESTIONS, seed) };
   }
   return { type: "indoor", message: seededPick(INDOOR_SUGGESTIONS, seed) };
-}
-
-export interface DayForecast {
-  date: string; // local YYYY-MM-DD
-  weatherCode: number;
-  maxC: number;
-  minC: number;
-  precipitationSumMm: number;
-}
-
-/** Used for Trails' "is it hiking weather?" widget - the upcoming Saturday
- * and Sunday (or today, if today already is one of those). Open-Meteo's
- * 7-day forecast always covers at least one full weekend out. */
-export async function fetchWeekendForecast(lat: number, lon: number): Promise<DayForecast[]> {
-  const url = new URL("https://api.open-meteo.com/v1/forecast");
-  url.searchParams.set("latitude", String(lat));
-  url.searchParams.set("longitude", String(lon));
-  url.searchParams.set("daily", "weather_code,temperature_2m_max,temperature_2m_min,precipitation_sum");
-  url.searchParams.set("timezone", "auto");
-  url.searchParams.set("forecast_days", "7");
-
-  const res = await fetch(url.toString());
-  if (!res.ok) {
-    throw new Error(`Open-Meteo request failed: ${res.status}`);
-  }
-  const data = await res.json();
-
-  const days: DayForecast[] = data.daily.time.map((date: string, i: number) => ({
-    date,
-    weatherCode: data.daily.weather_code[i],
-    maxC: data.daily.temperature_2m_max[i],
-    minC: data.daily.temperature_2m_min[i],
-    precipitationSumMm: data.daily.precipitation_sum[i],
-  }));
-
-  // Greece is always ahead of UTC, so parsing a "YYYY-MM-DD" date at UTC
-  // midnight still lands on the correct local calendar day here.
-  return days.filter((d) => [0, 6].includes(new Date(d.date).getDay())).slice(0, 2);
-}
-
-/** Whether a given day is comfortable, dry, outdoor hiking weather. */
-export function isHikingWeather(day: DayForecast): boolean {
-  const meaning = interpretWeatherCode(day.weatherCode);
-  return meaning.outdoorFriendly && day.maxC >= 8 && day.maxC <= 32 && day.precipitationSumMm < 2;
 }
 
 export interface GardenWeatherWeek {
