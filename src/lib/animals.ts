@@ -38,9 +38,12 @@ async function fetchRandomCat(): Promise<CuteAnimal> {
 }
 
 async function fetchRandomDuck(): Promise<CuteAnimal> {
-  const res = await fetch("https://random-d.uk/api/v2/random");
+  // random-d.uk sends no CORS headers, so this goes through /api/duck
+  // (a server-side proxy) instead of calling it directly - see that route.
+  const res = await fetch("/api/duck");
   const data = await res.json();
-  return { imageUrl: data.url, kind: "duck", isVideo: false };
+  if (!res.ok) throw new Error(data.error ?? `duck proxy failed: ${res.status}`);
+  return { imageUrl: data.imageUrl, kind: "duck", isVideo: false };
 }
 
 const CUTE_FETCHERS = [fetchRandomDog, fetchRandomCat, fetchRandomDuck];
