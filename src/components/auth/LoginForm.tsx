@@ -14,22 +14,32 @@ export function LoginForm() {
     e.preventDefault();
     setSubmitting(true);
     setError(null);
-    try {
-      const res = await fetch("/api/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ password }),
-      });
-      if (!res.ok) {
-        const data = await res.json().catch(() => ({}));
-        setError(data.error ?? "Κάτι πήγε στραβά.");
-        return;
-      }
-      router.replace(searchParams.get("next") || "/");
-      router.refresh();
-    } finally {
+
+    const res = await fetch("/api/login", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ password }),
+    });
+    if (!res.ok) {
+      const data = await res.json().catch(() => ({}));
+      setError(data.error ?? "Κάτι πήγε στραβά.");
       setSubmitting(false);
+      return;
     }
+
+    // Left `submitting` true on success on purpose - this component is about
+    // to unmount once the redirect lands, so resetting it here just flips
+    // the button back to normal for the second or two the navigation takes,
+    // which reads as "nothing happened" rather than "loading".
+    const next = searchParams.get("next") || "/";
+    let seenWelcome = false;
+    try {
+      seenWelcome = localStorage.getItem("welcomeVideoSeen") === "1";
+    } catch {
+      // localStorage can throw in rare private-browsing configs - treat as unseen
+    }
+    router.replace(seenWelcome ? next : `/welcome?next=${encodeURIComponent(next)}`);
+    router.refresh();
   }
 
   return (
