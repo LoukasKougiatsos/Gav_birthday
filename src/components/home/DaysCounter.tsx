@@ -27,6 +27,7 @@ export function DaysCounter() {
         <NavIcon kind="us" className="h-5 w-5" />
       </div>
       <div>
+        <p className="text-sm text-ink/60">Μέρες μαζί</p>
         <p className="font-display text-3xl font-bold text-clay">{days.toLocaleString("el-GR")}</p>
         <p className="text-sm text-ink/70">{dayMessage(days)}</p>
       </div>
