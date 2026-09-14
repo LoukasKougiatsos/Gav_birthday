@@ -21,8 +21,7 @@ export function WelcomeVideo() {
   const router = useRouter();
   const searchParams = useSearchParams();
   const videoRef = useRef<HTMLVideoElement>(null);
-  const [started, setStarted] = useState(false);
-  const [ended, setEnded] = useState(false);
+  const [muted, setMuted] = useState(true);
 
   useEffect(() => {
     try {
@@ -30,15 +29,20 @@ export function WelcomeVideo() {
     } catch {
       // private-browsing storage can throw - not worth blocking the video over
     }
+    // The `autoPlay` attribute alone doesn't reliably start playback in
+    // every environment - calling .play() explicitly is the more robust
+    // pattern. If even muted autoplay gets rejected, she can still start it
+    // with the native controls; nothing here needs to block on the promise.
+    videoRef.current?.play().catch(() => {});
   }, []);
 
   function goToNext() {
     router.replace(searchParams.get("next") || "/");
   }
 
-  function play() {
-    setStarted(true);
-    videoRef.current?.play();
+  function unmute() {
+    setMuted(false);
+    if (videoRef.current) videoRef.current.muted = false;
   }
 
   return (
@@ -47,40 +51,35 @@ export function WelcomeVideo() {
         <video
           ref={videoRef}
           src="/welcome-video.mp4"
+          autoPlay
+          muted={muted}
           playsInline
-          controls={started}
-          onEnded={() => setEnded(true)}
+          controls
+          onEnded={goToNext}
           className="w-full rounded-2xl bg-black"
         />
-        {!started && (
+        {/* Browsers block autoplay-with-sound outright, so it always starts
+            muted - this is the one-tap way to turn sound on, not optional
+            chrome. Disappears once tapped since the native controls' own
+            mute toggle takes over from there. */}
+        {muted && (
           <button
             type="button"
-            onClick={play}
-            aria-label="Αναπαραγωγή"
-            className="absolute inset-0 flex items-center justify-center rounded-2xl bg-black/30 transition-colors hover:bg-black/40"
+            onClick={unmute}
+            className="absolute right-3 bottom-3 flex items-center gap-1.5 rounded-full bg-black/60 px-3 py-1.5 text-xs font-medium text-paper"
           >
-            <span className="flex h-16 w-16 items-center justify-center rounded-full bg-paper/90 text-clay">
-              <svg viewBox="0 0 24 24" className="ml-1 h-7 w-7" fill="currentColor">
-                <path d="M8 5v14l11-7Z" />
-              </svg>
-            </span>
+            <svg viewBox="0 0 24 24" className="h-4 w-4" fill="currentColor">
+              <path d="M4 9v6h4l5 5V4L8 9H4Z" />
+              <path d="M16.5 8.5a5 5 0 0 1 0 7" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" />
+            </svg>
+            Ήχος
           </button>
         )}
       </div>
 
-      {ended ? (
-        <button
-          type="button"
-          onClick={goToNext}
-          className="mt-6 rounded-xl bg-terracotta px-5 py-2.5 text-sm font-medium text-paper"
-        >
-          Συνέχεια
-        </button>
-      ) : (
-        <button type="button" onClick={goToNext} className="mt-6 text-xs text-paper/60 underline">
-          Παράλειψη
-        </button>
-      )}
+      <button type="button" onClick={goToNext} className="mt-6 text-xs text-paper/60 underline">
+        Παράλειψη
+      </button>
     </div>
   );
 }
