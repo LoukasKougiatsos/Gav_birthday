@@ -60,14 +60,20 @@ export function SanctuaryGrid() {
             <div className="grid grid-cols-3 gap-3">
               {groupCases.map((c) => {
                 const isCollected = state.collected.has(c.id);
+                if (!isCollected) {
+                  return (
+                    <Card key={c.id} tone="plain" className="flex flex-col items-center gap-1 p-2">
+                      <div className="flex h-16 w-16 items-center justify-center text-2xl text-ink/25">?</div>
+                      <p className="text-center text-[11px] leading-tight text-ink/40">???</p>
+                    </Card>
+                  );
+                }
                 return (
-                  <Card key={c.id} tone={isCollected ? "sage" : "plain"} className="flex flex-col items-center gap-1 p-2">
-                    <div className={`h-16 w-16 ${isCollected ? "" : "opacity-35 grayscale"}`}>
+                  <Card key={c.id} tone="sage" className="flex flex-col items-center gap-1 p-2">
+                    <div className="h-16 w-16">
                       <AnimalSprite caseId={c.id} />
                     </div>
-                    <p className={`text-center text-[11px] leading-tight ${isCollected ? "text-forest" : "text-ink/40"}`}>
-                      {c.speciesEl}
-                    </p>
+                    <p className="text-center text-[11px] leading-tight text-forest">{c.speciesEl}</p>
                   </Card>
                 );
               })}

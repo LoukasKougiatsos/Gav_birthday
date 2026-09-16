@@ -40,6 +40,7 @@ export type PaletteColor = keyof typeof PALETTE;
  */
 export const TINTS = {
   terracotta: "#F2DCC9",
+  clay: "#E9D8CE",
   sage: "#E4E6CD",
   sky: "#DCE7E5",
   sun: "#F5E7C4",
@@ -59,6 +60,7 @@ export type TintColor = keyof typeof TINTS;
 export const SECTION_HUE: Record<string, PaletteColor> = {
   home: "terracotta",
   clinic: "terracotta",
+  exercise: "clay",
   animals: "clay",
   plants: "sage",
   kitchen: "sun",

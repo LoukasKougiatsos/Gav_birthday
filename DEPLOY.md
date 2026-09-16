@@ -32,6 +32,8 @@ in a committed file - `.env.local` never leaves your machine.
 | `THE_DOG_API_KEY` | Optional | Animals section's weekly dachshund photo | [thedogapi.com](https://thedogapi.com/) - free key |
 | `PERENUAL_API_KEY` | Optional | Plants section's species search/photo lookup | [perenual.com](https://perenual.com/docs/api) - free key |
 | `SPOONACULAR_API_KEY` | Optional | Kitchen's weekly meal plan | [spoonacular.com/food-api](https://spoonacular.com/food-api) - free key |
+| `UPSTASH_REDIS_REST_URL` | Recommended | Cross-device sync (see below) - her clinic/mood/exercise/garden progress following her across phones instead of living in one browser's local storage | [console.upstash.com](https://console.upstash.com/) - free Redis database, "REST API" tab |
+| `UPSTASH_REDIS_REST_TOKEN` | Recommended | Same as above - pairs with the URL | Same Upstash "REST API" tab |
 
 Every optional key already has a value in your local `.env.local` - copy those
 same values into Vercel if you want those features working in production too.
@@ -100,6 +102,27 @@ After that, set `SITE_PASSWORD` (step 4 above) if you haven't - a real
 domain name is more likely to get stumbled on than a random `.vercel.app`
 one.
 
+## 7. Turn on cross-device sync
+
+Without this, her progress (Clinic streak/sanctuary, mood check-ins,
+exercise log, garden) lives only in whatever browser she's using - it won't
+follow her to a new phone, and iOS Safari can even clear it on its own if
+the site goes unopened for about a week. To make it durable:
+
+1. Create a free account at [console.upstash.com](https://console.upstash.com/)
+   and a new Redis database (any region close to your Vercel deployment's
+   region is fine).
+2. On that database's page, open the **REST API** tab and copy the
+   `UPSTASH_REDIS_REST_URL` and `UPSTASH_REDIS_REST_TOKEN` values.
+3. Add both as environment variables in Vercel (see table above), then
+   redeploy.
+
+That's it - no schema or setup beyond the two env vars. The first time she
+opens the site after this is live, whatever's already in her phone's local
+storage gets mirrored up automatically; from then on every device that logs
+in with `SITE_PASSWORD` sees the same data. Leave the two vars unset and the
+site works exactly as it does today (local-storage-only, per device).
+
 ---
 
 ## Content that still needs your input
@@ -145,6 +168,10 @@ component's SVG paths or swap in a real photo/illustration.
 Already has working keys for Dog API, Perenual, and Spoonacular from your
 local setup. `SITE_PASSWORD` is commented out - uncomment and set it only if
 you also want the password gate active during local development.
+`UPSTASH_REDIS_REST_URL`/`UPSTASH_REDIS_REST_TOKEN` are commented out too -
+without them, sync silently no-ops and the site behaves exactly as it did
+before (local storage only), so it's safe to leave them unset while
+developing.
 
 ---
 
@@ -156,5 +183,6 @@ you also want the password gate active during local development.
 - [ ] Spot-check a few Discover coordinates
 - [ ] Have someone sanity-check the wildlife-care Clinic content
 - [ ] Decide on `SITE_PASSWORD` and add it in Vercel
+- [ ] Set up Upstash Redis and add its two env vars so her progress syncs across devices
 - [ ] Copy any API keys you want live into Vercel's env vars
 - [ ] Deploy, then open the `*.vercel.app` link on your phone and click through every section once

@@ -26,6 +26,7 @@
      a low-chroma parchment tone, so they read as different papers rather
      than colored panels. */
   --color-terracotta-tint: #f2dcc9;
+  --color-clay-tint: #e9d8ce;
   --color-sage-tint: #e4e6cd;
   --color-sky-tint: #dce7e5;
   --color-sun-tint: #f5e7c4;
@@ -54,6 +55,7 @@
   --color-ink: var(--color-ink);
 
   --color-terracotta-tint: var(--color-terracotta-tint);
+  --color-clay-tint: var(--color-clay-tint);
   --color-sage-tint: var(--color-sage-tint);
   --color-sky-tint: var(--color-sky-tint);
   --color-sun-tint: var(--color-sun-tint);
@@ -355,5 +357,85 @@
   }
   99% {
     opacity: 0.25;
+  }
+}
+
+/* ---------------------------------------------------------------------
+   Exercise section (src/components/exercise/*). The owner explicitly
+   asked for the calendar to "feel alive" rather than a static grid, so
+   today's cell always carries a slow idle pulse, and a fresh "yes"
+   pops/bounces in instead of just recoloring. The celebration banner and
+   the avatar's level-up "flex" share the same pop family.
+   --------------------------------------------------------------------- */
+.exercise-cell-today {
+  animation: exercise-cell-pulse 2.4s ease-in-out infinite;
+}
+.exercise-cell-pop {
+  animation: exercise-cell-pop 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+.exercise-celebrate-pop {
+  animation: exercise-celebrate-pop 0.55s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+.exercise-avatar-flex {
+  animation: exercise-avatar-flex 0.7s ease-in-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .exercise-cell-today,
+  .exercise-cell-pop,
+  .exercise-celebrate-pop,
+  .exercise-avatar-flex {
+    animation: none;
+  }
+}
+
+@keyframes exercise-cell-pulse {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--color-clay) 35%, transparent);
+  }
+  50% {
+    box-shadow: 0 0 0 4px color-mix(in srgb, var(--color-clay) 0%, transparent);
+  }
+}
+
+@keyframes exercise-cell-pop {
+  0% {
+    transform: scale(0.4);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.15);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes exercise-celebrate-pop {
+  0% {
+    transform: scale(0.5) rotate(-4deg);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.08) rotate(2deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+@keyframes exercise-avatar-flex {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  30% {
+    transform: scale(1.12) rotate(-2deg);
+  }
+  60% {
+    transform: scale(1.07) rotate(2deg);
   }
 }

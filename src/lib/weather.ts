@@ -111,13 +111,23 @@ const OUTDOOR_SUGGESTIONS = [
   "Καλός καιρός για σορτσάκια, δύσκολος για πρίγκιπες.",
 ];
 
-const INDOOR_SUGGESTIONS = [
+/** Bad weather AND cold enough that "cozy" reads right - fireplace/blanket
+ * lines would be a non sequitur on a mild rainy day. */
+const COZY_INDOOR_SUGGESTIONS = [
   "Δεν είναι μέρα για έξω. Καλή αφορμή για τσάι και βιβλίο.",
   "Γκρίζος ουρανός σήμερα — μέρα για ζεστασιά μέσα στο σπίτι.",
-  "Έχει βροχή τριγύρω. Καλή μέρα να μαγειρέψεις κάτι ζεστό.",
   "Μια πιο ήσυχη μέρα, μέσα στο σπίτι.",
   "Να παιχτεί κανά τζάκι σήμερα;",
   "Έλα από εδώ, σου έχω κουβέρτες.",
+];
+
+/** Bad weather but mild enough that cozy/fireplace phrasing wouldn't fit -
+ * weather-driven, temperature-neutral. */
+const MILD_INDOOR_SUGGESTIONS = [
+  "Έχει βροχή τριγύρω. Καλή μέρα να μαγειρέψεις κάτι ζεστό.",
+  "Δεν είναι μέρα για έξω, αλλά τουλάχιστον δεν κάνει κρύο.",
+  "Γκρίζος ουρανός σήμερα — μια πιο ήσυχη μέρα μέσα στο σπίτι.",
+  "Βρεγμένος καιρός. Καλή αφορμή για μια ταινία μέσα στο σπίτι.",
 ];
 
 /** "Not comfortable" because it's hot, not because the weather itself is bad
@@ -153,7 +163,11 @@ export function suggestActivity(
   if (meaning.outdoorFriendly && tooHot) {
     return { type: "hot", message: seededPick(HOT_SUGGESTIONS, seed) };
   }
-  return { type: "indoor", message: seededPick(INDOOR_SUGGESTIONS, seed) };
+  const cozy = temperatureC < 16;
+  return {
+    type: "indoor",
+    message: seededPick(cozy ? COZY_INDOOR_SUGGESTIONS : MILD_INDOOR_SUGGESTIONS, seed),
+  };
 }
 
 export interface GardenWeatherWeek {

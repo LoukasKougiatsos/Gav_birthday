@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Alegreya, Alegreya_Sans, Roboto_Mono } from "next/font/google";
 import { SiteNav } from "@/components/nav/SiteNav";
+import { SyncGate } from "@/components/sync/SyncGate";
 import "./globals.css";
 
 // Three faces, each with one job - this is what carries the field-guide
@@ -61,7 +62,7 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col text-ink">
         <SiteNav />
         <main className="flex-1" style={{ paddingBottom: "env(safe-area-inset-bottom)" }}>
-          {children}
+          <SyncGate>{children}</SyncGate>
         </main>
       </body>
     </html>

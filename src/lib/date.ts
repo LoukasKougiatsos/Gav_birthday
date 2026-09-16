@@ -31,21 +31,23 @@ export function daysTogether(anniversaryDateISO: string, today: Date = new Date(
   return daysBetweenISO(anniversaryDateISO, `${y}-${m}-${d}`);
 }
 
-export type DayPart = "night" | "morning" | "afternoon" | "evening";
+export type DayPart = "night" | "morning" | "midday" | "afternoon" | "evening";
 
 /** Coarse time-of-day bucket, used to pick a greeting tone. */
 export function dayPart(date: Date = new Date()): DayPart {
   const hour = date.getHours();
   if (hour < 6) return "night";
   if (hour < 12) return "morning";
-  if (hour < 18) return "afternoon";
+  if (hour < 16) return "midday";
+  if (hour < 20) return "afternoon";
   return "evening";
 }
 
 const GREETINGS: Record<DayPart, string> = {
   night: "Καλό ξημέρωμα",
   morning: "Καλημέρα",
-  afternoon: "Καλό μεσημέρι",
+  midday: "Καλό μεσημέρι",
+  afternoon: "Καλό απόγευμα",
   evening: "Καλησπέρα",
 };
 

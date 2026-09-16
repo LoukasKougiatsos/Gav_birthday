@@ -3,6 +3,7 @@ import { DaysCounter } from "@/components/home/DaysCounter";
 import { WeatherCard } from "@/components/home/WeatherCard";
 import { WeatherEffect } from "@/components/home/WeatherEffect";
 import { ClinicTeaser } from "@/components/home/ClinicTeaser";
+import { ExerciseTeaser } from "@/components/home/ExerciseTeaser";
 import { AnimalsTeaser } from "@/components/home/AnimalsTeaser";
 import { DiscoverTeaser } from "@/components/home/DiscoverTeaser";
 import { KitchenTeaser } from "@/components/home/KitchenTeaser";
@@ -31,6 +32,7 @@ export default function HomePage() {
           <AnimalsTeaser />
           <DiscoverTeaser />
           <ClinicTeaser />
+          <ExerciseTeaser />
           <KitchenTeaser />
           <PlantsTeaser />
         </div>

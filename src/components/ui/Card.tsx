@@ -11,6 +11,7 @@ import type { ReactNode } from "react";
 const TONES = {
   plain: "bg-plate border-t-sand",
   terracotta: "bg-terracotta-tint border-t-terracotta",
+  clay: "bg-clay-tint border-t-clay",
   sage: "bg-sage-tint border-t-sage",
   sky: "bg-sky-tint border-t-sky",
   sun: "bg-sun-tint border-t-sun",

@@ -15,6 +15,7 @@ import type { CardTone } from "@/components/ui/Card";
 export const SECTION_ACCENT: Record<IconKind, { tone: CardTone; badge: string }> = {
   home: { tone: "terracotta", badge: "bg-terracotta-tint text-clay border border-terracotta/40" },
   clinic: { tone: "terracotta", badge: "bg-terracotta-tint text-clay border border-terracotta/40" },
+  exercise: { tone: "clay", badge: "bg-clay-tint text-clay border border-clay/40" },
   animals: { tone: "terracotta", badge: "bg-terracotta-tint text-clay border border-clay/40" },
   plants: { tone: "sage", badge: "bg-sage-tint text-forest border border-sage/50" },
   kitchen: { tone: "sun", badge: "bg-sun-tint text-honey border border-sun/50" },

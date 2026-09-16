@@ -3,6 +3,7 @@ import { ICON_VIEWBOX, STROKE } from "@/design/tokens";
 export type IconKind =
   | "home"
   | "clinic"
+  | "exercise"
   | "animals"
   | "plants"
   | "kitchen"
@@ -38,6 +39,18 @@ function ClinicGlyph({ className }: IconProps) {
       <circle cx="15.8" cy="8" r="1.6" />
       <path d="M9 13.5c0-1.8 1.4-3 3-3s3 1.2 3 3-1.4 3.5-3 3.5-3-1.7-3-3.5Z" />
       <path d="M12 20v-3" />
+    </svg>
+  );
+}
+
+function ExerciseGlyph({ className }: IconProps) {
+  return (
+    <svg {...shared} className={className} aria-hidden="true">
+      <path d="M7 8v8" />
+      <path d="M17 8v8" />
+      <path d="M4.5 10.5v3" />
+      <path d="M19.5 10.5v3" />
+      <path d="M7 12h10" />
     </svg>
   );
 }
@@ -104,6 +117,7 @@ function UsGlyph({ className }: IconProps) {
 const GLYPHS: Record<IconKind, (props: IconProps) => React.ReactElement> = {
   home: HomeGlyph,
   clinic: ClinicGlyph,
+  exercise: ExerciseGlyph,
   animals: AnimalsGlyph,
   plants: PlantsGlyph,
   kitchen: KitchenGlyph,

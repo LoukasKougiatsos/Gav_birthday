@@ -14,6 +14,7 @@ export interface NavSection {
 export const NAV_SECTIONS: NavSection[] = [
   { key: "home", href: "/", label: "Αρχική", labelEl: "Home", icon: "home" },
   { key: "clinic", href: "/clinic", label: "Το Ιατρείο", labelEl: "The Clinic", icon: "clinic" },
+  { key: "exercise", href: "/exercise", label: "Γυμναστική", labelEl: "Exercise", icon: "exercise" },
   { key: "plants", href: "/plants", label: "Κήπος", labelEl: "Garden", icon: "plants" },
   { key: "kitchen", href: "/kitchen", label: "Κουζίνα", labelEl: "Kitchen", icon: "kitchen" },
   { key: "discover", href: "/discover", label: "Ανακάλυψε", labelEl: "Discover", icon: "discover" },
