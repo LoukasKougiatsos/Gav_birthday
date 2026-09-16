@@ -8,7 +8,6 @@ import { NavIcon } from "@/components/icons/NavIcons";
 import { SECTION_ACCENT } from "@/components/ui/accents";
 
 interface TeaserState {
-  answeredToday: boolean;
   exercisedToday: boolean;
   level: number;
 }
@@ -18,13 +17,12 @@ export function ExerciseTeaser() {
   const accent = SECTION_ACCENT.exercise;
 
   useEffect(() => {
-    const existing = todaysExercise();
     // One-time sync from localStorage on mount, see ClinicGame.tsx for the
-    // fuller rationale.
+    // fuller rationale. No "answered but said no" state anymore - see
+    // ExerciseCheckIn.tsx, silence already means "didn't exercise."
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setState({
-      answeredToday: existing !== null,
-      exercisedToday: existing?.exercised ?? false,
+      exercisedToday: todaysExercise()?.exercised ?? false,
       level: buffLevel(),
     });
   }, []);
@@ -45,11 +43,7 @@ export function ExerciseTeaser() {
         </div>
         <div className="flex flex-1 flex-col items-start gap-1">
           <p className="text-sm text-ink/80">
-            {state.answeredToday
-              ? state.exercisedToday
-                ? "Γυμναστική σήμερα ✓"
-                : "Σήμερα χωρίς γυμναστική"
-              : "Έκανες γυμναστική σήμερα;"}
+            {state.exercisedToday ? "Γυμναστική σήμερα ✓" : "Έκανες γυμναστική σήμερα;"}
           </p>
           <p className="rounded-full bg-white/60 px-2 py-0.5 text-xs text-clay">
             Επίπεδο {state.level}/{BUFF_STAGES}
