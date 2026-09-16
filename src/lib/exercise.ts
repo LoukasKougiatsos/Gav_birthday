@@ -16,10 +16,9 @@ const EXERCISE_KEY = "exercise:entries";
  * the 5 images actually supplied (public/exercise/avatar-1.jpg..avatar-5.jpg). */
 export const BUFF_STAGES = 5;
 
-/** The buff level moves in fixed, non-overlapping 3-day blocks measured
- * from her very first entry, not per-answer - "exercise once every three
- * days keeps it climbing" is a per-window rule, not a same-day reaction. */
-const BUFF_WINDOW_DAYS = 3;
+/** A silent gap this long (no "Ναι", whether from an explicit "Όχι" or no
+ * answer at all) costs one buff stage - see buffLevel(). */
+const DECAY_GAP_DAYS = 3;
 
 export function loadExerciseEntries(): Record<string, ExerciseEntry> {
   return getItem<Record<string, ExerciseEntry>>(EXERCISE_KEY, {});
@@ -39,31 +38,40 @@ export function saveExerciseEntry(
   return next;
 }
 
-/** Steps the buff level through every 3-day block that's fully elapsed
- * since her first ever entry: a block with at least one "yes" in it nudges
- * the level up a stage, a block with none nudges it down. The block still
- * in progress (today's) is never counted early. Derived from the entries
- * every time rather than stored, so it can never drift out of sync. */
+/** Every "Ναι" bumps the level immediately; a silent gap of DECAY_GAP_DAYS
+ * with no "Ναι" (an explicit "Όχι" or simply no answer, treated the same)
+ * costs one stage per full gap - so two silent weeks costs more than one.
+ * Walks her "Ναι" dates in order rather than simulating day-by-day: each
+ * one first pays off any decay accrued since the previous "Ναι" (or since
+ * the start, for the first one), then bumps the level up a stage; any
+ * remaining silence between the last "Ναι" and today is paid off last.
+ * Derived from the entries every time rather than stored, so it can never
+ * drift out of sync. */
 export function buffLevel(
   entries: Record<string, ExerciseEntry> = loadExerciseEntries(),
   today: string = dailySeed()
 ): number {
-  const dates = Object.keys(entries).sort();
-  if (dates.length === 0) return 1;
-
-  const firstDate = dates[0];
-  const completeWindows = Math.floor(Math.max(0, daysBetweenISO(firstDate, today)) / BUFF_WINDOW_DAYS);
-
-  const windowHasYes = new Array(completeWindows).fill(false);
-  for (const date of dates) {
-    if (!entries[date].exercised) continue;
-    const windowIndex = Math.floor(daysBetweenISO(firstDate, date) / BUFF_WINDOW_DAYS);
-    if (windowIndex >= 0 && windowIndex < completeWindows) windowHasYes[windowIndex] = true;
-  }
+  const yesDates = Object.values(entries)
+    .filter((e) => e.exercised)
+    .map((e) => e.date)
+    .sort();
 
   let level = 1;
-  for (const hasYes of windowHasYes) {
-    level = Math.max(1, Math.min(BUFF_STAGES, level + (hasYes ? 1 : -1)));
+  let lastYesDate: string | null = null;
+
+  for (const date of yesDates) {
+    if (lastYesDate) {
+      const decaySteps = Math.floor(daysBetweenISO(lastYesDate, date) / DECAY_GAP_DAYS);
+      level = Math.max(1, level - decaySteps);
+    }
+    level = Math.min(BUFF_STAGES, level + 1);
+    lastYesDate = date;
   }
+
+  if (lastYesDate) {
+    const decaySteps = Math.floor(daysBetweenISO(lastYesDate, today) / DECAY_GAP_DAYS);
+    level = Math.max(1, level - decaySteps);
+  }
+
   return level;
 }
