@@ -1,0 +1,13 @@
+{
+  "name": "Our Corner",
+  "short_name": "Our Corner",
+  "description": "Η δική μας γωνιά — μόνο για εμάς, κάθε μέρα.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F4EAD4",
+  "theme_color": "#3A4A31",
+  "icons": [
+    { "src": "/icons/icon-192.jpg", "sizes": "858x858", "type": "image/jpeg" },
+    { "src": "/icons/icon-512.jpg", "sizes": "858x858", "type": "image/jpeg", "purpose": "any" }
+  ]
+}

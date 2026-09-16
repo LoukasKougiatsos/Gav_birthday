@@ -20,5 +20,8 @@ export function proxy(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/((?!api/login|login|_next/static|_next/image|favicon.ico).*)"],
+  // api/push/daily-reminder is excluded too: Vercel Cron calls it with an
+  // Authorization: Bearer $CRON_SECRET header, not a browser session, so it
+  // can never carry km_auth - that route checks CRON_SECRET itself instead.
+  matcher: ["/((?!api/login|api/push/daily-reminder|login|_next/static|_next/image|favicon.ico).*)"],
 };

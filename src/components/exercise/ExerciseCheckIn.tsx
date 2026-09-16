@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react";
 import { todaysExercise, saveExerciseEntry, buffLevel } from "@/lib/exercise";
+import { SITE_CONFIG } from "@/config/site";
 import { Card } from "@/components/ui/Card";
 import { BuffAvatar } from "@/components/exercise/BuffAvatar";
 
@@ -34,6 +35,15 @@ export function ExerciseCheckIn({ onAnswer }: { onAnswer?: (exercised: boolean) 
     setLevel(buffLevel(all));
     setPulse((p) => p + 1);
     onAnswer?.(true);
+
+    // Fire-and-forget "activity" ping - a missed notification isn't worth
+    // blocking or retrying over, same spirit as storage.ts's background sync.
+    const name = SITE_CONFIG.herName ?? "Κοριτσάκι μου";
+    fetch("/api/push/notify-activity", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ message: `Η ${name} έκανε γυμναστική σήμερα! 💪`, url: "/exercise" }),
+    }).catch(() => {});
   }
 
   return (

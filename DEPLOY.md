@@ -34,6 +34,9 @@ in a committed file - `.env.local` never leaves your machine.
 | `SPOONACULAR_API_KEY` | Optional | Kitchen's weekly meal plan | [spoonacular.com/food-api](https://spoonacular.com/food-api) - free key |
 | `UPSTASH_REDIS_REST_URL` | Recommended | Cross-device sync (see below) - her clinic/mood/exercise/garden progress following her across phones instead of living in one browser's local storage | [console.upstash.com](https://console.upstash.com/) - free Redis database, "REST API" tab |
 | `UPSTASH_REDIS_REST_TOKEN` | Recommended | Same as above - pairs with the URL | Same Upstash "REST API" tab |
+| `NEXT_PUBLIC_VAPID_PUBLIC_KEY` | Recommended | Push notifications (see below) - daily reminders to her, activity pings to you | Generate once, see below |
+| `VAPID_PRIVATE_KEY` | Recommended | Same as above - pairs with the public key, keep this one secret | Generate once, see below |
+| `CRON_SECRET` | Recommended | Authenticates Vercel's daily reminder cron job so nobody else can trigger it | Any random string - see below |
 
 Every optional key already has a value in your local `.env.local` - copy those
 same values into Vercel if you want those features working in production too.
@@ -123,6 +126,37 @@ storage gets mirrored up automatically; from then on every device that logs
 in with `SITE_PASSWORD` sees the same data. Leave the two vars unset and the
 site works exactly as it does today (local-storage-only, per device).
 
+## 8. Turn on push notifications
+
+A daily reminder to her if she hasn't checked in yet, plus an optional ping
+to you when she logs a workout. **Important iPhone limitation**: Safari on
+iOS only allows push notifications for a site added to the Home Screen
+first (tap the share icon → "Add to Home Screen") - a plain Safari tab can
+never receive them, no matter what's set up here. The site already shows
+her that instruction automatically when needed.
+
+1. Generate a VAPID key pair once, from this project's folder:
+   ```bash
+   node -e "console.log(require('web-push').generateVAPIDKeys())"
+   ```
+   Add the two values as `NEXT_PUBLIC_VAPID_PUBLIC_KEY` and
+   `VAPID_PRIVATE_KEY` in Vercel (see table above).
+2. Pick any random string for `CRON_SECRET` (e.g. run
+   `node -e "console.log(require('crypto').randomBytes(24).toString('hex'))"`)
+   and add it as an env var too.
+3. In Vercel, **Cron Jobs must be turned on for the project** the first time
+   (Project → Settings → Cron Jobs) - the schedule itself is already defined
+   in `vercel.json` (once a day, ~20:00 Athens time) and picked up
+   automatically on deploy.
+4. Redeploy so the new env vars and the cron schedule take effect.
+5. On her phone: add the site to the Home Screen, open it from there, and
+   turn on "Θέλω υπενθυμίσεις" on the Home page. On your own phone, turn on
+   "Θέλω να ξέρω πότε κάνει κάτι" the same way if you want the activity ping.
+
+Leave the VAPID/cron env vars unset and this section of the Home page
+simply doesn't show anything - same graceful-degradation pattern as every
+other optional feature here.
+
 ---
 
 ## Content that still needs your input
@@ -171,7 +205,11 @@ you also want the password gate active during local development.
 `UPSTASH_REDIS_REST_URL`/`UPSTASH_REDIS_REST_TOKEN` are commented out too -
 without them, sync silently no-ops and the site behaves exactly as it did
 before (local storage only), so it's safe to leave them unset while
-developing.
+developing. The push notification keys (already filled in, generated the
+same way step 8 above describes) work locally too, though the daily
+reminder cron itself only actually runs once deployed to Vercel - hit
+`/api/push/daily-reminder` manually with the `CRON_SECRET` header to test
+it locally.
 
 ---
 
@@ -184,5 +222,6 @@ developing.
 - [ ] Have someone sanity-check the wildlife-care Clinic content
 - [ ] Decide on `SITE_PASSWORD` and add it in Vercel
 - [ ] Set up Upstash Redis and add its two env vars so her progress syncs across devices
+- [ ] Generate VAPID keys + a `CRON_SECRET` and turn on Cron Jobs in Vercel for push notifications
 - [ ] Copy any API keys you want live into Vercel's env vars
 - [ ] Deploy, then open the `*.vercel.app` link on your phone and click through every section once

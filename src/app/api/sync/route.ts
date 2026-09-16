@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { upstashCommand, upstashConfigured, SYNC_HASH_KEY as HASH_KEY } from "@/lib/upstash";
 
 /**
  * Cross-device sync for everything src/lib/storage.ts keeps in localStorage
@@ -7,36 +8,7 @@ import { NextRequest, NextResponse } from "next/server";
  * unrelated one. Already sits behind the site password: src/proxy.ts's
  * matcher only excludes /api/login, /login, and static assets, so every
  * request here already carries a valid km_auth cookie or it never arrives.
- *
- * No @upstash/redis dependency - Upstash's REST API is plain fetch + a
- * bearer token, same "call the external API directly" style as
- * src/lib/weather.ts, just with auth.
  */
-
-const HASH_KEY = "km:sync:store";
-
-function upstashConfigured(): boolean {
-  return Boolean(process.env.UPSTASH_REDIS_REST_URL && process.env.UPSTASH_REDIS_REST_TOKEN);
-}
-
-async function upstashCommand(command: unknown[]): Promise<unknown> {
-  const url = process.env.UPSTASH_REDIS_REST_URL!;
-  const token = process.env.UPSTASH_REDIS_REST_TOKEN!;
-  const res = await fetch(url, {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${token}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(command),
-    cache: "no-store",
-  });
-  if (!res.ok) {
-    throw new Error(`Upstash request failed: ${res.status}`);
-  }
-  const data = await res.json();
-  return data.result;
-}
 
 export async function GET() {
   if (!upstashConfigured()) {

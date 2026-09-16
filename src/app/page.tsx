@@ -8,6 +8,7 @@ import { AnimalsTeaser } from "@/components/home/AnimalsTeaser";
 import { DiscoverTeaser } from "@/components/home/DiscoverTeaser";
 import { KitchenTeaser } from "@/components/home/KitchenTeaser";
 import { PlantsTeaser } from "@/components/home/PlantsTeaser";
+import { NotificationSettings } from "@/components/push/NotificationSettings";
 
 // Greeting/days-counter are date-based - keep this route dynamic rather than
 // statically cached across deploys.
@@ -35,6 +36,10 @@ export default function HomePage() {
           <ExerciseTeaser />
           <KitchenTeaser />
           <PlantsTeaser />
+        </div>
+
+        <div className="px-4">
+          <NotificationSettings />
         </div>
       </div>
     </div>
