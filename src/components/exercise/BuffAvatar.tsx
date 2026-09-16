@@ -7,7 +7,11 @@ import { SetupNotice } from "@/components/ui/SetupNotice";
  * cartoon flex escalating to full fantasy-armor "powered up." `level` is
  * already 1..BUFF_STAGES straight from buffLevel(), no offset. SetupNotice
  * only guards a future stage-count change that outruns the art, not the
- * everyday case. */
+ * everyday case. Every pose has fists raised out near the canvas edges, so
+ * the frame is held at the source art's own ratio (1984x2146) rather than
+ * a tighter crop - anything narrower clips the flex itself. `className`
+ * sizes the frame; the plate treatment (border, corners, white mat) lives
+ * here so the caller only decides how big. */
 export function BuffAvatar({ level, className = "" }: { level: number; className?: string }) {
   const [broken, setBroken] = useState(false);
   const prevLevel = useRef(level);
@@ -24,20 +28,24 @@ export function BuffAvatar({ level, className = "" }: { level: number; className
 
   if (broken) {
     return (
-      <SetupNotice>
-        λείπει το <code className="rounded bg-white/60 px-1 py-0.5">avatar-{level}.jpg</code> στο{" "}
-        <code className="rounded bg-white/60 px-1 py-0.5">public/exercise/</code>.
-      </SetupNotice>
+      <div className={className}>
+        <SetupNotice>
+          λείπει το <code className="rounded bg-white/60 px-1 py-0.5">avatar-{level}.jpg</code> στο{" "}
+          <code className="rounded bg-white/60 px-1 py-0.5">public/exercise/</code>.
+        </SetupNotice>
+      </div>
     );
   }
 
   return (
-    // eslint-disable-next-line @next/next/no-img-element -- static file under public/exercise/, level-driven src
-    <img
-      src={`/exercise/avatar-${level}.jpg`}
-      alt=""
-      onError={() => setBroken(true)}
-      className={`rounded-full object-cover ${flex ? "exercise-avatar-flex" : ""} ${className}`}
-    />
+    <div className={`overflow-hidden rounded-sm border border-ink/15 bg-white ${className}`}>
+      {/* eslint-disable-next-line @next/next/no-img-element -- static file under public/exercise/, level-driven src */}
+      <img
+        src={`/exercise/avatar-${level}.jpg`}
+        alt=""
+        onError={() => setBroken(true)}
+        className={`h-full w-full object-cover ${flex ? "exercise-avatar-flex" : ""}`}
+      />
+    </div>
   );
 }

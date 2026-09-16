@@ -38,12 +38,11 @@ export function ExerciseCheckIn({ onAnswer }: { onAnswer?: (exercised: boolean) 
 
   return (
     <Card tone="clay" className="flex flex-col gap-3">
-      <div className="flex items-center gap-3">
-        <BuffAvatar level={level} className="h-16 w-16 shrink-0" />
-        <div>
-          <p className="font-display text-sm font-semibold text-clay">Έκανες γυμναστική σήμερα;</p>
-          <p className="text-xs text-ink/50">Μόνο για σένα, χωρίς σερί, χωρίς πίεση.</p>
-        </div>
+      <BuffAvatar level={level} className="aspect-[1984/2146] w-full" />
+
+      <div className="flex flex-col gap-1 text-center">
+        <p className="font-display text-sm font-semibold text-clay">Έκανες γυμναστική σήμερα;</p>
+        <p className="text-xs text-ink/50">Μόνο για σένα, χωρίς σερί, χωρίς πίεση.</p>
       </div>
 
       <div className="flex gap-2">

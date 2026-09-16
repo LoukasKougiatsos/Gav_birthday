@@ -11,7 +11,6 @@ export function ExerciseView() {
     <div className="mx-auto flex max-w-md flex-col gap-5 px-4 pt-4 pb-10">
       <div>
         <p className="font-display text-xl font-semibold text-clay">Γυμναστική</p>
-        <p className="text-sm text-ink/60">Λίγη κίνηση τη φορά, χωρίς λογαριασμούς.</p>
       </div>
 
       <ExerciseCheckIn onAnswer={setTodayExercised} />
