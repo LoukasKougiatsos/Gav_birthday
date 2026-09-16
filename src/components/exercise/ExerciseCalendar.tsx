@@ -46,6 +46,9 @@ export function ExerciseCalendar({ refreshOn }: { refreshOn?: unknown } = {}) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [refreshOn]);
 
+  const trackedDates = Object.keys(entries).sort();
+  const earliestTracked = trackedDates.length > 0 ? trackedDates[0] : today;
+
   const { year, month } = cursor;
   const firstOfMonth = new Date(year, month, 1);
   const daysInMonth = new Date(year, month + 1, 0).getDate();
@@ -88,12 +91,16 @@ export function ExerciseCalendar({ refreshOn }: { refreshOn?: unknown } = {}) {
           const key = dateKey(year, month, day);
           const entry = entries[key];
           const isToday = key === today;
-          const stateClass =
-            entry?.exercised
-              ? "bg-clay/70 text-paper"
-              : entry
-                ? "border border-clay/40 bg-white/60 text-ink/40"
-                : "bg-white/50 text-ink/50";
+          // Silence means "didn't exercise" (no separate "Όχι" state to
+          // track anymore - see ExerciseCheckIn), but only from the day she
+          // started logging onward: a month before this feature existed
+          // shouldn't read as a wall of missed days.
+          const inTrackedRange = key <= today && key >= earliestTracked;
+          const stateClass = entry?.exercised
+            ? "bg-sage text-paper"
+            : inTrackedRange
+              ? "bg-terracotta/70 text-paper"
+              : "bg-white/50 text-ink/50";
           return (
             <div
               key={key}

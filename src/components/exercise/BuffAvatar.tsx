@@ -10,15 +10,26 @@ import { SetupNotice } from "@/components/ui/SetupNotice";
  * everyday case. Every pose has fists raised out near the canvas edges, so
  * the frame is held at the source art's own ratio (1984x2146) rather than
  * a tighter crop - anything narrower clips the flex itself. `className`
- * sizes the frame; the plate treatment (border, corners, white mat) lives
+ * sizes the frame; the plate treatment (border, corners, tinted mat) lives
  * here so the caller only decides how big.
  *
+ * The source photos are flat cartoon art on a plain white canvas, not
+ * transparent PNGs - `mix-blend-multiply` on the <img> makes its white
+ * pixels take on whatever sits behind it (the clay-tint mat below) instead
+ * of reading as a stark white box, with zero image editing. Multiplying any
+ * color by white leaves it unchanged, so a white source pixel just lets the
+ * mat color show through; the character's own ink (non-white) multiplies
+ * normally and stays legible. If the art ever gets swapped for versions
+ * with a real transparent background, this class becomes a no-op and can
+ * be dropped.
+ *
  * `pulse` is a second, independent trigger for the same flex animation:
- * the real stage only steps up once a 3-day window closes (see
- * buffLevel()), which would leave most "Ναι" taps with no visible reaction
- * at all - too flat for the moment she actually says she exercised. The
- * caller bumps `pulse` on every "Ναι" so the avatar visibly reacts right
- * then, independent of whether the persisted stage happened to change. */
+ * the persisted stage only moves on certain answers (see buffLevel()'s
+ * immediate-bump-but-delayed-decay rule), which would leave some "Ναι"
+ * taps with no visible reaction at all - too flat for the moment she
+ * actually says she exercised. The caller bumps `pulse` on every "Ναι" so
+ * the avatar visibly reacts right then, independent of whether the
+ * persisted stage happened to change. */
 export function BuffAvatar({
   level,
   pulse,
@@ -57,13 +68,13 @@ export function BuffAvatar({
   }
 
   return (
-    <div className={`overflow-hidden rounded-sm border border-ink/15 bg-plate ${className}`}>
+    <div className={`overflow-hidden rounded-sm border border-ink/15 bg-clay-tint ${className}`}>
       {/* eslint-disable-next-line @next/next/no-img-element -- static file under public/exercise/, level-driven src */}
       <img
         src={`/exercise/avatar-${level}.jpg`}
         alt=""
         onError={() => setBroken(true)}
-        className={`h-full w-full object-cover ${flex ? "exercise-avatar-flex" : ""}`}
+        className={`h-full w-full object-cover mix-blend-multiply ${flex ? "exercise-avatar-flex" : ""}`}
       />
     </div>
   );
