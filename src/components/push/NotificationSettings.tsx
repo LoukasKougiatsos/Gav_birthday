@@ -5,6 +5,11 @@ import { Card } from "@/components/ui/Card";
 
 type PushRole = "reminder" | "activity";
 
+const ROLE_LABEL: Record<PushRole, string> = {
+  reminder: "Θέλω υπενθυμίσεις",
+  activity: "Θέλω να ξέρω πότε κάνει κάτι",
+};
+
 /** Local-only, per-device flags - deliberately NOT going through
  * src/lib/storage.ts, since that mirrors to the shared server store and
  * these opt-ins must stay independent per device (her phone and his phone
@@ -22,7 +27,12 @@ function urlBase64ToUint8Array(base64String: string): Uint8Array {
 
 type Support = "checking" | "unsupported" | "ios-needs-home-screen" | "ready";
 
-export function NotificationSettings() {
+/** `roles` controls which toggle(s) render - the Home page only ever shows
+ * "reminder" (meant for her), since "activity" (pings when she does
+ * something) is deliberately not something she should stumble across on a
+ * shared page. The "activity" toggle only exists on the unlinked
+ * src/app/notify-me/page.tsx route - see that file for why. */
+export function NotificationSettings({ roles: visibleRoles = ["reminder"] }: { roles?: PushRole[] }) {
   const [support, setSupport] = useState<Support>("checking");
   const [roles, setRoles] = useState<Record<PushRole, boolean>>({ reminder: false, activity: false });
   const [busy, setBusy] = useState<PushRole | null>(null);
@@ -126,26 +136,18 @@ export function NotificationSettings() {
   return (
     <Card tone="plain" className="flex flex-col gap-2">
       <p className="text-sm font-medium text-ink">Ειδοποιήσεις</p>
-      <label className="flex items-center justify-between gap-2 text-sm text-ink/80">
-        <span>Θέλω υπενθυμίσεις</span>
-        <input
-          type="checkbox"
-          checked={roles.reminder}
-          disabled={busy === "reminder"}
-          onChange={() => toggle("reminder")}
-          className="h-5 w-5 accent-terracotta"
-        />
-      </label>
-      <label className="flex items-center justify-between gap-2 text-sm text-ink/80">
-        <span>Θέλω να ξέρω πότε κάνει κάτι</span>
-        <input
-          type="checkbox"
-          checked={roles.activity}
-          disabled={busy === "activity"}
-          onChange={() => toggle("activity")}
-          className="h-5 w-5 accent-terracotta"
-        />
-      </label>
+      {visibleRoles.map((role) => (
+        <label key={role} className="flex items-center justify-between gap-2 text-sm text-ink/80">
+          <span>{ROLE_LABEL[role]}</span>
+          <input
+            type="checkbox"
+            checked={roles[role]}
+            disabled={busy === role}
+            onChange={() => toggle(role)}
+            className="h-5 w-5 accent-terracotta"
+          />
+        </label>
+      ))}
     </Card>
   );
 }

@@ -48,9 +48,9 @@ export function LoginForm() {
         type="password"
         inputMode="numeric"
         pattern="[0-9]*"
-        maxLength={4}
+        maxLength={8}
         value={password}
-        onChange={(e) => setPassword(e.target.value.replace(/\D/g, "").slice(0, 4))}
+        onChange={(e) => setPassword(e.target.value.replace(/\D/g, "").slice(0, 8))}
         placeholder="Κωδικός"
         autoFocus
         className="w-full rounded-xl border border-sand bg-white/70 px-3 py-2 text-center text-lg tracking-[0.5em] text-ink focus:border-terracotta/50 focus:outline-none"

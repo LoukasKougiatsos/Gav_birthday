@@ -38,8 +38,8 @@ export function isValidAuthCookie(token: string | undefined): boolean {
 
 /**
  * In-memory per-IP rate limit for /api/login. A short numeric code (this
- * site's SITE_PASSWORD is meant to support a 4-digit PIN) only has 10,000
- * combinations, which a script could brute-force in seconds against an
+ * site's SITE_PASSWORD is meant to support a numeric PIN up to 8 digits)
+ * has too few combinations to be brute-force-safe against an
  * unlimited endpoint - this raises that from "trivial" to "impractical"
  * without needing external storage. It's intentionally simple: state lives
  * in the serverless function's module scope, so it resets on a cold start
