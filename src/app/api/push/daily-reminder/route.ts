@@ -53,7 +53,7 @@ export async function GET(request: NextRequest) {
 
   try {
     await sendToRole("reminder", {
-      title: "Our Corner",
+      title: "Κοριτσάκι",
       body: `Δεν έχεις απαντήσει ακόμα σήμερα: ${missing.join(", ")}.`,
       url: "/",
     });

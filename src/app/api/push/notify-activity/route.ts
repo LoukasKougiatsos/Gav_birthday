@@ -7,11 +7,11 @@ import { sendToRole } from "@/lib/push";
  * broken feature. */
 export async function POST(request: NextRequest) {
   const body = await request.json().catch(() => ({}));
-  const message = typeof body.message === "string" && body.message ? body.message : "Έκανε κάτι στο Our Corner.";
+  const message = typeof body.message === "string" && body.message ? body.message : "Έκανε κάτι στο Κοριτσάκι.";
   const url = typeof body.url === "string" ? body.url : "/";
 
   try {
-    await sendToRole("activity", { title: "Our Corner", body: message, url });
+    await sendToRole("activity", { title: "Κοριτσάκι", body: message, url });
     return NextResponse.json({ ok: true });
   } catch {
     return NextResponse.json({ error: "Notify failed." }, { status: 502 });

@@ -8,10 +8,10 @@ self.addEventListener("push", (event) => {
   try {
     data = event.data.json();
   } catch {
-    data = { title: "Our Corner", body: event.data.text() };
+    data = { title: "Κοριτσάκι", body: event.data.text() };
   }
   event.waitUntil(
-    self.registration.showNotification(data.title || "Our Corner", {
+    self.registration.showNotification(data.title || "Κοριτσάκι", {
       body: data.body,
       icon: "/icons/icon-192.jpg",
       badge: "/icons/icon-192.jpg",

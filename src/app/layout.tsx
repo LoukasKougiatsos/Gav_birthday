@@ -28,9 +28,7 @@ const robotoMono = Roboto_Mono({
 });
 
 export const metadata: Metadata = {
-  // The site's name stays in English on purpose - it's the one bit of
-  // "branding"; every piece of UI text below it is Greek.
-  title: "Our Corner",
+  title: "Κοριτσάκι",
   description: "Η δική μας γωνιά — μόνο για εμάς, κάθε μέρα.",
   robots: { index: false, follow: false },
 };
