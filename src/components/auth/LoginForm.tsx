@@ -31,14 +31,7 @@ export function LoginForm() {
     // to unmount once the redirect lands, so resetting it here just flips
     // the button back to normal for the second or two the navigation takes,
     // which reads as "nothing happened" rather than "loading".
-    const next = searchParams.get("next") || "/";
-    let seenWelcome = false;
-    try {
-      seenWelcome = localStorage.getItem("welcomeVideoSeen") === "1";
-    } catch {
-      // localStorage can throw in rare private-browsing configs - treat as unseen
-    }
-    router.replace(seenWelcome ? next : `/welcome?next=${encodeURIComponent(next)}`);
+    router.replace(searchParams.get("next") || "/");
     router.refresh();
   }
 
