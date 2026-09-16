@@ -1,7 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { SITE_CONFIG } from "@/config/site";
+import { searchPlaces, type PlaceSearchResult } from "@/lib/geocode";
 import { PALETTE } from "@/design/tokens";
 import {
   placeOfTheWeek,
@@ -46,6 +47,42 @@ function AddPlaceForm() {
   const [manualLon, setManualLon] = useState("");
   const [justAdded, setJustAdded] = useState(false);
 
+  const [results, setResults] = useState<PlaceSearchResult[]>([]);
+  const [searching, setSearching] = useState(false);
+  const lastPickedNameRef = useRef<string | null>(null);
+
+  // Live search-as-you-type on the name field, same debounce shape as
+  // Plants' species search (PlantsView.tsx) - skips re-searching right
+  // after a result is picked (name matches what was just picked) so
+  // selecting one doesn't immediately reopen the list. Biases toward home
+  // coordinates (or a live GPS fix once captured) so a common taverna name
+  // doesn't surface a match on the other side of the country.
+  useEffect(() => {
+    if (name.trim().length < 2 || name === lastPickedNameRef.current) {
+      setResults([]);
+      return;
+    }
+    setSearching(true);
+    const timeout = setTimeout(() => {
+      searchPlaces(name.trim(), coords ?? SITE_CONFIG.homeCoordinates ?? undefined)
+        .then(setResults)
+        .catch(() => setResults([]))
+        .finally(() => setSearching(false));
+    }, 400);
+    return () => clearTimeout(timeout);
+    // coords only used as a search bias, not a dependency worth re-searching on
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [name]);
+
+  function pickResult(result: PlaceSearchResult) {
+    lastPickedNameRef.current = result.name;
+    setName(result.name);
+    setCategory(result.categoryGuess);
+    setCoords({ lat: result.lat, lon: result.lon });
+    setGeoStatus("done");
+    setResults([]);
+  }
+
   function useMyLocation() {
     if (!("geolocation" in navigator)) {
       setGeoStatus("error");
@@ -63,7 +100,9 @@ function AddPlaceForm() {
   }
 
   function resetForm() {
+    lastPickedNameRef.current = null;
     setName("");
+    setResults([]);
     setCategory("taverna");
     setOutdoor(true);
     setDescription("");
@@ -112,12 +151,42 @@ function AddPlaceForm() {
         </button>
       </div>
 
-      <input
-        className={inputClass}
-        placeholder="Όνομα"
-        value={name}
-        onChange={(e) => setName(e.target.value)}
-      />
+      <div className="relative flex flex-col gap-1.5">
+        <input
+          className={inputClass}
+          placeholder="Αναζήτησε ένα μέρος…"
+          value={name}
+          onChange={(e) => {
+            setName(e.target.value);
+            setCoords(null);
+            setGeoStatus("idle");
+          }}
+          autoComplete="off"
+        />
+        {searching && <p className="text-xs text-ink/40">Αναζήτηση…</p>}
+        {results.length > 0 && (
+          <div className="flex flex-col gap-1.5">
+            {results.map((r) => (
+              <button
+                key={r.id}
+                type="button"
+                onClick={() => pickResult(r)}
+                className="flex flex-col items-start rounded-xl border border-sand bg-white/70 px-3 py-2 text-left text-sm hover:border-terracotta/40"
+              >
+                <span>{r.name}</span>
+                {r.address && <span className="text-xs text-ink/50">{r.address}</span>}
+              </button>
+            ))}
+          </div>
+        )}
+        {hasCoords ? (
+          <p className="text-xs text-sage">📍 Συντεταγμένες βρέθηκαν.</p>
+        ) : (
+          name.trim().length >= 2 &&
+          !searching &&
+          results.length === 0 && <p className="text-xs text-ink/40">Δεν βρέθηκε - βάλε συντεταγμένες με το χέρι παρακάτω.</p>
+        )}
+      </div>
 
       <div className="grid grid-cols-2 gap-2">
         <label className="flex flex-col gap-1">
