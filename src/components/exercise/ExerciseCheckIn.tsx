@@ -15,6 +15,7 @@ const NO_RESPONSES_EL = [
 export function ExerciseCheckIn({ onAnswer }: { onAnswer?: (exercised: boolean) => void } = {}) {
   const [exercised, setExercised] = useState<boolean | null>(null);
   const [level, setLevel] = useState(1);
+  const [pulse, setPulse] = useState(0);
 
   useEffect(() => {
     const existing = todaysExercise();
@@ -31,6 +32,9 @@ export function ExerciseCheckIn({ onAnswer }: { onAnswer?: (exercised: boolean) 
     setExercised(value);
     const all = saveExerciseEntry(value);
     setLevel(buffLevel(all));
+    // The real stage only moves once a 3-day window closes, but saying
+    // "Ναι" should feel like something happened right then - see BuffAvatar.
+    if (value) setPulse((p) => p + 1);
     onAnswer?.(value);
   }
 
@@ -38,7 +42,7 @@ export function ExerciseCheckIn({ onAnswer }: { onAnswer?: (exercised: boolean) 
 
   return (
     <Card tone="clay" className="flex flex-col gap-3">
-      <BuffAvatar level={level} className="aspect-[1984/2146] w-full" />
+      <BuffAvatar level={level} pulse={pulse} className="aspect-[1984/2146] w-full" />
 
       <div className="flex flex-col gap-1 text-center">
         <p className="font-display text-sm font-semibold text-clay">Έκανες γυμναστική σήμερα;</p>

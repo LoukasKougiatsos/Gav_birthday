@@ -106,10 +106,6 @@ export function ExerciseCalendar({ refreshOn }: { refreshOn?: unknown } = {}) {
           );
         })}
       </div>
-
-      <p className="text-xs text-ink/40">
-        Γεμάτο: έκανες γυμναστική. Περίγραμμα: το είπες, χωρίς άσκηση εκείνη τη μέρα. Κενό: δεν απάντησες.
-      </p>
     </Card>
   );
 }
