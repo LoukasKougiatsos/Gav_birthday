@@ -19,7 +19,10 @@ export function ExerciseCheckIn({ onAnswer }: { onAnswer?: (exercised: boolean) 
 
   useEffect(() => {
     const existing = todaysExercise();
+    // One-time sync from external state (localStorage) into React state on
+    // mount, see ClinicGame.tsx for the fuller rationale.
     if (existing) {
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setExercised(existing.exercised);
       onAnswer?.(existing.exercised);
     }

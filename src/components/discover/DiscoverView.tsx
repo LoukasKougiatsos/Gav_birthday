@@ -7,7 +7,10 @@ import {
   placeOfTheWeek,
   categoryLabel,
   radiusLabel,
+  addCustomPlace,
+  PLACE_CATEGORIES,
   type DiscoverPlace,
+  type PlaceCategory,
 } from "@/lib/discover";
 import { fetchWeather, interpretWeatherCode } from "@/lib/weather";
 import { fetchPlaceThumbnail } from "@/lib/wikipedia";
@@ -21,6 +24,168 @@ interface LoadedState {
   visited: boolean;
   weatherGood: boolean | null; // null = weather unavailable
   photoUrl: string | null;
+}
+
+const inputClass =
+  "w-full rounded-xl border border-sand bg-white/70 px-3 py-2 text-sm text-ink focus:border-terracotta/50 focus:outline-none";
+
+type GeoStatus = "idle" | "locating" | "done" | "error";
+
+/** Collapsed by default - Discover's page is short and mostly about this
+ * week's featured place, so an always-open form (unlike Plants' list view,
+ * where it's the natural first thing) would crowd it out. */
+function AddPlaceForm() {
+  const [open, setOpen] = useState(false);
+  const [name, setName] = useState("");
+  const [category, setCategory] = useState<PlaceCategory>("taverna");
+  const [outdoor, setOutdoor] = useState(true);
+  const [description, setDescription] = useState("");
+  const [geoStatus, setGeoStatus] = useState<GeoStatus>("idle");
+  const [coords, setCoords] = useState<{ lat: number; lon: number } | null>(null);
+  const [manualLat, setManualLat] = useState("");
+  const [manualLon, setManualLon] = useState("");
+  const [justAdded, setJustAdded] = useState(false);
+
+  function useMyLocation() {
+    if (!("geolocation" in navigator)) {
+      setGeoStatus("error");
+      return;
+    }
+    setGeoStatus("locating");
+    navigator.geolocation.getCurrentPosition(
+      (pos) => {
+        setCoords({ lat: pos.coords.latitude, lon: pos.coords.longitude });
+        setGeoStatus("done");
+      },
+      () => setGeoStatus("error"),
+      { enableHighAccuracy: true, timeout: 10000 }
+    );
+  }
+
+  function resetForm() {
+    setName("");
+    setCategory("taverna");
+    setOutdoor(true);
+    setDescription("");
+    setGeoStatus("idle");
+    setCoords(null);
+    setManualLat("");
+    setManualLon("");
+  }
+
+  function handleSubmit(e: React.FormEvent) {
+    e.preventDefault();
+    const lat = coords?.lat ?? Number(manualLat);
+    const lon = coords?.lon ?? Number(manualLon);
+    if (!name.trim() || !Number.isFinite(lat) || !Number.isFinite(lon)) return;
+
+    addCustomPlace({ name, category, lat, lon, outdoor, description });
+    resetForm();
+    setOpen(false);
+    setJustAdded(true);
+    setTimeout(() => setJustAdded(false), 4000);
+  }
+
+  if (!open) {
+    return (
+      <div className="flex flex-col gap-1">
+        <button
+          type="button"
+          onClick={() => setOpen(true)}
+          className="self-start rounded-full border border-dashed border-sand px-3 py-1.5 text-xs font-medium text-ink/60"
+        >
+          + Πρόσθεσε ένα μέρος
+        </button>
+        {justAdded && <p className="text-xs text-sage">Προστέθηκε! Θα εμφανιστεί στις προτάσεις κάποια εβδομάδα.</p>}
+      </div>
+    );
+  }
+
+  const hasCoords = coords !== null;
+
+  return (
+    <form onSubmit={handleSubmit} className="flex flex-col gap-3 rounded-2xl border border-dashed border-sand p-3">
+      <div className="flex items-center justify-between">
+        <p className="text-xs font-medium text-ink/70">Πρόσθεσε ένα μέρος</p>
+        <button type="button" onClick={() => setOpen(false)} className="text-xs text-ink/40 underline">
+          Άκυρο
+        </button>
+      </div>
+
+      <input
+        className={inputClass}
+        placeholder="Όνομα"
+        value={name}
+        onChange={(e) => setName(e.target.value)}
+      />
+
+      <div className="grid grid-cols-2 gap-2">
+        <label className="flex flex-col gap-1">
+          <span className="text-xs text-ink/50">Κατηγορία</span>
+          <select className={inputClass} value={category} onChange={(e) => setCategory(e.target.value as PlaceCategory)}>
+            {PLACE_CATEGORIES.map((c) => (
+              <option key={c} value={c}>
+                {categoryLabel(c)}
+              </option>
+            ))}
+          </select>
+        </label>
+        <label className="flex flex-col gap-1">
+          <span className="text-xs text-ink/50">Έξω;</span>
+          <select
+            className={inputClass}
+            value={outdoor ? "yes" : "no"}
+            onChange={(e) => setOutdoor(e.target.value === "yes")}
+          >
+            <option value="yes">Ναι</option>
+            <option value="no">Όχι</option>
+          </select>
+        </label>
+      </div>
+
+      <textarea
+        className={`${inputClass} min-h-16`}
+        placeholder="Σημείωση (προαιρετικό)"
+        value={description}
+        onChange={(e) => setDescription(e.target.value)}
+      />
+
+      <div className="flex flex-col gap-2">
+        <button
+          type="button"
+          onClick={useMyLocation}
+          className="self-start rounded-xl border border-sand bg-white/70 px-3 py-2 text-sm text-ink"
+        >
+          {geoStatus === "locating" ? "Εντοπισμός…" : hasCoords ? "📍 Εντοπίστηκε" : "📍 Χρησιμοποίησε την τοποθεσία μου"}
+        </button>
+        {geoStatus === "error" && (
+          <div className="grid grid-cols-2 gap-2">
+            <p className="col-span-2 text-xs text-ink/50">
+              Δεν μπόρεσα να βρω την τοποθεσία σου - βάλε τις συντεταγμένες με το χέρι.
+            </p>
+            <input
+              className={inputClass}
+              placeholder="Γεωγραφικό πλάτος"
+              inputMode="decimal"
+              value={manualLat}
+              onChange={(e) => setManualLat(e.target.value)}
+            />
+            <input
+              className={inputClass}
+              placeholder="Γεωγραφικό μήκος"
+              inputMode="decimal"
+              value={manualLon}
+              onChange={(e) => setManualLon(e.target.value)}
+            />
+          </div>
+        )}
+      </div>
+
+      <button type="submit" className="self-start rounded-xl bg-terracotta px-4 py-2 text-sm text-paper">
+        Προσθήκη
+      </button>
+    </form>
+  );
 }
 
 export function DiscoverView() {
@@ -107,6 +272,8 @@ export function DiscoverView() {
           </SetupNotice>
         </Card>
       )}
+
+      <AddPlaceForm />
 
       <LeafletMap center={[place.lat, place.lon]} zoom={11} markers={markers} heightClassName="h-64" />
 

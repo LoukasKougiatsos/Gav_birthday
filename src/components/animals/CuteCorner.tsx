@@ -20,6 +20,9 @@ export function CuteCorner() {
     const today = dailySeed();
     const cached = getItem<CachedAnimal | null>("cuteCorner", null);
     if (cached && cached.date === today) {
+      // One-time sync from external state (localStorage) into React state on
+      // mount, see ClinicGame.tsx for the fuller rationale.
+      // eslint-disable-next-line react-hooks/set-state-in-effect
       setState({ status: "ready", animal: cached.animal });
       return;
     }
