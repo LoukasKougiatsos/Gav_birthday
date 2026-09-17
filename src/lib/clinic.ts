@@ -165,7 +165,11 @@ export function recordDailyAnswer(
   let restTokenSpentWeek = progress.restTokenSpentWeek;
   let streakBridgedByRestToken = false;
 
-  if (progress.lastPlayedDate) {
+  if (!correct) {
+    // A wrong answer breaks the streak outright, same as missing a day -
+    // the rest token only covers an absence, not a mistake.
+    streak = 0;
+  } else if (progress.lastPlayedDate) {
     const gap = daysBetweenISO(progress.lastPlayedDate, today);
     if (gap === 1) {
       streak = progress.streak + 1;
@@ -196,16 +200,6 @@ export function recordDailyAnswer(
 
   saveProgress(next);
   return { progress: next, milestoneReached, streakBridgedByRestToken };
-}
-
-/** Practice mode doesn't touch the streak or daily history - it only ever
- * grows the sanctuary collection when she gets one right. */
-export function recordPracticeAnswer(caseId: string, correct: boolean): ClinicProgress {
-  const progress = loadProgress();
-  if (!correct || progress.sanctuary.includes(caseId)) return progress;
-  const next: ClinicProgress = { ...progress, sanctuary: [...progress.sanctuary, caseId] };
-  saveProgress(next);
-  return next;
 }
 
 /** If a streak lapsed silently (she missed a day and never came back to

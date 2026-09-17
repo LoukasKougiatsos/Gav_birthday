@@ -6,7 +6,6 @@ import {
   getDailyCase,
   getCaseOptions,
   recordDailyAnswer,
-  recordPracticeAnswer,
   hasAnsweredToday,
   currentDisplayStreak,
   isRestTokenAvailable,
@@ -16,27 +15,12 @@ import {
   type ClinicCase,
   type CaseOption,
 } from "@/lib/clinic";
-import { dailySeed, seededShuffle } from "@/lib/seed";
+import { dailySeed } from "@/lib/seed";
 import { CLINIC_MILESTONE_MESSAGES } from "@/content/clinicMilestones";
 import { ClinicScene } from "@/components/clinic/ClinicScene";
 import { AnimalSprite, type SpriteState } from "@/components/clinic/AnimalSprite";
 import { CaseResolution } from "@/components/clinic/CaseResolution";
 import { Card } from "@/components/ui/Card";
-
-function randomCase(cases: ClinicCase[], excludeId?: string): ClinicCase {
-  const pool = cases.length > 1 && excludeId ? cases.filter((c) => c.id !== excludeId) : cases;
-  return pool[Math.floor(Math.random() * pool.length)];
-}
-
-function shuffledOptionsFor(c: ClinicCase): CaseOption[] {
-  return seededShuffle(
-    [
-      { text: c.correctFoods[Math.floor(Math.random() * c.correctFoods.length)], correct: true },
-      ...c.wrongFoods.slice(0, Math.min(2, c.wrongFoods.length)).map((text) => ({ text, correct: false })),
-    ],
-    `practice-order|${Math.random()}`
-  );
-}
 
 function OptionList({
   options,
@@ -89,15 +73,9 @@ interface DailyState {
 
 export function ClinicGame() {
   const [daily, setDaily] = useState<DailyState | null>(null);
-  const [mode, setMode] = useState<"daily" | "practice">("daily");
   const [spriteState, setSpriteState] = useState<SpriteState>("idle");
   const [milestone, setMilestone] = useState<number | null>(null);
   const [bridgedByRest, setBridgedByRest] = useState(false);
-
-  const [practiceCase, setPracticeCase] = useState<ClinicCase | null>(null);
-  const [practiceOptions, setPracticeOptions] = useState<CaseOption[]>([]);
-  const [practiceChosen, setPracticeChosen] = useState<string | null>(null);
-  const [practiceCorrect, setPracticeCorrect] = useState<boolean | null>(null);
 
   useEffect(() => {
     const cases = allCases();
@@ -139,33 +117,6 @@ export function ClinicGame() {
     setTimeout(() => setSpriteState("idle"), 1500);
   }
 
-  function startPractice() {
-    const c = randomCase(allCases());
-    setPracticeCase(c);
-    setPracticeOptions(shuffledOptionsFor(c));
-    setPracticeChosen(null);
-    setPracticeCorrect(null);
-    setSpriteState("idle");
-    setMode("practice");
-  }
-
-  function choosePracticeOption(opt: CaseOption) {
-    if (!practiceCase || practiceChosen) return;
-    recordPracticeAnswer(practiceCase.id, opt.correct);
-    setPracticeChosen(opt.text);
-    setPracticeCorrect(opt.correct);
-    setSpriteState(opt.correct ? "happy" : "reassure");
-    setTimeout(() => setSpriteState("idle"), 1500);
-  }
-
-  function nextPracticeCase() {
-    const c = randomCase(allCases(), practiceCase?.id);
-    setPracticeCase(c);
-    setPracticeOptions(shuffledOptionsFor(c));
-    setPracticeChosen(null);
-    setPracticeCorrect(null);
-  }
-
   if (!daily) {
     return (
       <div className="mx-auto max-w-md px-4 py-8">
@@ -174,9 +125,7 @@ export function ClinicGame() {
     );
   }
 
-  const activeCase = mode === "practice" ? practiceCase : daily.dailyCase;
   const dailyAnswered = Boolean(daily.dailyChosen);
-  const practiceUnlocked = dailyAnswered;
 
   return (
     <div className="mx-auto flex max-w-md flex-col gap-4 px-4 pb-10">
@@ -213,69 +162,21 @@ export function ClinicGame() {
         </Card>
       )}
 
-      {activeCase && (
-        <ClinicScene>
-          <AnimalSprite caseId={activeCase.id} ageClass={activeCase.ageClass} state={spriteState} preload />
-        </ClinicScene>
-      )}
+      <ClinicScene>
+        <AnimalSprite caseId={daily.dailyCase.id} ageClass={daily.dailyCase.ageClass} state={spriteState} preload />
+      </ClinicScene>
 
-      {mode === "daily" ? (
-        <>
-          <p className="text-sm text-ink/70">
-            {AGE_CLASS_EL[daily.dailyCase.ageClass][daily.dailyCase.gender]} {daily.dailyCase.speciesEl} — τι χρειάζεται;
-          </p>
-          <OptionList
-            options={daily.dailyOptions}
-            chosen={daily.dailyChosen}
-            onChoose={chooseDailyOption}
-            disabled={dailyAnswered}
-          />
-          {dailyAnswered && daily.dailyCorrect !== null && (
-            <CaseResolution
-              clinicCase={daily.dailyCase}
-              chosenFood={daily.dailyChosen ?? ""}
-              correct={daily.dailyCorrect}
-            />
-          )}
-          {practiceUnlocked && (
-            <button
-              type="button"
-              onClick={startPractice}
-              className="mt-2 rounded-xl border border-sky/50 bg-sky-tint px-4 py-3 text-sm font-medium text-sky-deep"
-            >
-              Εξάσκηση — χωρίς συνέπειες, όλη η βιβλιοθήκη
-            </button>
-          )}
-        </>
-      ) : (
-        <>
-          <div className="flex items-center justify-between">
-            <p className="text-sm text-ink/70">
-              {practiceCase && AGE_CLASS_EL[practiceCase.ageClass][practiceCase.gender]} {practiceCase?.speciesEl}
-            </p>
-            <button type="button" onClick={() => setMode("daily")} className="text-xs text-ink/50 underline">
-              Επιστροφή στη σημερινή περίπτωση
-            </button>
-          </div>
-          <OptionList
-            options={practiceOptions}
-            chosen={practiceChosen}
-            onChoose={choosePracticeOption}
-            disabled={Boolean(practiceChosen)}
-          />
-          {practiceChosen && practiceCorrect !== null && practiceCase && (
-            <>
-              <CaseResolution clinicCase={practiceCase} chosenFood={practiceChosen} correct={practiceCorrect} />
-              <button
-                type="button"
-                onClick={nextPracticeCase}
-                className="rounded-xl border border-sky/50 bg-sky-tint px-4 py-3 text-sm font-medium text-sky-deep"
-              >
-                Επόμενη περίπτωση
-              </button>
-            </>
-          )}
-        </>
+      <p className="text-sm text-ink/70">
+        {AGE_CLASS_EL[daily.dailyCase.ageClass][daily.dailyCase.gender]} {daily.dailyCase.speciesEl} — τι χρειάζεται;
+      </p>
+      <OptionList
+        options={daily.dailyOptions}
+        chosen={daily.dailyChosen}
+        onChoose={chooseDailyOption}
+        disabled={dailyAnswered}
+      />
+      {dailyAnswered && daily.dailyCorrect !== null && (
+        <CaseResolution clinicCase={daily.dailyCase} chosenFood={daily.dailyChosen ?? ""} correct={daily.dailyCorrect} />
       )}
     </div>
   );
