@@ -27,7 +27,7 @@ export function ClinicTeaser() {
     setState({
       answeredToday: hasAnsweredToday(progress, today),
       streak: currentDisplayStreak(progress, today),
-      speciesEl: getDailyCase(undefined, today).speciesEl,
+      speciesEl: getDailyCase(undefined, today, progress.sanctuary).speciesEl,
     });
   }, []);
 

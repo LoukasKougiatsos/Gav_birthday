@@ -81,7 +81,7 @@ export function ClinicGame() {
     const cases = allCases();
     const today = dailySeed();
     const progress = loadProgress();
-    const dailyCase = getDailyCase(cases, today);
+    const dailyCase = getDailyCase(cases, today, progress.sanctuary);
     const answered = hasAnsweredToday(progress, today);
     const record = progress.answeredDates[today];
 

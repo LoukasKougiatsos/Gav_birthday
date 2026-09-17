@@ -104,12 +104,21 @@ function saveProgress(progress: ClinicProgress): void {
   setItem(PROGRESS_KEY, progress);
 }
 
-/** Today's case, deterministically picked from the whole library so it's the
- * same all day and the same on every device, but changes at her local
- * midnight. Repeats over time are expected - the library is small and real
- * rehab centers see the same species again and again. */
-export function getDailyCase(cases: ClinicCase[] = allCases(), today: string = dailySeed()): ClinicCase {
-  return seededPick(cases, `clinic-daily|${today}`);
+/** Today's case, deterministically picked so it's the same all day and the
+ * same on every device, but changes at her local midnight. Prefers a
+ * species she hasn't fed correctly yet (via `collectedIds`, i.e. the
+ * Sanctuary), so it doesn't repeat one she's already captured while
+ * uncaptured ones remain - falls back to the whole library once
+ * everything's been caught at least once, since repeats become
+ * unavoidable at that point. */
+export function getDailyCase(
+  cases: ClinicCase[] = allCases(),
+  today: string = dailySeed(),
+  collectedIds: string[] = []
+): ClinicCase {
+  const uncaptured = cases.filter((c) => !collectedIds.includes(c.id));
+  const pool = uncaptured.length > 0 ? uncaptured : cases;
+  return seededPick(pool, `clinic-daily|${today}`);
 }
 
 export interface CaseOption {
