@@ -157,6 +157,21 @@ Leave the VAPID/cron env vars unset and this section of the Home page
 simply doesn't show anything - same graceful-degradation pattern as every
 other optional feature here.
 
+## 9. Athens theatre listings (Discover)
+
+`src/content/theatreShows.json` powers the theatre list on the Discover
+page. It's not live-scraped on page load - there's no free API for this,
+so it's a small curated list, kept fresh by a **scheduled cloud
+agent** ("Weekly Athens theatre curator", set up via Claude Code's
+`/schedule`, routine id `trig_01JNUuNWmJiJvvtf3B82HFWS`) that runs every
+Monday, reads athinorama.gr's listings, judges what's worth featuring
+(there's no structured popularity/rating data anywhere free to sort by
+instead), updates the JSON file, and commits + pushes directly to `main`
+on its own - no approval step. Manage or inspect it at
+[claude.ai/code/routines](https://claude.ai/code/routines), or ask Claude
+to check its recent runs. Nothing here needs an env var or Vercel setup -
+it's independent of the rest of this deploy process.
+
 ---
 
 ## Content that still needs your input
