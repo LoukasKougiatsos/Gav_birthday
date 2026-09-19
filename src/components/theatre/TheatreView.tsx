@@ -3,9 +3,50 @@
 import { useState } from "react";
 import { loadTheatreShows, theatreListUpdatedAt } from "@/lib/theatre";
 import { Card } from "@/components/ui/Card";
+import { ICON_VIEWBOX, STROKE } from "@/design/tokens";
 
 const inputClass =
   "w-full rounded-xl border border-sand bg-white/70 px-3 py-2 text-sm text-ink focus:border-terracotta/50 focus:outline-none";
+
+/** Small content glyphs for the schedule/price/date row, not section nav
+ * icons, so they live here rather than in NavIcons.tsx - same drawing
+ * conventions (flat, few primitives, 24x24 viewBox) all the same. */
+const glyphProps = {
+  viewBox: ICON_VIEWBOX,
+  fill: "none" as const,
+  stroke: "currentColor",
+  strokeWidth: STROKE.icon,
+  strokeLinecap: "round" as const,
+  strokeLinejoin: "round" as const,
+};
+
+function ClockGlyph({ className }: { className?: string }) {
+  return (
+    <svg {...glyphProps} className={className} aria-hidden="true">
+      <circle cx="12" cy="12" r="8" />
+      <path d="M12 7.5V12l3 1.8" />
+    </svg>
+  );
+}
+
+function CalendarGlyph({ className }: { className?: string }) {
+  return (
+    <svg {...glyphProps} className={className} aria-hidden="true">
+      <rect x="4" y="5.5" width="16" height="14" rx="1.5" />
+      <path d="M4 10h16" />
+      <path d="M8 4v3M16 4v3" />
+    </svg>
+  );
+}
+
+function TagGlyph({ className }: { className?: string }) {
+  return (
+    <svg {...glyphProps} className={className} aria-hidden="true">
+      <path d="M11 4h6a2 2 0 0 1 2 2v6l-8.5 8.5a1.5 1.5 0 0 1-2.1 0L4 16.1a1.5 1.5 0 0 1 0-2.1L11 4Z" />
+      <circle cx="15.5" cy="8.5" r="1.2" />
+    </svg>
+  );
+}
 
 /** Curated weekly by a scheduled agent, not live-scraped-on-request - see
  * src/lib/theatre.ts. A plain filterable list rather than Discover's
@@ -52,10 +93,20 @@ export function TheatreView() {
                   )}
                 </div>
                 <p className="text-xs text-ink/60">{show.venue}</p>
-                <p className="text-xs text-ink/70">{show.scheduleText}</p>
-                <p className="text-xs text-ink/50">
-                  {show.priceText} · {show.until}
-                </p>
+                <div className="flex items-start gap-1.5 text-xs text-ink/70">
+                  <ClockGlyph className="mt-0.5 h-3.5 w-3.5 shrink-0 text-wine/50" />
+                  <span>{show.scheduleText}</span>
+                </div>
+                <div className="flex flex-wrap items-center gap-x-2 gap-y-1 border-t border-wine/15 pt-1.5">
+                  <span className="inline-flex items-center gap-1 rounded-full bg-wine/10 px-2 py-0.5 text-[11px] font-medium text-wine">
+                    <TagGlyph className="h-3 w-3" />
+                    {show.priceText}
+                  </span>
+                  <span className="inline-flex items-center gap-1 text-[11px] text-ink/50">
+                    <CalendarGlyph className="h-3 w-3 text-wine/40" />
+                    {show.until}
+                  </span>
+                </div>
               </div>
             </div>
             {show.note && <p className="text-xs text-forest">{show.note}</p>}
