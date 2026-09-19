@@ -6,6 +6,7 @@ import { ClinicTeaser } from "@/components/home/ClinicTeaser";
 import { ExerciseTeaser } from "@/components/home/ExerciseTeaser";
 import { AnimalsTeaser } from "@/components/home/AnimalsTeaser";
 import { DiscoverTeaser } from "@/components/home/DiscoverTeaser";
+import { TheatreTeaser } from "@/components/home/TheatreTeaser";
 import { KitchenTeaser } from "@/components/home/KitchenTeaser";
 import { PlantsTeaser } from "@/components/home/PlantsTeaser";
 import { NotificationSettings } from "@/components/push/NotificationSettings";
@@ -32,6 +33,7 @@ export default function HomePage() {
         <div className="flex flex-col gap-3 px-4">
           <AnimalsTeaser />
           <DiscoverTeaser />
+          <TheatreTeaser />
           <ClinicTeaser />
           <ExerciseTeaser />
           <KitchenTeaser />

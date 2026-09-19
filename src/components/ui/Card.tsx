@@ -17,6 +17,7 @@ const TONES = {
   sun: "bg-sun-tint border-t-sun",
   blossom: "bg-blossom-tint border-t-blossom",
   lavender: "bg-lavender-tint border-t-lavender",
+  wine: "bg-wine-tint border-t-wine",
 } as const;
 
 export type CardTone = keyof typeof TONES;

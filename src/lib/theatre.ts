@@ -21,6 +21,10 @@ export interface TheatreShow {
   status: TheatreShowStatus;
   note?: string;
   ticketUrl?: string;
+  /** Real poster/thumbnail hotlinked from the source site - not every
+   * show has one (a listing page doesn't always surface it), so callers
+   * must handle it being absent. */
+  posterUrl?: string;
 }
 
 interface TheatreShowsFile {

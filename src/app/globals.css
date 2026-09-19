@@ -20,6 +20,7 @@
   --color-honey: #7a5a16;
   --color-blossom: #c4766a;
   --color-lavender: #7e6f92;
+  --color-wine: #7a2e42;
   --color-ink: #20291f;
 
   /* Pale washes of the accent hues - card/surface backgrounds only. Each is
@@ -32,6 +33,7 @@
   --color-sun-tint: #f5e7c4;
   --color-blossom-tint: #f2dbd1;
   --color-lavender-tint: #e3dcdf;
+  --color-wine-tint: #ecd5d9;
 
   --background: var(--color-paper);
   --foreground: var(--color-ink);
@@ -52,6 +54,7 @@
   --color-honey: var(--color-honey);
   --color-blossom: var(--color-blossom);
   --color-lavender: var(--color-lavender);
+  --color-wine: var(--color-wine);
   --color-ink: var(--color-ink);
 
   --color-terracotta-tint: var(--color-terracotta-tint);
@@ -61,6 +64,7 @@
   --color-sun-tint: var(--color-sun-tint);
   --color-blossom-tint: var(--color-blossom-tint);
   --color-lavender-tint: var(--color-lavender-tint);
+  --color-wine-tint: var(--color-wine-tint);
 
   --color-background: var(--background);
   --color-foreground: var(--foreground);

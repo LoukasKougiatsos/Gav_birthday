@@ -26,6 +26,7 @@ export const PALETTE = {
   honey: "#7A5A16", // sun-dark - text/icons that sit on sun washes
   blossom: "#C4766A", // faded rose - affection, the "Us" corner, gentle joy
   lavender: "#7E6F92", // dusty violet - Mind/psychology, dusk calm
+  wine: "#7A2E42", // deep burgundy - Theatre, curtains and stage drama
   ink: "#20291F", // body text - not part of the illustration palette itself
 } as const;
 
@@ -46,6 +47,7 @@ export const TINTS = {
   sun: "#F5E7C4",
   blossom: "#F2DBD1",
   lavender: "#E3DCDF",
+  wine: "#ECD5D9",
 } as const;
 
 export type TintColor = keyof typeof TINTS;
@@ -67,6 +69,7 @@ export const SECTION_HUE: Record<string, PaletteColor> = {
   discover: "sky",
   mind: "lavender",
   us: "blossom",
+  theatre: "wine",
 };
 
 /**

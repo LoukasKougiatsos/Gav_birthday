@@ -22,4 +22,5 @@ export const SECTION_ACCENT: Record<IconKind, { tone: CardTone; badge: string }>
   discover: { tone: "sky", badge: "bg-sky-tint text-sky-deep border border-sky/45" },
   mind: { tone: "lavender", badge: "bg-lavender-tint text-lavender border border-lavender/45" },
   us: { tone: "blossom", badge: "bg-blossom-tint text-clay border border-blossom/45" },
+  theatre: { tone: "wine", badge: "bg-wine-tint text-wine border border-wine/45" },
 };

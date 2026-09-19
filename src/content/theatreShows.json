@@ -10,7 +10,8 @@
       "priceText": "Από € 17",
       "until": "Πρεμιέρα 13/11",
       "status": "premiere",
-      "note": "Ο Σαίξπηρ σε καινούρια σκηνή - αξίζει να κλείσεις θέση νωρίς."
+      "note": "Ο Σαίξπηρ σε καινούρια σκηνή - αξίζει να κλείσεις θέση νωρίς.",
+      "posterUrl": "https://www.athinorama.gr/Content/ImagesDatabase/p/600x500/crop/both/60/60c467c644d7416cba38f59bd937df2e.jpg?quality=81&404=default&v=4"
     },
     {
       "id": "oi-12-enorkoi-2026",
@@ -21,7 +22,8 @@
       "until": "Πρεμιέρα 3/10",
       "status": "premiere",
       "note": "12ος χρόνος για ένα κλασικό δικαστικό δράμα.",
-      "ticketUrl": "https://www.more.com/theater/offer/oi-12-enorkoi-12os-xronos"
+      "ticketUrl": "https://www.more.com/theater/offer/oi-12-enorkoi-12os-xronos",
+      "posterUrl": "https://www.athinorama.gr/Content/ImagesDatabase/p/600x500/crop/both/5f/5f2f62b2157c45ff8dea56571094064a.jpg?quality=81&404=default&v=4"
     },
     {
       "id": "afti-i-nyxta-menei-2026",
@@ -31,7 +33,8 @@
       "priceText": "€ 30-8",
       "until": "Έως 27/9",
       "status": "premiere",
-      "note": "Μόλις ανέβηκε σε μεγάλη μουσική σκηνή - σύντομη διάρκεια, μην το αφήσεις."
+      "note": "Μόλις ανέβηκε σε μεγάλη μουσική σκηνή - σύντομη διάρκεια, μην το αφήσεις.",
+      "posterUrl": "https://www.athinorama.gr/Content/ImagesDatabase/p/600x500/crop/both/b2/b2252f46533f4c8ca9c238f6647f9738.jpg?quality=81&404=default&v=4"
     },
     {
       "id": "ta-paidia-enos-katoterou-theou-2026",
@@ -52,7 +55,8 @@
       "priceText": "€ 25-5",
       "until": "Έως 20/12",
       "status": "running",
-      "note": "Τσέχωφ στο Εθνικό - μεγάλη διάρκεια, άνετος χρόνος να το δείτε."
+      "note": "Τσέχωφ στο Εθνικό - μεγάλη διάρκεια, άνετος χρόνος να το δείτε.",
+      "posterUrl": "https://www.athinorama.gr/Content/ImagesDatabase/p/600x500/crop/both/3e/3ea35987240b4fcd8abf82df4b8b2351.jpg?quality=81&404=default&v=4"
     },
     {
       "id": "kontakthof-2026",
@@ -62,7 +66,8 @@
       "priceText": "€ 25-5",
       "until": "Έως 22/11",
       "status": "running",
-      "note": "Χορογραφία της Pina Bausch - σπάνια ευκαιρία στην Αθήνα."
+      "note": "Χορογραφία της Pina Bausch - σπάνια ευκαιρία στην Αθήνα.",
+      "posterUrl": "https://www.athinorama.gr/Content/ImagesDatabase/p/600x500/crop/both/dd/dd0510aa745f4b5ca0dc7183205de1b7.jpg?quality=81&404=default&v=4"
     },
     {
       "id": "ierotelestia-2026",
@@ -71,7 +76,8 @@
       "scheduleText": "Πέμ.-Σάβ. 8.30 μ.μ., Κυρ., Τετ. 7 μ.μ.",
       "priceText": "€ 22-5",
       "until": "Έως 29/11",
-      "status": "running"
+      "status": "running",
+      "posterUrl": "https://www.athinorama.gr/Content/ImagesDatabase/p/600x500/crop/both/29/29d8a181397f4a209253609ffb80ecb5.jpg?quality=81&404=default&v=4"
     },
     {
       "id": "o-glaros-2026",
@@ -82,7 +88,8 @@
       "until": "Έως 4/10",
       "status": "running",
       "note": "Άλλος ένας Τσέχωφ, κλείνει σύντομα.",
-      "ticketUrl": "https://www.more.com/theater/o-glaros-3"
+      "ticketUrl": "https://www.more.com/theater/o-glaros-3",
+      "posterUrl": "https://www.athinorama.gr/Content/ImagesDatabase/p/600x500/crop/both/9d/9d2d8a76096046e798572ab98b857520.jpg?quality=81&404=default&v=4"
     },
     {
       "id": "anthropoi-kai-pontikoi-2026",
@@ -93,7 +100,8 @@
       "until": "Έως 6/12",
       "status": "running",
       "note": "Στάινμπεκ σε μικρό, έντονο σκηνικό χώρο.",
-      "ticketUrl": "https://www.more.com/theater/anthropoi-kai-pontikia-tou-tzon-stainmpek"
+      "ticketUrl": "https://www.more.com/theater/anthropoi-kai-pontikia-tou-tzon-stainmpek",
+      "posterUrl": "https://www.athinorama.gr/Content/ImagesDatabase/p/600x500/crop/both/d2/d2083b24db9d4d5f91d38dc47ad0c8bc.jpg?quality=81&404=default&v=4"
     },
     {
       "id": "midia-veakeio-2026",
@@ -113,7 +121,8 @@
       "priceText": "€ 10, 5",
       "until": "Μία παράσταση, 27/9",
       "status": "running",
-      "note": "Σοφοκλής σε ανοιχτό θέατρο, πολύ προσιτή τιμή."
+      "note": "Σοφοκλής σε ανοιχτό θέατρο, πολύ προσιτή τιμή.",
+      "posterUrl": "https://www.athinorama.gr/Content/ImagesDatabase/p/600x500/crop/both/8b/8bf9928bc112410abd856ac3c0929f58.jpg?quality=81&404=default&v=4"
     }
   ]
 }

@@ -19,7 +19,6 @@ import { isVisited, markVisited, unmarkVisited } from "@/lib/visitedPlaces";
 import { LeafletMap, type MapMarker } from "@/components/map/LeafletMap";
 import { Card } from "@/components/ui/Card";
 import { SetupNotice } from "@/components/ui/SetupNotice";
-import { TheatreShows } from "@/components/discover/TheatreShows";
 
 interface LoadedState {
   place: DiscoverPlace;
@@ -372,8 +371,6 @@ export function DiscoverView() {
           {state.visited ? "Ήμασταν εκεί ✓" : "Ήμασταν εκεί;"}
         </button>
       </Card>
-
-      <TheatreShows />
     </div>
   );
 }

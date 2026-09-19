@@ -18,6 +18,7 @@ export const NAV_SECTIONS: NavSection[] = [
   { key: "plants", href: "/plants", label: "Κήπος", labelEl: "Garden", icon: "plants" },
   { key: "kitchen", href: "/kitchen", label: "Κουζίνα", labelEl: "Kitchen", icon: "kitchen" },
   { key: "discover", href: "/discover", label: "Ανακάλυψε", labelEl: "Discover", icon: "discover" },
+  { key: "theatre", href: "/theatre", label: "Θέατρο", labelEl: "Theatre", icon: "theatre" },
   { key: "mind", href: "/mind", label: "Ψυχή", labelEl: "Mind", icon: "mind" },
   { key: "us", href: "/us", label: "Εμείς", labelEl: "Us", icon: "us" },
 ];

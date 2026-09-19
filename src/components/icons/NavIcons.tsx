@@ -9,7 +9,8 @@ export type IconKind =
   | "kitchen"
   | "discover"
   | "mind"
-  | "us";
+  | "us"
+  | "theatre";
 
 type IconProps = { className?: string };
 
@@ -114,6 +115,17 @@ function UsGlyph({ className }: IconProps) {
   );
 }
 
+function TheatreGlyph({ className }: IconProps) {
+  return (
+    <svg {...shared} className={className} aria-hidden="true">
+      <path d="M12 3.5c-3.4 0-6 2.5-6 5.7 0 2.3 1.2 4 2.4 5.9 1 1.6 1.9 3.4 3.6 3.4s2.6-1.8 3.6-3.4c1.2-1.9 2.4-3.6 2.4-5.9 0-3.2-2.6-5.7-6-5.7Z" />
+      <circle cx="9.3" cy="9.5" r="1" />
+      <circle cx="14.7" cy="9.5" r="1" />
+      <path d="M9 14c1.2 1.3 4.8 1.3 6 0" />
+    </svg>
+  );
+}
+
 const GLYPHS: Record<IconKind, (props: IconProps) => React.ReactElement> = {
   home: HomeGlyph,
   clinic: ClinicGlyph,
@@ -124,6 +136,7 @@ const GLYPHS: Record<IconKind, (props: IconProps) => React.ReactElement> = {
   discover: DiscoverGlyph,
   mind: MindGlyph,
   us: UsGlyph,
+  theatre: TheatreGlyph,
 };
 
 export function NavIcon({ kind, className }: { kind: IconKind; className?: string }) {
