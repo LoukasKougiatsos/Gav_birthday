@@ -15,14 +15,31 @@ self.addEventListener("push", (event) => {
       body: data.body,
       icon: "/icons/icon-192.jpg",
       badge: "/icons/icon-192.jpg",
-      data: { url: data.url || "/" },
+      data: { url: data.url || "/", plantId: data.plantId || null },
+      actions: data.actions || [],
     })
   );
 });
 
 self.addEventListener("notificationclick", (event) => {
+  const notifData = event.notification.data || {};
+
+  // The "Το πότισα" action button on a watering-due notification - update
+  // the plant directly, no need to open the app for this one.
+  if (event.action === "watered" && notifData.plantId) {
+    event.notification.close();
+    event.waitUntil(
+      fetch("/api/plants/water", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ plantId: notifData.plantId }),
+      }).catch(() => {})
+    );
+    return;
+  }
+
   event.notification.close();
-  const url = event.notification.data && event.notification.data.url ? event.notification.data.url : "/";
+  const url = notifData.url || "/";
   event.waitUntil(
     self.clients.matchAll({ type: "window", includeUncontrolled: true }).then((clientsArr) => {
       const existing = clientsArr.find((c) => c.url.includes(url));

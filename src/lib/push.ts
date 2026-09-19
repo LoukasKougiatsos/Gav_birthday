@@ -57,6 +57,11 @@ export interface PushPayload {
   title: string;
   body: string;
   url?: string;
+  /** Set together to render an actionable button (e.g. "Το πότισα") on the
+   * notification itself - see public/sw.js's notificationclick handler,
+   * which posts plantId to /api/plants/water when that action is tapped. */
+  plantId?: string;
+  actions?: { action: string; title: string }[];
 }
 
 /** Sends to every subscription registered for a role. A dead/expired

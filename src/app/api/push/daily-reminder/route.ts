@@ -2,6 +2,9 @@ import { NextRequest, NextResponse } from "next/server";
 import { upstashCommand, upstashConfigured, SYNC_HASH_KEY } from "@/lib/upstash";
 import { sendToRole } from "@/lib/push";
 import { dailySeed } from "@/lib/seed";
+import { computeWateringPlan, type GardenPlant } from "@/lib/plants";
+import { fetchGardenWeatherWeek, type GardenWeatherWeek } from "@/lib/weather";
+import { SITE_CONFIG } from "@/config/site";
 
 /**
  * Hit once a day by a Vercel Cron Job (see vercel.json) - Vercel sends
@@ -14,7 +17,8 @@ import { dailySeed } from "@/lib/seed";
  * same synced data
  * src/lib/storage.ts mirrors to Redis (not localStorage - this runs
  * server-side, nothing to read from a browser) to see what's still
- * unanswered today, then reminds every "reminder" subscriber.
+ * unanswered today, plus which garden plants are due for water, then
+ * reminds every "reminder" subscriber.
  */
 
 async function getSyncedField<T>(key: string, fallback: T): Promise<T> {
@@ -36,10 +40,11 @@ export async function GET(request: NextRequest) {
 
   const today = dailySeed();
 
-  const [exerciseEntries, moods, clinicProgress] = await Promise.all([
+  const [exerciseEntries, moods, clinicProgress, garden] = await Promise.all([
     getSyncedField<Record<string, { exercised: boolean }>>("exercise:entries", {}),
     getSyncedField<Record<string, unknown>>("mind:moods", {}),
     getSyncedField<{ answeredDates?: Record<string, unknown> }>("clinic:progress", {}),
+    getSyncedField<GardenPlant[]>("plants:garden", []),
   ]);
 
   const missing: string[] = [];
@@ -47,17 +52,56 @@ export async function GET(request: NextRequest) {
   if (!moods[today]) missing.push("διάθεση");
   if (!clinicProgress.answeredDates?.[today]) missing.push("σημερινό περιστατικό στο ιατρείο");
 
-  if (missing.length === 0) {
-    return NextResponse.json({ ok: true, sent: false, reason: "already answered everything today" });
+  // Weather adjustment is an enhancement, same as the client - a plant's
+  // own base interval still decides "thirsty" without it.
+  let weatherWeek: GardenWeatherWeek | null = null;
+  if (SITE_CONFIG.homeCoordinates) {
+    try {
+      weatherWeek = await fetchGardenWeatherWeek(SITE_CONFIG.homeCoordinates.lat, SITE_CONFIG.homeCoordinates.lon);
+    } catch {
+      // fall through with weatherWeek = null
+    }
+  }
+  const thirstyPlants = garden.filter((p) => computeWateringPlan(p, weatherWeek, today).status === "thirsty");
+
+  const sends: Promise<void>[] = [];
+
+  if (missing.length > 0) {
+    sends.push(
+      sendToRole("reminder", {
+        title: "Κοριτσάκι",
+        body: `Δεν έχεις απαντήσει ακόμα σήμερα: ${missing.join(", ")}.`,
+        url: "/",
+      })
+    );
+  }
+
+  // One notification per plant, not a bundled sentence, so the "Το πότισα"
+  // action button on each unambiguously maps to that one plant.
+  for (const plant of thirstyPlants) {
+    sends.push(
+      sendToRole("reminder", {
+        title: "Κοριτσάκι 🌱",
+        body: `Το ${plant.name} θέλει πότισμα.`,
+        url: "/plants",
+        plantId: plant.id,
+        actions: [{ action: "watered", title: "Το πότισα" }],
+      })
+    );
+  }
+
+  if (sends.length === 0) {
+    return NextResponse.json({ ok: true, sent: false, reason: "nothing unanswered and nothing thirsty" });
   }
 
   try {
-    await sendToRole("reminder", {
-      title: "Κοριτσάκι",
-      body: `Δεν έχεις απαντήσει ακόμα σήμερα: ${missing.join(", ")}.`,
-      url: "/",
+    await Promise.all(sends);
+    return NextResponse.json({
+      ok: true,
+      sent: true,
+      missing,
+      thirsty: thirstyPlants.map((p) => p.name),
     });
-    return NextResponse.json({ ok: true, sent: true, missing });
   } catch {
     return NextResponse.json({ error: "Reminder send failed." }, { status: 502 });
   }

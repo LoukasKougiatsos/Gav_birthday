@@ -9,7 +9,9 @@ import {
   deleteGardenPlant,
   waterNow,
   searchPlantSpecies,
+  fetchPlantSpeciesDetail,
   computeWateringPlan,
+  suggestWateringDays,
   STATUS_LABEL_EL,
   type GardenPlant,
   type PlantPlacement,
@@ -38,14 +40,19 @@ export function PlantsView() {
 
   const [results, setResults] = useState<PlantSpeciesResult[]>([]);
   const [searching, setSearching] = useState(false);
+  const [fetchingDetail, setFetchingDetail] = useState(false);
   const lastPickedNameRef = useRef<string | null>(null);
 
   const [name, setName] = useState("");
-  const [scientificName, setScientificName] = useState("");
   const [imageUrl, setImageUrl] = useState<string | null>(null);
+  const [about, setAbout] = useState<string | null>(null);
   const [placement, setPlacement] = useState<PlantPlacement>("outdoor");
   const [baseIntervalDays, setBaseIntervalDays] = useState(7);
   const [note, setNote] = useState("");
+  // False once a species is picked from a search result, so the days field
+  // can be auto-filled; true the moment she types it herself (or nothing
+  // matched), so we stop overwriting her value on placement changes.
+  const [intervalIsManual, setIntervalIsManual] = useState(true);
 
   useEffect(() => {
     // One-time sync of client-only localStorage state on mount, see
@@ -81,21 +88,49 @@ export function PlantsView() {
     return () => clearTimeout(timeout);
   }, [name]);
 
-  function pickResult(result: PlantSpeciesResult) {
-    lastPickedNameRef.current = result.commonName;
-    setName(result.commonName);
-    setScientificName(result.scientificName);
-    setImageUrl(result.imageUrl);
+  // Picking a result fetches its real photo + a short description once,
+  // right now - not kept live afterward, just saved onto the plant on
+  // submit like anything else in the form.
+  async function pickResult(result: PlantSpeciesResult) {
+    lastPickedNameRef.current = result.title;
+    setName(result.title);
     setResults([]);
+    setImageUrl(result.thumbnailUrl);
+    setAbout(null);
+    setFetchingDetail(true);
+    try {
+      const detail = await fetchPlantSpeciesDetail(result.key);
+      setImageUrl(detail.imageUrl ?? result.thumbnailUrl);
+      setAbout(detail.about);
+      const suggested = suggestWateringDays(result.title, detail.about ?? undefined, placement);
+      if (suggested !== null) {
+        setBaseIntervalDays(suggested);
+        setIntervalIsManual(false);
+      }
+    } catch {
+      // detail fetch failed - keep the low-res search thumbnail, no description
+    } finally {
+      setFetchingDetail(false);
+    }
+  }
+
+  // Re-suggest when she changes where it's kept, since the interval is
+  // placement-adjusted - but only while she hasn't typed her own number.
+  function handlePlacementChange(next: PlantPlacement) {
+    setPlacement(next);
+    if (intervalIsManual) return;
+    const suggested = suggestWateringDays(name, about ?? undefined, next);
+    if (suggested !== null) setBaseIntervalDays(suggested);
   }
 
   function resetForm() {
     lastPickedNameRef.current = null;
     setName("");
-    setScientificName("");
     setImageUrl(null);
+    setAbout(null);
     setPlacement("outdoor");
     setBaseIntervalDays(7);
+    setIntervalIsManual(true);
     setNote("");
   }
 
@@ -105,8 +140,8 @@ export function PlantsView() {
     const plant: GardenPlant = {
       id: generateId(name),
       name: name.trim(),
-      scientificName: scientificName.trim() || undefined,
       imageUrl,
+      about,
       placement,
       baseIntervalDays,
       lastWateredDate: dailySeed(),
@@ -168,28 +203,42 @@ export function PlantsView() {
             <div className="flex flex-col gap-1.5">
               {results.slice(0, 6).map((r) => (
                 <button
-                  key={r.id}
+                  key={r.key}
                   type="button"
                   onClick={() => pickResult(r)}
                   className="flex items-center gap-2 rounded-xl border border-sand bg-white/70 px-3 py-2 text-left text-sm hover:border-terracotta/40"
                 >
-                  {r.imageUrl && (
-                    // eslint-disable-next-line @next/next/no-img-element -- external Perenual/S3 domain
-                    <img src={r.imageUrl} alt={r.commonName} className="h-10 w-10 shrink-0 rounded-lg object-cover" />
+                  {r.thumbnailUrl && (
+                    // eslint-disable-next-line @next/next/no-img-element -- external Wikimedia domain
+                    <img src={r.thumbnailUrl} alt={r.title} className="h-10 w-10 shrink-0 rounded-lg object-cover" />
                   )}
                   <span>
-                    {r.commonName}
-                    {r.scientificName && <span className="text-ink/50"> · {r.scientificName}</span>}
+                    {r.title}
+                    {r.description && <span className="text-ink/50"> · {r.description}</span>}
                   </span>
                 </button>
               ))}
+            </div>
+          )}
+          {fetchingDetail && <p className="text-xs text-ink/40">Φόρτωση φωτογραφίας και πληροφοριών…</p>}
+          {!fetchingDetail && (imageUrl || about) && (
+            <div className="flex items-start gap-3 rounded-xl bg-white/60 p-2">
+              {imageUrl && (
+                // eslint-disable-next-line @next/next/no-img-element -- external Wikimedia domain
+                <img src={imageUrl} alt="" className="h-14 w-14 shrink-0 rounded-xl object-cover" />
+              )}
+              {about && <p className="text-xs text-ink/60">{about}</p>}
             </div>
           )}
         </div>
         <div className="grid grid-cols-2 gap-2">
           <label className="flex flex-col gap-1">
             <span className="text-xs text-ink/50">Τοποθεσία</span>
-            <select className={inputClass} value={placement} onChange={(e) => setPlacement(e.target.value as PlantPlacement)}>
+            <select
+              className={inputClass}
+              value={placement}
+              onChange={(e) => handlePlacementChange(e.target.value as PlantPlacement)}
+            >
               <option value="outdoor">Έξω</option>
               <option value="indoor">Μέσα</option>
               <option value="balcony">Μπαλκόνι</option>
@@ -202,9 +251,13 @@ export function PlantsView() {
               min={1}
               className={inputClass}
               value={baseIntervalDays}
-              onChange={(e) => setBaseIntervalDays(Number(e.target.value) || 1)}
+              onChange={(e) => {
+                setIntervalIsManual(true);
+                setBaseIntervalDays(Number(e.target.value) || 1);
+              }}
               placeholder="Μέρες πότισμα"
             />
+            {!intervalIsManual && <span className="text-[11px] text-forest">Προτεινόμενο για {name}</span>}
           </label>
         </div>
         <textarea
@@ -232,7 +285,7 @@ export function PlantsView() {
             <Card key={plant.id} tone={STATUS_TONE[plan.status]} className="flex flex-col gap-2">
               <div className="flex items-start gap-3">
                 {plant.imageUrl && (
-                  // eslint-disable-next-line @next/next/no-img-element -- external Perenual/S3 domain
+                  // eslint-disable-next-line @next/next/no-img-element -- external Wikimedia domain
                   <img src={plant.imageUrl} alt={plant.name} className="h-14 w-14 shrink-0 rounded-xl object-cover" />
                 )}
                 <div className="flex-1">
@@ -245,6 +298,7 @@ export function PlantsView() {
                   <p className="text-xs text-ink/50">{PLACEMENT_EL[plant.placement]}</p>
                 </div>
               </div>
+              {plant.about && <p className="text-xs text-ink/60">{plant.about}</p>}
               <p className="rounded-xl bg-white/60 px-3 py-2 text-xs text-forest">{plan.reasoning}</p>
               {plant.note && <p className="text-xs text-ink/60">{plant.note}</p>}
               <div className="flex gap-2">

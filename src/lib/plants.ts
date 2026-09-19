@@ -2,34 +2,37 @@ import { getItem, setItem } from "@/lib/storage";
 import { dailySeed } from "@/lib/seed";
 import { daysBetweenISO } from "@/lib/date";
 import type { GardenWeatherWeek } from "@/lib/weather";
+import { WATERING_DEFAULTS } from "@/content/wateringDefaults";
 
 export interface PlantSpeciesResult {
-  id: number;
-  commonName: string;
-  scientificName: string;
-  imageUrl: string | null;
+  /** Wikipedia page title - pass back into fetchPlantSpeciesDetail to get
+   * the full photo + description once she picks this result. */
+  key: string;
+  title: string;
+  description: string | null;
+  thumbnailUrl: string | null;
 }
 
-function usablePerenualText(value: unknown): string | null {
-  if (typeof value !== "string" || value.length === 0) return null;
-  return value.includes("Upgrade") ? null : value;
-}
-
-/** Perenual's free tier reliably gives name + image, not the care/watering
- * fields the brief originally leaned on - see the search route's comment. */
+/** Autocomplete as she types the plant name - see the route's comment for
+ * why this is Wikipedia rather than Perenual. */
 export async function searchPlantSpecies(query: string): Promise<PlantSpeciesResult[]> {
-  const res = await fetch(`/api/perenual/search?q=${encodeURIComponent(query)}`);
+  const res = await fetch(`/api/wikipedia/search?q=${encodeURIComponent(query)}`);
   if (!res.ok) throw new Error(`Species search failed: ${res.status}`);
   const data = await res.json();
+  return data.results ?? [];
+}
 
-  return (data.data ?? []).map(
-    (item: { id: number; common_name?: string; scientific_name?: string[]; default_image?: { medium_url?: string } }) => ({
-      id: item.id,
-      commonName: usablePerenualText(item.common_name) ?? "Unknown",
-      scientificName: item.scientific_name?.[0] ?? "",
-      imageUrl: usablePerenualText(item.default_image?.medium_url),
-    })
-  );
+export interface PlantSpeciesDetail {
+  imageUrl: string | null;
+  about: string | null;
+}
+
+/** The real photo + a short description, fetched once when she picks a
+ * search result - not kept live afterward, just saved onto the plant. */
+export async function fetchPlantSpeciesDetail(key: string): Promise<PlantSpeciesDetail> {
+  const res = await fetch(`/api/wikipedia/summary?key=${encodeURIComponent(key)}`);
+  if (!res.ok) throw new Error(`Species detail failed: ${res.status}`);
+  return res.json();
 }
 
 export type PlantPlacement = "outdoor" | "indoor" | "balcony";
@@ -38,16 +41,44 @@ export type WateringStatus = "fine" | "soon" | "thirsty";
 export interface GardenPlant {
   id: string;
   name: string;
-  scientificName?: string;
   imageUrl?: string | null;
+  /** Short Wikipedia description, fetched once at add-time via
+   * fetchPlantSpeciesDetail - not present if she typed a name that didn't
+   * match a search result. */
+  about?: string | null;
   placement: PlantPlacement;
-  /** Base days between waterings. There's no reliable free-tier API value
-   * for this (see searchPlantSpecies) so it's her own estimate/knowledge,
-   * respected exactly as any other manual override would be. */
+  /** Base days between waterings. There's no reliable free API value for
+   * this (see wateringDefaults.ts) so it's either the curated-table
+   * suggestion or her own estimate, respected exactly as any other manual
+   * override would be. */
   baseIntervalDays: number;
   lastWateredDate: string; // local YYYY-MM-DD
   note?: string;
   pruningMonths?: number[]; // 1-12
+}
+
+/** Outdoor plants dry faster (sun/wind), indoor slower - applied on top of
+ * a type's typical (indoor) interval from WATERING_DEFAULTS. */
+const PLACEMENT_INTERVAL_MULTIPLIER: Record<PlantPlacement, number> = {
+  indoor: 1,
+  balcony: 0.85,
+  outdoor: 0.7,
+};
+
+/** Auto-fills baseIntervalDays from the species + where it's kept, so she
+ * doesn't have to know or type it - null if the picked species doesn't
+ * match anything in the curated table (see wateringDefaults.ts for why
+ * there's no API for this), in which case the field is left as-is for her
+ * to fill in herself. */
+export function suggestWateringDays(
+  name: string,
+  extraText: string | undefined,
+  placement: PlantPlacement
+): number | null {
+  const q = `${name} ${extraText ?? ""}`.toLowerCase();
+  const entry = WATERING_DEFAULTS.find((d) => d.keywords.some((k) => q.includes(k)));
+  if (!entry) return null;
+  return Math.max(1, Math.round(entry.baseDays * PLACEMENT_INTERVAL_MULTIPLIER[placement]));
 }
 
 const GARDEN_KEY = "plants:garden";
