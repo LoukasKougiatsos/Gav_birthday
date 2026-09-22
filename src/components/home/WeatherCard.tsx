@@ -62,7 +62,7 @@ export function WeatherCard() {
 
   const { current, today } = state.data;
   const meaning = interpretWeatherCode(current.weatherCode);
-  const suggestion = suggestActivity(current.weatherCode, current.temperatureC, dailySeed());
+  const suggestion = suggestActivity(current.weatherCode, current.temperatureC, dailySeed(), today.precipitationSumMm);
 
   return (
     <Card tone="sky" className="flex flex-col gap-3">

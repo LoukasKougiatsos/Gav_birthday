@@ -40,10 +40,15 @@ export async function fetchWeather(lat: number, lon: number): Promise<WeatherSna
   }
   const data = await res.json();
 
+  // Open-Meteo's current weather_code often still says "overcast" (3) while
+  // light showers are falling, so measured precipitation wins over the code.
+  const rawCode: number = data.current.weather_code;
+  const weatherCode = data.current.precipitation > 0 && rawCode < 51 ? 61 : rawCode;
+
   return {
     current: {
       temperatureC: data.current.temperature_2m,
-      weatherCode: data.current.weather_code,
+      weatherCode,
       isDay: data.current.is_day === 1,
       windSpeedKmh: data.current.wind_speed_10m,
       precipitationMm: data.current.precipitation,
@@ -152,16 +157,18 @@ export interface ActivitySuggestion {
 export function suggestActivity(
   weatherCode: number,
   temperatureC: number,
-  seed: string
+  seed: string,
+  todayRainMm = 0
 ): ActivitySuggestion {
   const meaning = interpretWeatherCode(weatherCode);
+  const niceOut = meaning.outdoorFriendly && todayRainMm < 1;
   const tooHot = temperatureC > 28;
   const comfortable = !tooHot && temperatureC >= 10;
 
-  if (meaning.outdoorFriendly && comfortable) {
+  if (niceOut && comfortable) {
     return { type: "outdoor", message: seededPick(OUTDOOR_SUGGESTIONS, seed) };
   }
-  if (meaning.outdoorFriendly && tooHot) {
+  if (niceOut && tooHot) {
     return { type: "hot", message: seededPick(HOT_SUGGESTIONS, seed) };
   }
   const cozy = temperatureC < 16;
