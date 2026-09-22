@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-09-18",
+  "updatedAt": "2026-09-22",
   "source": "athinorama.gr/theatre/guide and /theatre/guide/premieres - refreshed weekly by a scheduled agent, see DEPLOY.md",
   "shows": [
     {
@@ -32,7 +32,7 @@
       "scheduleText": "Σάβ. 9 μ.μ., Κυρ. 7 μ.μ., Τρ. 8 μ.μ., Τετ. 7 μ.μ.",
       "priceText": "€ 30-8",
       "until": "Έως 27/9",
-      "status": "premiere",
+      "status": "running",
       "note": "Μόλις ανέβηκε σε μεγάλη μουσική σκηνή - σύντομη διάρκεια, μην το αφήσεις.",
       "posterUrl": "https://www.athinorama.gr/Content/ImagesDatabase/p/600x500/crop/both/b2/b2252f46533f4c8ca9c238f6647f9738.jpg?quality=81&404=default&v=4"
     },
@@ -46,6 +46,42 @@
       "status": "premiere",
       "note": "Βραβευμένο έργο του Mark Medoff, καινούρια ανέβασμα.",
       "ticketUrl": "https://www.more.com/theater/ta-paidia-enos-katoterou-theou"
+    },
+    {
+      "id": "eftyxismenes-meres-2026",
+      "title": "Ευτυχισμένες μέρες",
+      "venue": "Πορεία at Victoria",
+      "scheduleText": "Πέμ.-Σάβ. 9 μ.μ., Κυρ., Τετ. 8 μ.μ.",
+      "priceText": "€ 20, 15",
+      "until": "Πρεμιέρα 1/10",
+      "status": "premiere",
+      "note": "Μπέκετ από τον Τάρλοου με την Αγλαΐα Παππά - παίζεται μόνο έναν μήνα.",
+      "ticketUrl": "https://www.more.com/theater/eytyxismenes-meres",
+      "posterUrl": "https://www.athinorama.gr/Content/ImagesDatabase/p/600x500/crop/both/96/96a38010496b48ddae3c7414584d49c0.jpg?quality=81&404=default&v=4"
+    },
+    {
+      "id": "ola-lathos-2026",
+      "title": "Όλα… λάθος! (The play that goes wrong)",
+      "venue": "Αθηνά",
+      "scheduleText": "Πέμ., Παρ. 9 μ.μ., Σάβ. 6 μ.μ./9 μ.μ., Κυρ., Τετ. 7.30 μ.μ.",
+      "priceText": "Από € 18",
+      "until": "Πρεμιέρα 9/10",
+      "status": "premiere",
+      "note": "Βραβευμένη κωμωδία που έχει παιχτεί σε 30+ χώρες - για σίγουρο γέλιο.",
+      "ticketUrl": "https://www.more.com/theater/ola-lathos-the-play-that-goes-wrong-2",
+      "posterUrl": "https://www.athinorama.gr/Content/ImagesDatabase/p/600x500/crop/both/26/265084e9387d4710943a66a70f5d50a7.jpg?quality=81&404=default&v=4"
+    },
+    {
+      "id": "surano-2026",
+      "title": "Συρανό",
+      "venue": "Ακροπόλ",
+      "scheduleText": "Πέμ.-Σάβ. 9 μ.μ., Κυρ. 6 μ.μ., Τετ. 7 μ.μ.",
+      "priceText": "Από € 20",
+      "until": "Πρεμιέρα 11/11",
+      "status": "premiere",
+      "note": "Ο πιο ρομαντικός ήρωας του θεάτρου σε μεγάλη σκηνή - αξίζει να κλείσεις νωρίς.",
+      "ticketUrl": "https://www.more.com/theater/cyrano",
+      "posterUrl": "https://www.athinorama.gr/Content/ImagesDatabase/p/600x500/crop/both/48/48d7ae9a319e4b21bbf85f7b6aa4b13d.jpg?quality=81&404=default&v=4"
     },
     {
       "id": "o-vyssinokipos-2026",
