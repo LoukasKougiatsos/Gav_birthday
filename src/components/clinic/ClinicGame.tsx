@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import {
   allCases,
-  getDailyCase,
+  getTodaysCase,
   getCaseOptions,
   recordDailyAnswer,
   hasAnsweredToday,
@@ -25,18 +25,21 @@ import { Card } from "@/components/ui/Card";
 function OptionList({
   options,
   chosen,
-  onChoose,
+  selected,
+  onSelect,
   disabled,
 }: {
   options: CaseOption[];
   chosen: string | null;
-  onChoose: (opt: CaseOption) => void;
+  selected: string | null;
+  onSelect: (opt: CaseOption) => void;
   disabled: boolean;
 }) {
   return (
     <div className="flex flex-col gap-2">
       {options.map((opt) => {
         const isChosen = chosen === opt.text;
+        const isSelected = !disabled && selected === opt.text;
         const revealed = disabled;
         const showCorrect = revealed && opt.correct;
         const showWrongChosen = revealed && isChosen && !opt.correct;
@@ -45,13 +48,16 @@ function OptionList({
             key={opt.text}
             type="button"
             disabled={disabled}
-            onClick={() => onChoose(opt)}
+            aria-pressed={isSelected}
+            onClick={() => onSelect(opt)}
             className={`rounded-xl border px-4 py-3 text-left text-sm transition-colors ${
               showCorrect
                 ? "border-sage bg-sage-tint text-forest"
                 : showWrongChosen
                   ? "border-terracotta/50 bg-terracotta-tint text-clay"
-                  : "border-sand bg-white/70 text-ink hover:border-terracotta/40"
+                  : isSelected
+                    ? "border-terracotta bg-terracotta-tint/60 text-clay ring-2 ring-terracotta/30"
+                    : "border-sand bg-white/70 text-ink hover:border-terracotta/40"
             } ${disabled ? "cursor-default" : "cursor-pointer"}`}
           >
             {opt.text}
@@ -76,14 +82,15 @@ export function ClinicGame() {
   const [spriteState, setSpriteState] = useState<SpriteState>("idle");
   const [milestone, setMilestone] = useState<number | null>(null);
   const [bridgedByRest, setBridgedByRest] = useState(false);
+  const [selected, setSelected] = useState<CaseOption | null>(null);
 
   useEffect(() => {
     const cases = allCases();
     const today = dailySeed();
     const progress = loadProgress();
-    const dailyCase = getDailyCase(cases, today, progress.sanctuary);
-    const answered = hasAnsweredToday(progress, today);
     const record = progress.answeredDates[today];
+    const dailyCase = getTodaysCase(progress, cases, today);
+    const answered = hasAnsweredToday(progress, today) && record?.caseId === dailyCase.id;
 
     // One-time sync from external state (localStorage + today's date) into
     // React state on mount - deliberately deferred to an effect (rather than
@@ -172,9 +179,20 @@ export function ClinicGame() {
       <OptionList
         options={daily.dailyOptions}
         chosen={daily.dailyChosen}
-        onChoose={chooseDailyOption}
+        selected={selected?.text ?? null}
+        onSelect={setSelected}
         disabled={dailyAnswered}
       />
+      {!dailyAnswered && (
+        <button
+          type="button"
+          disabled={!selected}
+          onClick={() => selected && chooseDailyOption(selected)}
+          className="self-end rounded-full bg-terracotta px-6 py-2.5 text-sm font-semibold text-white transition-opacity disabled:opacity-40"
+        >
+          OK
+        </button>
+      )}
       {dailyAnswered && daily.dailyCorrect !== null && (
         <CaseResolution clinicCase={daily.dailyCase} chosenFood={daily.dailyChosen ?? ""} correct={daily.dailyCorrect} />
       )}

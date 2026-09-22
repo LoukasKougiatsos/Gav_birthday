@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 import Link from "next/link";
 import { dailySeed } from "@/lib/seed";
-import { getDailyCase, hasAnsweredToday, currentDisplayStreak, loadProgress, streakLabel } from "@/lib/clinic";
+import { getTodaysCase, hasAnsweredToday, currentDisplayStreak, loadProgress, streakLabel } from "@/lib/clinic";
 import { Card } from "@/components/ui/Card";
 import { NavIcon } from "@/components/icons/NavIcons";
 import { SECTION_ACCENT } from "@/components/ui/accents";
@@ -27,7 +27,7 @@ export function ClinicTeaser() {
     setState({
       answeredToday: hasAnsweredToday(progress, today),
       streak: currentDisplayStreak(progress, today),
-      speciesEl: getDailyCase(undefined, today, progress.sanctuary).speciesEl,
+      speciesEl: getTodaysCase(progress, undefined, today).speciesEl,
     });
   }, []);
 

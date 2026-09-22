@@ -121,6 +121,19 @@ export function getDailyCase(
   return seededPick(pool, `clinic-daily|${today}`);
 }
 
+/** Today's case, pinned to the one already answered if there is one - once
+ * answered correctly it joins the sanctuary, so re-picking from uncaptured
+ * species would otherwise swap in a different animal mid-day. */
+export function getTodaysCase(
+  progress: ClinicProgress = loadProgress(),
+  cases: ClinicCase[] = allCases(),
+  today: string = dailySeed()
+): ClinicCase {
+  const record = progress.answeredDates[today];
+  const answered = record && cases.find((c) => c.id === record.caseId);
+  return answered || getDailyCase(cases, today, progress.sanctuary);
+}
+
 export interface CaseOption {
   text: string;
   correct: boolean;
