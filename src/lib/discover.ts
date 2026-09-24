@@ -18,6 +18,7 @@ export type PlaceCategory =
   | "old_railway"
   | "small_park"
   | "wetland_reserve"
+  | "restaurant"
   | "taverna"
   | "street_food"
   | "bar"
@@ -39,6 +40,8 @@ export interface DiscoverPlace {
   neighborhood?: string;
   /** Present on places she adds herself via the "add a place" form. */
   custom?: boolean;
+  /** YYYY-MM-DD the weekly curator agent added this place (curated only). */
+  addedAt?: string;
 }
 
 interface CuratedFile {
@@ -140,6 +143,7 @@ const CATEGORY_EL: Record<PlaceCategory, string> = {
   old_railway: "Παλιός σιδηρόδρομος",
   small_park: "Πάρκο",
   wetland_reserve: "Υγρότοπος",
+  restaurant: "Εστιατόριο",
   taverna: "Ταβέρνα",
   street_food: "Σουβλάκι & φαγητό στο χέρι",
   bar: "Μπαρ",

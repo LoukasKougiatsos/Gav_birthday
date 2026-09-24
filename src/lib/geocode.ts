@@ -22,7 +22,7 @@ export interface PlaceSearchResult {
  * list - only mapping the values likely to show up for food/drink and
  * outdoor spots; anything else falls back to "other". */
 const OSM_VALUE_TO_CATEGORY: Record<string, PlaceCategory> = {
-  restaurant: "taverna",
+  restaurant: "restaurant",
   taverna: "taverna",
   fast_food: "street_food",
   bar: "bar",

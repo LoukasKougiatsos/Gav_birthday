@@ -38,7 +38,7 @@ type GeoStatus = "idle" | "locating" | "done" | "error";
 function AddPlaceForm() {
   const [open, setOpen] = useState(false);
   const [name, setName] = useState("");
-  const [category, setCategory] = useState<PlaceCategory>("taverna");
+  const [category, setCategory] = useState<PlaceCategory>("restaurant");
   const [outdoor, setOutdoor] = useState(true);
   const [description, setDescription] = useState("");
   const [geoStatus, setGeoStatus] = useState<GeoStatus>("idle");
@@ -103,7 +103,7 @@ function AddPlaceForm() {
     lastPickedNameRef.current = null;
     setName("");
     setResults([]);
-    setCategory("taverna");
+    setCategory("restaurant");
     setOutdoor(true);
     setDescription("");
     setGeoStatus("idle");

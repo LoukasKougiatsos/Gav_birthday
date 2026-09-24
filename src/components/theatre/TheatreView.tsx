@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { loadTheatreShows, theatreListUpdatedAt } from "@/lib/theatre";
+import { isNewThisWeek, loadTheatreShows, theatreListUpdatedAt } from "@/lib/theatre";
 import { Card } from "@/components/ui/Card";
 import { ICON_VIEWBOX, STROKE } from "@/design/tokens";
 
@@ -19,6 +19,35 @@ const glyphProps = {
   strokeLinecap: "round" as const,
   strokeLinejoin: "round" as const,
 };
+
+/** Carry-over shows stay in the section's wine; this week's additions switch
+ * to the deep teal (sky) family so they read as a different plate at a
+ * glance - far from both wine and the terracotta premiere badge. Full class
+ * strings so Tailwind can see them. */
+const ACCENTS = {
+  carry: {
+    tone: "wine",
+    title: "text-wine",
+    glyph: "text-wine/50",
+    glyphSoft: "text-wine/40",
+    rule: "border-wine/15",
+    chip: "bg-wine/10 text-wine",
+    link: "text-wine",
+  },
+  fresh: {
+    tone: "sky",
+    title: "text-sky-deep",
+    glyph: "text-sky/60",
+    glyphSoft: "text-sky/50",
+    rule: "border-sky/20",
+    chip: "bg-sky/10 text-sky-deep",
+    link: "text-sky-deep",
+  },
+} as const;
+
+function newShowsLabel(n: number) {
+  return n === 1 ? "1 νέα παράσταση αυτή την εβδομάδα" : `${n} νέες παραστάσεις αυτή την εβδομάδα`;
+}
 
 function ClockGlyph({ className }: { className?: string }) {
   return (
@@ -54,10 +83,15 @@ function TagGlyph({ className }: { className?: string }) {
  * before they sell out, not hiding most of them behind a weekly rotation. */
 export function TheatreView() {
   const [query, setQuery] = useState("");
+  const [onlyNew, setOnlyNew] = useState(false);
   const shows = loadTheatreShows();
+  const newCount = shows.filter(isNewThisWeek).length;
+  const showOnlyNew = onlyNew && newCount > 0;
+  const q = query.toLowerCase();
   const filtered = shows.filter(
     (s) =>
-      s.title.toLowerCase().includes(query.toLowerCase()) || s.venue.toLowerCase().includes(query.toLowerCase())
+      (!showOnlyNew || isNewThisWeek(s)) &&
+      (s.title.toLowerCase().includes(q) || s.venue.toLowerCase().includes(q))
   );
 
   return (
@@ -70,6 +104,25 @@ export function TheatreView() {
       </div>
       <p className="text-[11px] text-ink/40">Ενημερώθηκε {theatreListUpdatedAt()}</p>
 
+      {newCount > 0 && (
+        <div className="flex items-center justify-between gap-3 border-y border-sky/25 py-2">
+          <p className="flex items-center gap-2 text-xs font-medium text-sky-deep">
+            <span className="h-2.5 w-2.5 shrink-0 rounded-[1px] bg-sky" aria-hidden="true" />
+            {newShowsLabel(newCount)}
+          </p>
+          <button
+            type="button"
+            aria-pressed={onlyNew}
+            onClick={() => setOnlyNew((v) => !v)}
+            className={`shrink-0 rounded-sm border px-2.5 py-1 text-[11px] font-medium transition-colors ${
+              onlyNew ? "border-sky-deep bg-sky-deep text-paper" : "border-sky/40 bg-white/60 text-sky-deep"
+            }`}
+          >
+            Μόνο τα νέα
+          </button>
+        </div>
+      )}
+
       <input
         className={inputClass}
         placeholder="Αναζήτησε τίτλο ή θέατρο…"
@@ -79,49 +132,64 @@ export function TheatreView() {
 
       <div className="flex flex-col gap-3">
         {filtered.length === 0 && <p className="text-sm text-ink/50">Δεν βρέθηκε τίποτα.</p>}
-        {filtered.map((show) => (
-          <Card key={show.id} tone="wine" className="flex flex-col gap-2">
-            <div className="flex gap-3">
-              <ShowPoster show={show} />
-              <div className="flex min-w-0 flex-1 flex-col gap-1">
-                <div className="flex items-start justify-between gap-2">
-                  <p className="font-display text-sm font-semibold text-wine">{show.title}</p>
-                  {show.status === "premiere" && (
-                    <span className="shrink-0 rounded-full bg-terracotta px-2 py-0.5 text-[10px] font-medium text-paper">
+        {filtered.map((show) => {
+          const isNew = isNewThisWeek(show);
+          const isPremiere = show.status === "premiere";
+          const a = isNew ? ACCENTS.fresh : ACCENTS.carry;
+          return (
+            <Card key={show.id} tone={a.tone} className="flex flex-col gap-2">
+              {(isNew || isPremiere) && (
+                <div className="flex flex-wrap items-center gap-1.5">
+                  {isNew && (
+                    <span className="inline-flex items-center gap-1 rounded-sm bg-sky-deep px-1.5 py-0.5 text-[10px] font-semibold tracking-wide text-paper">
+                      <span className="h-1.5 w-1.5 rounded-full bg-sun" aria-hidden="true" />
+                      Νέο αυτή την εβδομάδα
+                    </span>
+                  )}
+                  {isPremiere && (
+                    <span className="rounded-full bg-terracotta px-2 py-0.5 text-[10px] font-medium text-paper">
                       Κλείσε θέση νωρίς
                     </span>
                   )}
                 </div>
-                <p className="text-xs text-ink/60">{show.venue}</p>
-                <div className="flex items-start gap-1.5 text-xs text-ink/70">
-                  <ClockGlyph className="mt-0.5 h-3.5 w-3.5 shrink-0 text-wine/50" />
-                  <span>{show.scheduleText}</span>
-                </div>
-                <div className="flex flex-wrap items-center gap-x-2 gap-y-1 border-t border-wine/15 pt-1.5">
-                  <span className="inline-flex items-center gap-1 rounded-full bg-wine/10 px-2 py-0.5 text-[11px] font-medium text-wine">
-                    <TagGlyph className="h-3 w-3" />
-                    {show.priceText}
-                  </span>
-                  <span className="inline-flex items-center gap-1 text-[11px] text-ink/50">
-                    <CalendarGlyph className="h-3 w-3 text-wine/40" />
-                    {show.until}
-                  </span>
+              )}
+              <div className="flex gap-3">
+                <ShowPoster show={show} />
+                <div className="flex min-w-0 flex-1 flex-col gap-1">
+                  <p className={`font-display text-sm font-semibold ${a.title}`}>{show.title}</p>
+                  <p className="text-xs text-ink/60">{show.venue}</p>
+                  <div className="flex items-start gap-1.5 text-xs text-ink/70">
+                    <ClockGlyph className={`mt-0.5 h-3.5 w-3.5 shrink-0 ${a.glyph}`} />
+                    <span>{show.scheduleText}</span>
+                  </div>
+                  <div className={`flex flex-wrap items-center gap-x-2 gap-y-1 border-t pt-1.5 ${a.rule}`}>
+                    <span
+                      className={`inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[11px] font-medium ${a.chip}`}
+                    >
+                      <TagGlyph className="h-3 w-3" />
+                      {show.priceText}
+                    </span>
+                    <span className="inline-flex items-center gap-1 text-[11px] text-ink/50">
+                      <CalendarGlyph className={`h-3 w-3 ${a.glyphSoft}`} />
+                      {show.until}
+                    </span>
+                  </div>
                 </div>
               </div>
-            </div>
-            {show.note && <p className="text-xs text-forest">{show.note}</p>}
-            {show.ticketUrl && (
-              <a
-                href={show.ticketUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="self-start rounded-full bg-white/70 px-3 py-1.5 text-xs font-medium text-wine"
-              >
-                Εισιτήρια
-              </a>
-            )}
-          </Card>
-        ))}
+              {show.note && <p className="text-xs text-forest">{show.note}</p>}
+              {show.ticketUrl && (
+                <a
+                  href={show.ticketUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`self-start rounded-full bg-white/70 px-3 py-1.5 text-xs font-medium ${a.link}`}
+                >
+                  Εισιτήρια
+                </a>
+              )}
+            </Card>
+          );
+        })}
       </div>
     </div>
   );

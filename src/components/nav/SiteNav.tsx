@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { NAV_SECTIONS } from "@/lib/nav";
@@ -18,6 +18,24 @@ export function SiteNav() {
     setLastPathname(pathname);
     setOpen(false);
   }
+
+  // Lock the page behind the open drawer. `overflow: hidden` alone doesn't
+  // stop iOS Safari from scrolling the body, so pin it with position: fixed
+  // at the current offset and restore that offset on close - unless the
+  // drawer closed because a link navigated away, where the new page should
+  // keep Next's scroll-to-top.
+  useEffect(() => {
+    if (!open) return;
+    const scrollY = window.scrollY;
+    const lockedPath = window.location.pathname;
+    const { style } = document.body;
+    const prev = { position: style.position, top: style.top, left: style.left, right: style.right, overflow: style.overflow };
+    Object.assign(style, { position: "fixed", top: `-${scrollY}px`, left: "0", right: "0", overflow: "hidden" });
+    return () => {
+      Object.assign(style, prev);
+      if (window.location.pathname === lockedPath) window.scrollTo(0, scrollY);
+    };
+  }, [open]);
 
   const current = NAV_SECTIONS.find((s) => (s.href === "/" ? pathname === "/" : pathname.startsWith(s.href)));
 
@@ -59,7 +77,7 @@ export function SiteNav() {
       <div
         onClick={() => setOpen(false)}
         aria-hidden="true"
-        className={`fixed inset-0 z-40 bg-ink/40 transition-opacity duration-200 ${
+        className={`fixed inset-0 z-40 touch-none bg-ink/40 transition-opacity duration-200 ${
           open ? "opacity-100" : "pointer-events-none opacity-0"
         }`}
       />
@@ -67,7 +85,7 @@ export function SiteNav() {
       {/* Drawer - the guide's contents page */}
       <nav
         aria-label="Ενότητες"
-        className={`fixed inset-y-0 right-0 z-50 flex w-72 max-w-[85vw] flex-col overflow-y-auto border-l-[3px] border-forest bg-paper p-4 shadow-xl transition-transform duration-200 ${
+        className={`fixed inset-y-0 right-0 z-50 flex w-72 max-w-[85vw] flex-col overflow-y-auto overscroll-contain border-l-[3px] border-forest bg-paper p-4 shadow-xl transition-transform duration-200 ${
           open ? "translate-x-0" : "translate-x-full"
         }`}
         style={{
