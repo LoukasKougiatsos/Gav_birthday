@@ -6,7 +6,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "portrait": "node scripts/generate-animal-portrait.mjs",
+    "check:portraits": "node scripts/check-clinic-portraits.mjs"
   },
   "dependencies": {
     "leaflet": "^1.9.4",

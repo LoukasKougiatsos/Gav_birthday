@@ -69,7 +69,16 @@ export function SanctuaryGrid() {
                   );
                 }
                 return (
-                  <Card key={c.id} tone="sage" className="flex flex-col items-center gap-1 p-2">
+                  <Card
+                    key={c.id}
+                    tone={c.rare ? "sun" : "sage"}
+                    className="relative flex flex-col items-center gap-1 p-2"
+                  >
+                    {c.rare && (
+                      <span aria-label="Σπάνιο ζώο" className="absolute top-1 right-1.5 text-xs">
+                        ✨
+                      </span>
+                    )}
                     <div className="h-16 w-16">
                       <AnimalSprite caseId={c.id} />
                     </div>

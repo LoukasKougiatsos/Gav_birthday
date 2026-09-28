@@ -1,37 +1,16 @@
 import Image from "next/image";
 import { SPRITE_VIEWBOX, PALETTE } from "@/design/tokens";
 import { SPECIES_SPRITES } from "@/components/clinic/sprites";
+import { BUILT_IN_CASES } from "@/lib/clinic";
 
 export type SpriteState = "idle" | "happy" | "reassure";
 
-/** Case ids that have a painted portrait in /public/animals. Anything not
- * listed falls back to the old inline SVG sprite, then to the blob. */
-const PORTRAITS = new Set([
-  "house-sparrow-nestling",
-  "barn-swallow-fledgling",
-  "collared-dove-juvenile",
-  "mallard-duckling",
-  "yellow-legged-gull-juvenile",
-  "little-owl-fledgling",
-  "cormorant-juvenile",
-  "audouins-gull-adult",
-  "eurasian-blackbird-fledgling",
-  "feral-pigeon-juvenile",
-  "common-kestrel-juvenile",
-  "eurasian-magpie-fledgling",
-  "hedgehog-juvenile",
-  "hare-leveret-nestling",
-  "red-fox-kit-juvenile",
-  "pipistrelle-bat-juvenile",
-  "stone-marten-kit-juvenile",
-  "egyptian-fruit-bat-juvenile",
-  "hermanns-tortoise-juvenile",
-  "balkan-green-lizard-juvenile",
-  "dice-snake-juvenile",
-  "european-pond-turtle-juvenile",
-  "loggerhead-turtle-hatchling",
-  "monk-seal-pup-juvenile",
-]);
+/** Every built-in case has a painted portrait at /public/animals/<id>.png -
+ * the weekly species scout adds each new case together with its portrait
+ * (scripts/check-clinic-portraits.mjs enforces it). Cases she adds via the
+ * "add a case" form aren't built in, so they fall back to the old inline
+ * SVG sprite, then to the blob. */
+const PORTRAITS = new Set(BUILT_IN_CASES.map((c) => c.id));
 
 /** Fallback for cases without bespoke art (anything added via the "add a
  * case" form) - a friendly rounded blob, not a blank gap. */

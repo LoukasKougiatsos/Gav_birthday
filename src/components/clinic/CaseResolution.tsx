@@ -13,11 +13,16 @@ export function CaseResolution({
   chosenFood: string;
   correct: boolean;
 }) {
+  const rareWin = correct && clinicCase.rare;
   return (
-    <Card tone={correct ? "sage" : "terracotta"} className="flex flex-col gap-3">
+    <Card tone={rareWin ? "sun" : correct ? "sage" : "terracotta"} className="flex flex-col gap-3">
       <div>
         <p className="font-display text-lg font-semibold text-clay">
-          {correct ? "Σωστή φροντίδα! 🌿" : "Καλή προσπάθεια — να τι χρειάζεται πραγματικά"}
+          {rareWin
+            ? "Συγχαρητήρια κοριτσάκι μου, μόλις τάισες σωστά ένα πολύ σπάνιο ζώο! ✨"
+            : correct
+              ? "Σωστή φροντίδα! 🌿"
+              : "Καλή προσπάθεια — να τι χρειάζεται πραγματικά"}
         </p>
         <p className="text-sm text-ink/70">
           {clinicCase.speciesEl} · {clinicCase.speciesEn}

@@ -157,20 +157,45 @@ Leave the VAPID/cron env vars unset and this section of the Home page
 simply doesn't show anything - same graceful-degradation pattern as every
 other optional feature here.
 
-## 9. Athens theatre listings (Discover)
+## 9. Weekly curator agents (Theatre, Discover, Clinic)
 
-`src/content/theatreShows.json` powers the theatre list on the Discover
-page. It's not live-scraped on page load - there's no free API for this,
-so it's a small curated list, kept fresh by a **scheduled cloud
-agent** ("Weekly Athens theatre curator", set up via Claude Code's
-`/schedule`, routine id `trig_01JNUuNWmJiJvvtf3B82HFWS`) that runs every
-Monday, reads athinorama.gr's listings, judges what's worth featuring
-(there's no structured popularity/rating data anywhere free to sort by
-instead), updates the JSON file, and commits + pushes directly to `main`
-on its own - no approval step. Manage or inspect it at
+Content files are kept fresh by **scheduled cloud agents** (set up via
+Claude Code's `/schedule`), each of which edits only its own files, runs
+build + lint, and commits + pushes directly to `main` on its own - no
+approval step. Manage or inspect them at
 [claude.ai/code/routines](https://claude.ai/code/routines), or ask Claude
-to check its recent runs. Nothing here needs an env var or Vercel setup -
-it's independent of the rest of this deploy process.
+to check their recent runs. Only the Clinic scout needs an env var (below).
+
+- **"Weekly Athens theatre curator"** (routine `trig_01JNUuNWmJiJvvtf3B82HFWS`,
+  Mondays 05:00 UTC) - `src/content/theatreShows.json`. There's no free API
+  for Athens listings, so it reads athinorama.gr's listings and judges what's
+  worth featuring. Every show carries `addedAt` (the refresh that first added
+  it, never bumped afterwards); the Theatre page highlights the latest batch
+  as "Νέο αυτή την εβδομάδα".
+- **"Weekly Athens food & drink scout"** (routine `trig_01JsjGjHfjyc8X8Np1Q3fHSm`,
+  Mondays 06:00 UTC) - `src/content/discoverFoodDrink.json`. Researches the
+  Athens food press and adds 1-3 new places a week in the vibe of Myoko
+  (Glyfada) and Akra (Pangrati): modern, chef-driven, creative - explicitly
+  not traditional tavernas. Coordinates come from OpenStreetMap Nominatim.
+- **"Weekly Clinic species scout (Gemini portraits)"** (routine
+  `trig_01Eot3ZaHTRsdRiLoeRxsqF3`, Wednesdays 06:00 UTC) - adds three animals
+  a week to `src/content/clinicCases.json` (two ordinary Greek species plus
+  one rare one, Greek or exotic, marked `"rare": true` - gold Sanctuary card
+  and a special message when she feeds it right), taken in order from
+  `scripts/clinic-species-queue.md`, which you can edit freely. Each gets a portrait
+  painted by Gemini in the existing field-guide style
+  (`scripts/generate-animal-portrait.mjs`, which sends three existing
+  portraits as style references plus a real Wikipedia photo for accurate
+  markings, then keys out the background to a 512x512 transparent PNG). The
+  agent looks at every portrait and skips the species (marked `[!]` in the
+  queue) for the next of the same kind rather than commit a wrong-looking
+  one. **Needs `GEMINI_API_KEY`** (from
+  [Google AI Studio](https://aistudio.google.com/apikey)) set as an
+  environment variable on the routines' cloud environment at
+  claude.ai/code - without it the routine exits without changes.
+  `node scripts/check-clinic-portraits.mjs` confirms every case has its
+  portrait; run `npm run portrait -- <id> "<subject>" --photo <url>` to make
+  one by hand.
 
 ---
 
@@ -202,10 +227,12 @@ guidance. Worth a pass from an actual wildlife rehabber (or at least a
 credible source check) before this is treated as accurate, since it's
 presented as educational content.
 
-### `src/content/discoverPlaces.json` / `discoverFoodDrink.json` (Discover section)
-These *are* real researched places (not invented), each with a `source`
-noted - but worth a spot-check of a few entries before showing it to anyone,
-since coordinates for some are area-center estimates rather than exact pins.
+### `src/content/discoverFoodDrink.json` (Discover section)
+Real researched places (not invented), each with a `source` noted, and grown
+weekly by the food & drink scout agent (section 9). Some coordinates are
+street-level rather than exact pins - noted per entry in `source`.
+(`discoverPlaces.json`, the older outdoor-spots list, is no longer used by
+Discover.)
 
 ### `src/components/mind/EncouragementAvatar.tsx` (Mind section)
 A hand-drawn SVG illustration based on a written description (dark hair,

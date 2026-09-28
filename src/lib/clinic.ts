@@ -22,6 +22,10 @@ export interface ClinicCase {
   wrongFoods: string[];
   note: string;
   difficulty: Difficulty;
+  /** A genuinely rare/threatened species (Greek or exotic) - gets a gold
+   * card in the Sanctuary and a special message when fed correctly. The
+   * weekly species scout adds one rare animal for every two ordinary ones. */
+  rare?: boolean;
   /** Present on cases she adds herself via the "add a case" form. */
   custom?: boolean;
 }
