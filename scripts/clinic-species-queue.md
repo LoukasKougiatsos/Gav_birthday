@@ -28,9 +28,9 @@ dry.
 
 ## Week of 2026-09-30
 
-- [ ] normal | bird | Barn Owl | juvenile
-- [ ] normal | mammal | Red Squirrel | juvenile
-- [ ] rare | mammal | Red Panda | juvenile
+- [x] normal | bird | Barn Owl | juvenile
+- [x] normal | mammal | Red Squirrel | juvenile
+- [x] rare | mammal | Red Panda | juvenile
 
 ## Week of 2026-10-07
 
