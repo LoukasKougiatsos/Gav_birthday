@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-06",
+  "updatedAt": "2026-10-12",
   "source": "athinorama.gr/theatre/guide and /theatre/guide/premieres - refreshed weekly by a scheduled agent, see DEPLOY.md",
   "shows": [
     {
@@ -97,9 +97,9 @@
       "venue": "Εθνικό Θέατρο",
       "scheduleText": "Παρ., Σάβ. 8 μ.μ., Κυρ., Τετ. 6 μ.μ.",
       "priceText": "€ 25-5",
-      "until": "Πρεμιέρα 9/10",
-      "status": "premiere",
-      "note": "Χορογραφία της Pina Bausch - σπάνια ευκαιρία στην Αθήνα, πρεμιέρα 9/10.",
+      "until": "Έως 22/11",
+      "status": "running",
+      "note": "Χορογραφία της Pina Bausch από ελληνικό θίασο - μετά τα sold out, λίγες ακόμη παραστάσεις στο Εθνικό.",
       "posterUrl": "https://www.athinorama.gr/Content/ImagesDatabase/p/600x500/crop/both/dd/dd0510aa745f4b5ca0dc7183205de1b7.jpg?quality=81&404=default&v=4"
     },
     {
@@ -145,9 +145,9 @@
       "venue": "Μουσούρη",
       "scheduleText": "Πέμ. 8 μ.μ., Παρ. 9 μ.μ., Σάβ. 6 μ.μ./9 μ.μ., Κυρ. 7 μ.μ., Τετ. 7 μ.μ.",
       "priceText": "€ 26.50-17.50",
-      "until": "Πρεμιέρα 7/10",
-      "status": "premiere",
-      "note": "Το έργο του John Logan για τον ζωγράφο Ρόθκο, σε σκηνοθεσία Κιμούλη - πρεμιέρα, κλείσε έγκαιρα.",
+      "until": "Έως 9/5",
+      "status": "running",
+      "note": "Το έργο του John Logan για τον ζωγράφο Ρόθκο, σε σκηνοθεσία Κιμούλη - σε μεγάλη διάρκεια έως τον Μάιο.",
       "posterUrl": "https://www.athinorama.gr/Content/ImagesDatabase/p/600x500/crop/both/94/94b3be1158d94560802a1121a45da1af.jpg?quality=81&404=default&v=4"
     },
     {
@@ -157,9 +157,9 @@
       "venue": "Νέος Ακάδημος",
       "scheduleText": "Πέμ., Παρ. 9 μ.μ., Σάβ. 6 μ.μ./9 μ.μ., Κυρ. 6 μ.μ., Τετ. 8 μ.μ.",
       "priceText": "Από € 15",
-      "until": "Πρεμιέρα 7/10",
-      "status": "premiere",
-      "note": "Αμερικανικό έργο για έναν συγγραφέα και την τεχνητή νοημοσύνη - καινούρια πρεμιέρα, αξίζει να προλάβεις.",
+      "until": "Σε εξέλιξη",
+      "status": "running",
+      "note": "Αμερικανικό έργο για έναν συγγραφέα και την τεχνητή νοημοσύνη - σε εξέλιξη στον Νέο Ακάδημο.",
       "posterUrl": "https://www.athinorama.gr/Content/ImagesDatabase/p/600x500/crop/both/83/836e41b1fa374121a0a35f819d60f963.jpg?quality=81&404=default&v=4"
     },
     {
@@ -185,6 +185,31 @@
       "status": "running",
       "note": "Σατιρικό έργο του Μαγιακόφσκι, μία παράσταση τη βδομάδα - σπάνια ευκαιρία να το δεις.",
       "posterUrl": "https://www.athinorama.gr/Content/ImagesDatabase/p/600x500/crop/both/e6/e6fc23883432442ebc825c950f072cf7.jpg?quality=81&404=default&v=4"
+    },
+    {
+      "id": "o-emporos-tis-venetias-alkyonis-2026",
+      "addedAt": "2026-10-12",
+      "title": "Ο έμπορος της Βενετίας",
+      "venue": "Αλκυονίς",
+      "scheduleText": "Τετ., Κυρ. 7 μ.μ., Πέμ. 8 μ.μ., Παρ. 9 μ.μ., Σάβ. 6 μ.μ./9 μ.μ.",
+      "priceText": "€ 25-18",
+      "until": "Πρεμιέρα 21/10",
+      "status": "premiere",
+      "note": "Ο Σαίξπηρ σε κλασική διασκευή, με τον Σάυλωκ στο επίκεντρο - πρεμιέρα 21/10, κλείσε θέση έγκαιρα.",
+      "ticketUrl": "https://www.more.com/theater/o-emporos-tis-benetias-1",
+      "posterUrl": "https://www.athinorama.gr/Content/ImagesDatabase/p/600x500/crop/both/ad/adf1dc4e57d74bbfa7e9432b0d40813d.jpg?quality=81&404=default&v=4"
+    },
+    {
+      "id": "o-megas-ieroeksetastis-2026",
+      "addedAt": "2026-10-12",
+      "title": "Ο Μέγας Ιεροεξεταστής",
+      "venue": "Αλκμήνη",
+      "scheduleText": "Τετ. 6.30 μ.μ.",
+      "priceText": "€ 20, 15, 10",
+      "until": "Έως 6/1",
+      "status": "running",
+      "note": "Το φιλοσοφημένο κεφάλαιο των «Αδελφών Καραμάζοφ» του Ντοστογιέφσκι, μόνο Τετάρτες - σπάνια ευκαιρία να το δεις.",
+      "posterUrl": "https://www.athinorama.gr/Content/ImagesDatabase/p/600x500/crop/both/17/176b7c73a9df41b1a2ef6fac4093e896.jpg?quality=81&404=default&v=4"
     }
   ]
 }
