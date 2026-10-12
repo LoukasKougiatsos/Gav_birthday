@@ -1,6 +1,6 @@
 {
   "disclaimer": "Curated for a specific vibe - modern, chef-driven, stylish-but-unstuffy spots in the spirit of Myoko (Glyfada) and Akra (Pangrati): creative/fusion cooking, small plates, natural wine, specialty bakeries. Not traditional tavernas, not white-tablecloth tasting menus. Each entry was found in a named 2025-2026 food-press source (see 'source'); coordinates are from OpenStreetMap - exact where the venue itself is mapped, street-level otherwise. Refreshed weekly by a scheduled agent (see DEPLOY.md). ALREADY BEEN - never add these back: Akra (Pangrati).",
-  "updatedAt": "2026-09-23",
+  "updatedAt": "2026-10-12",
   "places": [
     {
       "id": "myoko-glyfada",
@@ -248,6 +248,32 @@
       "neighborhood": "Κολωνάκι",
       "source": "Travel.gr 2026 best-restaurants list (Ipsilantou 63).",
       "addedAt": "2026-09-23"
+    },
+    {
+      "id": "flying-horses-plaka",
+      "name": "Flying Horses",
+      "nameEl": "Flying Horses",
+      "category": "restaurant",
+      "lat": 37.97723,
+      "lon": 23.72902,
+      "radius": "short_drive",
+      "description": "Γαλλική, παριζιάνικη κουζίνα σε χώρο σαν ιταλικό palazzo, δυο βήματα από την Καπνικαρέα - tartare, θαλασσινά με κρασί, πιάνο, κεριά και κάβα πάνω από 140 ετικέτες.",
+      "neighborhood": "Πλάκα",
+      "source": "LIFO 'Flying Horses: Γαλλική κουζίνα σε έναν χώρο που μοιάζει με ιταλικό palazzo' (6.7.2026), Καλαμιώτου 2, Αθήνα. Coordinates are street-level.",
+      "addedAt": "2026-10-12"
+    },
+    {
+      "id": "casa-fish-voula",
+      "name": "Casa Fish Athens",
+      "nameEl": "Casa Fish Athens",
+      "category": "restaurant",
+      "lat": 37.84746,
+      "lon": 23.75365,
+      "radius": "short_drive",
+      "description": "Σύγχρονη ψαροφαγική κουζίνα πάνω στη θάλασσα στη Βούλα - καρπάτσιο τόνου, γαρίδες Σύμης, γριβάδι στη σχάρα και κάβα με πάνω από 200 ετικέτες, για ρομαντικό δείπνο στη ριβιέρα.",
+      "neighborhood": "Βούλα",
+      "source": "LIFO (8.6.2026) and FNL Guide 'Casa Fish Athens: A New Home for Seafood by the Saronic Gulf' (23.6.2026), Leof. Konstantinou Karamanli 18, Voula. Coordinates are street-level.",
+      "addedAt": "2026-10-12"
     }
   ]
 }
