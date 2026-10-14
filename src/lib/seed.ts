@@ -36,7 +36,7 @@ export function weeklySeed(date: Date = new Date()): string {
 }
 
 /** FNV-1a string hash -> 32-bit unsigned int. */
-function hashString(str: string): number {
+export function hashString(str: string): number {
   let hash = 0x811c9dc5;
   for (let i = 0; i < str.length; i++) {
     hash ^= str.charCodeAt(i);
