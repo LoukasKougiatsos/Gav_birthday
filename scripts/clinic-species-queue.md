@@ -34,9 +34,9 @@ dry.
 
 ## Week of 2026-10-07
 
-- [ ] normal | reptile | Mediterranean Chameleon | juvenile
-- [ ] normal | marine | Striped Dolphin | juvenile (calf)
-- [ ] rare | mammal | Brown Bear | juvenile (cub)
+- [x] normal | reptile | Mediterranean Chameleon | juvenile
+- [x] normal | marine | Striped Dolphin | juvenile (calf)
+- [x] rare | mammal | Brown Bear | juvenile (cub)
 
 ## Week of 2026-10-14
 
