@@ -40,13 +40,13 @@ rules) so the list never runs dry.
 
 ## Week of 2026-10-21
 
-- [ ] normal | bird | Eurasian Hoopoe | fledgling
-- [ ] normal | mammal | European Badger | juvenile
-- [ ] normal | reptile | Kotschy's Gecko | juvenile
-- [ ] normal | marine | Common Bottlenose Dolphin | juvenile (calf)
-- [ ] normal | bird | Eurasian Scops Owl | fledgling
-- [ ] rare | mammal | Sunda Pangolin | juvenile
-- [ ] rare | marine | Green Sea Turtle | nestling (hatchling)
+- [x] normal | bird | Eurasian Hoopoe | fledgling
+- [x] normal | mammal | European Badger | juvenile
+- [x] normal | reptile | Kotschy's Gecko | juvenile
+- [x] normal | marine | Common Bottlenose Dolphin | juvenile (calf)
+- [x] normal | bird | Eurasian Scops Owl | fledgling
+- [x] rare | mammal | Sunda Pangolin | juvenile
+- [x] rare | marine | Green Sea Turtle | nestling (hatchling)
 
 ## Week of 2026-10-28
 
@@ -62,5 +62,18 @@ rules) so the list never runs dry.
 
 - [ ] normal | bird | Common Swift | fledgling
 - [ ] normal | bird | White Stork | juvenile
+- [ ] normal | reptile | Balkan Whip Snake | juvenile
+- [ ] normal | marine | Risso's Dolphin | juvenile (calf)
+- [ ] normal | reptile | Greek Tortoise | juvenile
 - [ ] rare | mammal | Koala | nestling (joey)
 - [ ] rare | bird | Bearded Vulture | juvenile
+
+## Week of 2026-11-11
+
+- [ ] normal | reptile | Caspian Turtle | juvenile
+- [ ] normal | marine | Short-beaked Common Dolphin | juvenile (calf)
+- [ ] normal | mammal | Pine Marten | juvenile
+- [ ] normal | bird | Little Egret | juvenile
+- [ ] normal | reptile | Four-lined Snake | juvenile
+- [ ] rare | bird | Egyptian Vulture | juvenile
+- [ ] rare | mammal | Amur Leopard | juvenile (cub)
