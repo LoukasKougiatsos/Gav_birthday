@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-12",
+  "updatedAt": "2026-10-19",
   "source": "athinorama.gr/theatre/guide and /theatre/guide/premieres - refreshed weekly by a scheduled agent, see DEPLOY.md",
   "shows": [
     {
@@ -59,8 +59,8 @@
       "venue": "Αθηνά",
       "scheduleText": "Πέμ., Παρ. 9 μ.μ., Σάβ. 6 μ.μ./9 μ.μ., Κυρ., Τετ. 7.30 μ.μ.",
       "priceText": "Από € 18",
-      "until": "Πρεμιέρα 9/10",
-      "status": "premiere",
+      "until": "Σε εξέλιξη",
+      "status": "running",
       "note": "Βραβευμένη κωμωδία που έχει παιχτεί σε 30+ χώρες - για σίγουρο γέλιο.",
       "ticketUrl": "https://www.more.com/theater/ola-lathos-the-play-that-goes-wrong-2",
       "posterUrl": "https://www.athinorama.gr/Content/ImagesDatabase/p/600x500/crop/both/26/265084e9387d4710943a66a70f5d50a7.jpg?quality=81&404=default&v=4"
@@ -175,16 +175,16 @@
       "posterUrl": "https://www.athinorama.gr/Content/ImagesDatabase/p/600x500/crop/both/61/614beaea102b4d5e940fdc4bf8985d44.jpg?quality=81&404=default&v=4"
     },
     {
-      "id": "to-mpanio-2026",
-      "addedAt": "2026-10-06",
-      "title": "Το μπάνιο",
-      "venue": "Αλκμήνη",
-      "scheduleText": "Δευτ. 9 μ.μ.",
-      "priceText": "€ 15-12",
-      "until": "Έως 11/1",
-      "status": "running",
-      "note": "Σατιρικό έργο του Μαγιακόφσκι, μία παράσταση τη βδομάδα - σπάνια ευκαιρία να το δεις.",
-      "posterUrl": "https://www.athinorama.gr/Content/ImagesDatabase/p/600x500/crop/both/e6/e6fc23883432442ebc825c950f072cf7.jpg?quality=81&404=default&v=4"
+      "id": "fonissa-ethniko-2026",
+      "addedAt": "2026-10-19",
+      "title": "Φόνισσα",
+      "venue": "Εθνικό Θέατρο",
+      "scheduleText": "Παρ. 23/10 9 μ.μ., Σάβ. 24/10, Κυρ. 25/10 6 μ.μ./9 μ.μ.",
+      "priceText": "€ 25-5",
+      "until": "Έως 25/10",
+      "status": "premiere",
+      "note": "Μελόδραμα του Κουμεντάκη πάνω στην κλασική νουβέλα του Παπαδιαμάντη, στο Εθνικό Θέατρο - μόνο 3 παραστάσεις, 23-25/10, κλείσε θέση τώρα.",
+      "posterUrl": "https://www.athinorama.gr/Content/ImagesDatabase/p/600x500/crop/both/4b/4bb6725e3d6e405d8381a33a9fb76ba5.jpg?quality=81&404=default&v=4"
     },
     {
       "id": "o-emporos-tis-venetias-alkyonis-2026",
