@@ -1,6 +1,6 @@
 {
   "disclaimer": "Curated for a specific vibe - modern, chef-driven, stylish-but-unstuffy spots in the spirit of Myoko (Glyfada) and Akra (Pangrati): creative/fusion cooking, small plates, natural wine, specialty bakeries. Not traditional tavernas, not white-tablecloth tasting menus. Each entry was found in a named 2025-2026 food-press source (see 'source'); coordinates are from OpenStreetMap - exact where the venue itself is mapped, street-level otherwise. Refreshed weekly by a scheduled agent (see DEPLOY.md). ALREADY BEEN - never add these back: Akra (Pangrati).",
-  "updatedAt": "2026-10-12",
+  "updatedAt": "2026-10-19",
   "places": [
     {
       "id": "myoko-glyfada",
@@ -274,6 +274,19 @@
       "neighborhood": "Βούλα",
       "source": "LIFO (8.6.2026) and FNL Guide 'Casa Fish Athens: A New Home for Seafood by the Saronic Gulf' (23.6.2026), Leof. Konstantinou Karamanli 18, Voula. Coordinates are street-level.",
       "addedAt": "2026-10-12"
+    },
+    {
+      "id": "bandit-bakery-vyronas",
+      "name": "Bandit Bakery",
+      "nameEl": "Bandit Bakery",
+      "category": "bakery",
+      "lat": 37.95819,
+      "lon": 23.76492,
+      "radius": "short_drive",
+      "description": "Νέο αρτοποιείο-καφέ στον Βύρωνα από την ομάδα της NZ Pastry και τον σεφ Ντίνο Φωτεινάκη: ψωμιά, αλμυρές πίτες και κρουασάν φτιαγμένα καθημερινά στο δικό τους εργαστήριο - να δοκιμάσεις οπωσδήποτε το κρουασάν με ρυζόγαλο και καραμέλα γάλακτος.",
+      "neighborhood": "Βύρωνας",
+      "source": "Athinorama.gr 'Το Bandit Bakery είναι ο νέος, σοβαρός φούρνος στον Βύρωνα' (15.10.2026), Φρυγίας 9, Βύρωνας. Coordinates are street-level.",
+      "addedAt": "2026-10-19"
     }
   ]
 }
