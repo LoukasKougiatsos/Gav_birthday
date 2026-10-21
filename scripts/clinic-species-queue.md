@@ -50,13 +50,13 @@ rules) so the list never runs dry.
 
 ## Week of 2026-10-28
 
-- [ ] normal | mammal | Golden Jackal | juvenile
-- [ ] normal | reptile | Aesculapian Snake | juvenile
-- [ ] normal | mammal | Roe Deer | nestling (fawn)
-- [ ] normal | bird | European Bee-eater | fledgling
-- [ ] normal | reptile | Marginated Tortoise | juvenile
-- [ ] rare | mammal | Bornean Orangutan | nestling (infant)
-- [ ] rare | bird | Dalmatian Pelican | juvenile
+- [x] normal | mammal | Golden Jackal | juvenile
+- [x] normal | reptile | Aesculapian Snake | juvenile
+- [x] normal | mammal | Roe Deer | nestling (fawn)
+- [x] normal | bird | European Bee-eater | fledgling
+- [x] normal | reptile | Marginated Tortoise | juvenile
+- [x] rare | mammal | Bornean Orangutan | nestling (infant)
+- [x] rare | bird | Dalmatian Pelican | juvenile
 
 ## Week of 2026-11-04
 
