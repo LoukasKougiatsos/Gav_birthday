@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react";
 import { allCases, loadProgress, GROUP_EL, type ClinicCase, type ClinicGroup } from "@/lib/clinic";
 import { AnimalSprite } from "@/components/clinic/AnimalSprite";
+import { CaseResolution } from "@/components/clinic/CaseResolution";
 import { Card } from "@/components/ui/Card";
 
 const GROUP_ORDER: ClinicGroup[] = ["bird", "mammal", "reptile", "marine"];
@@ -14,6 +15,7 @@ interface SanctuaryState {
 
 export function SanctuaryGrid() {
   const [state, setState] = useState<SanctuaryState | null>(null);
+  const [selected, setSelected] = useState<ClinicCase | null>(null);
 
   useEffect(() => {
     // One-time sync from external state (localStorage) into React state on
@@ -23,6 +25,20 @@ export function SanctuaryGrid() {
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setState({ cases: allCases(), collected: new Set(loadProgress().sanctuary) });
   }, []);
+
+  useEffect(() => {
+    if (!selected) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setSelected(null);
+    };
+    const prevOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = prevOverflow;
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [selected]);
 
   if (!state) {
     return (
@@ -69,10 +85,16 @@ export function SanctuaryGrid() {
                   );
                 }
                 return (
-                  <Card
+                  <button
                     key={c.id}
+                    type="button"
+                    onClick={() => setSelected(c)}
+                    aria-label={c.speciesEl}
+                    className="rounded-sm text-left transition-transform active:scale-95"
+                  >
+                  <Card
                     tone={c.rare ? "sun" : "sage"}
-                    className="relative flex flex-col items-center gap-1 p-2"
+                    className="relative flex h-full flex-col items-center gap-1 p-2"
                   >
                     {c.rare && (
                       <span aria-label="Σπάνιο ζώο" className="absolute top-1 right-1.5 text-xs">
@@ -84,12 +106,38 @@ export function SanctuaryGrid() {
                     </div>
                     <p className="text-center text-[11px] leading-tight text-forest">{c.speciesEl}</p>
                   </Card>
+                  </button>
                 );
               })}
             </div>
           </div>
         );
       })}
+
+      {selected && (
+        <div
+          role="dialog"
+          aria-modal="true"
+          aria-label={selected.speciesEl}
+          className="fixed inset-0 z-50 flex items-end justify-center bg-ink/40 sm:items-center"
+          onClick={() => setSelected(null)}
+        >
+          <div
+            className="relative max-h-[85dvh] w-full max-w-md overflow-y-auto overscroll-contain px-4 pt-4 pb-[max(1rem,env(safe-area-inset-bottom))]"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              type="button"
+              onClick={() => setSelected(null)}
+              aria-label="Κλείσιμο"
+              className="absolute top-6 right-6 z-10 flex h-8 w-8 items-center justify-center rounded-full bg-plate text-ink/70 shadow"
+            >
+              ✕
+            </button>
+            <CaseResolution clinicCase={selected} chosenFood="" correct />
+          </div>
+        </div>
+      )}
     </div>
   );
 }
