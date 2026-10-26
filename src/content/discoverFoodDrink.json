@@ -1,6 +1,6 @@
 {
   "disclaimer": "Curated for a specific vibe - modern, chef-driven, stylish-but-unstuffy spots in the spirit of Myoko (Glyfada) and Akra (Pangrati): creative/fusion cooking, small plates, natural wine, specialty bakeries. Not traditional tavernas, not white-tablecloth tasting menus. Each entry was found in a named 2025-2026 food-press source (see 'source'); coordinates are from OpenStreetMap - exact where the venue itself is mapped, street-level otherwise. Refreshed weekly by a scheduled agent (see DEPLOY.md). ALREADY BEEN - never add these back: Akra (Pangrati).",
-  "updatedAt": "2026-10-19",
+  "updatedAt": "2026-10-26",
   "places": [
     {
       "id": "myoko-glyfada",
@@ -159,19 +159,6 @@
       "addedAt": "2026-09-23"
     },
     {
-      "id": "nolan-syntagma",
-      "name": "Nolan",
-      "nameEl": "Nolan",
-      "category": "restaurant",
-      "lat": 37.97482,
-      "lon": 23.73241,
-      "radius": "short_drive",
-      "description": "Bib Gourmand κοντά στο Σύνταγμα: ελληνικά υλικά με ιαπωνική ματιά σε μικρή, ζεστή σάλα - πολύ κοντά στο πνεύμα του Myōkō.",
-      "neighborhood": "Σύνταγμα",
-      "source": "MICHELIN Guide (Bib Gourmand); thisisathens.org (Voulis 31-33).",
-      "addedAt": "2026-09-23"
-    },
-    {
       "id": "thirio-syntagma",
       "name": "Thirio",
       "nameEl": "Θηρίο",
@@ -287,6 +274,45 @@
       "neighborhood": "Βύρωνας",
       "source": "Athinorama.gr 'Το Bandit Bakery είναι ο νέος, σοβαρός φούρνος στον Βύρωνα' (15.10.2026), Φρυγίας 9, Βύρωνας. Coordinates are street-level.",
       "addedAt": "2026-10-19"
+    },
+    {
+      "id": "zigkoala-omonoia",
+      "name": "Zigkoala",
+      "nameEl": "Ζιγκοάλα",
+      "category": "restaurant",
+      "lat": 37.98252,
+      "lon": 23.72791,
+      "radius": "short_drive",
+      "description": "Λεβαντίνικη ατμόσφαιρα σε παλιό μαγειρείο πίσω από το Δημαρχείο: ο σεφ Βασίλης Χαμάμ ενώνει τη σύγχρονη ελληνική κουζίνα με γεύσεις Ιορδανίας, Παλαιστίνης και Λιβάνου σε ανοιχτή κουζίνα, με κατάλογο κρασιών από νέους Έλληνες παραγωγούς - να δοκιμάσεις το baba ghanoush με coffee sriracha.",
+      "neighborhood": "Ομόνοια",
+      "source": "LIFO.gr 'Μόλις άνοιξαν! 8 νέα μέρη με πρωτότυπα concepts στην Αθήνα' και Travel.gr 'Best Athens Gastrotavernas 2026', Λυκούργου 9, Ομόνοια.",
+      "addedAt": "2026-10-26"
+    },
+    {
+      "id": "magdalena-pagrati",
+      "name": "Magdalena Aperitivo",
+      "nameEl": "Magdalena Aperitivo",
+      "category": "bar",
+      "lat": 37.97055,
+      "lon": 23.74815,
+      "radius": "short_drive",
+      "description": "Μικρή σπριτσερία στο Παγκράτι, αφιερωμένη στην ιταλική τελετουργία του aperitivo - spritz και κοκτέιλ στον πάγκο, με ιταλικά αλλαντικά και τυριά όπως προσιούτο Πάρμας και μορταδέλα με φιστίκι.",
+      "neighborhood": "Παγκράτι",
+      "source": "FNL Guide 'Magdalena: Pangrati's New Spritzeria Celebrates the Ritual of the Italian Aperitivo' (22.6.2026), Ερίφυλης 1, Παγκράτι. Coordinates are street-level.",
+      "addedAt": "2026-10-26"
+    },
+    {
+      "id": "kissa-kolonaki",
+      "name": "Kissa",
+      "nameEl": "Kissa",
+      "category": "bar",
+      "lat": 37.97784,
+      "lon": 23.74175,
+      "radius": "short_drive",
+      "description": "Ιαπωνικό kissaten-μπαρ στο Κολωνάκι από τον σεφ Θάνο Στασινό - shared plates όπως spicy edamame και tacos με λαβράκι, ιαπωνικά whisky cocktails και βινύλια, πολύ κοντά στο πνεύμα του Myōkō.",
+      "neighborhood": "Κολωνάκι",
+      "source": "LIFO.gr '12 νέα μαγαζιά στην Αθήνα για να μη θες να γυρίσεις σπίτι' (4.10.2026), Λεβέντη 5, Κολωνάκι. Coordinates are street-level.",
+      "addedAt": "2026-10-26"
     }
   ]
 }
