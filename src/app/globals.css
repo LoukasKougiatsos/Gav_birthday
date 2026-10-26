@@ -382,8 +382,8 @@
 .clinic-lamp-swing {
   animation: clinic-lamp-swing 9s ease-in-out infinite;
 }
-.clinic-lamp-glow {
-  animation: clinic-lamp-glow 5s ease-in-out infinite;
+.clinic-lamp-flicker {
+  animation: clinic-lamp-flicker 7s linear infinite;
 }
 .clinic-cloud {
   animation: clinic-cloud-drift linear infinite;
@@ -407,7 +407,7 @@
   .clinic-tree-sway,
   .clinic-curtain-breeze,
   .clinic-lamp-swing,
-  .clinic-lamp-glow,
+  .clinic-lamp-flicker,
   .clinic-cloud,
   .clinic-bird,
   .clinic-bird-wing,
@@ -450,13 +450,20 @@
   }
 }
 
-@keyframes clinic-lamp-glow {
+/* Steady most of the time, then a quick double flicker - an old bulb, not a strobe. */
+@keyframes clinic-lamp-flicker {
   0%,
+  84%,
+  87%,
+  90%,
   100% {
-    opacity: 0.16;
+    opacity: 1;
   }
-  50% {
-    opacity: 0.3;
+  85% {
+    opacity: 0.55;
+  }
+  88.5% {
+    opacity: 0.7;
   }
 }
 

@@ -25,7 +25,7 @@ import { WindowBackdrop, WindowForeground, useWindowWeather } from "@/components
  *
  * Ambient motion (globals.css, `clinic-*` classes; all transform/opacity,
  * all off under prefers-reduced-motion): the tree sways from its trunk, the
- * curtain breathes in a breeze, the lamp swings a hair and its glow pulses,
+ * curtain breathes in a breeze, the lamp swings a hair and its bulb flickers now and then,
  * and the window shows clouds, a passing bird and the real current weather
  * (ClinicWindowLife). Animated groups only wrap the existing shapes - their
  * geometry is unchanged.
@@ -120,13 +120,10 @@ export function ClinicScene({ children }: { children?: ReactNode }) {
             strokeWidth={STROKE.scene}
             strokeLinejoin="round"
           />
-          <path
-            d="M126 78 C118 78 116 70 124 68 C126 60 138 60 142 66 C150 64 154 74 146 78 Z"
-            fill={CREAM}
-            stroke={OUTLINE}
-            strokeWidth={3}
-            strokeLinejoin="round"
-          />
+          {/* tie-back: a plain band with a knot - the old puffy shape read
+              as a cloud once real clouds started drifting past the window */}
+          <rect x={124} y={71} width={32} height={8} rx={4} fill={CREAM} stroke={OUTLINE} strokeWidth={3} />
+          <circle cx={152} cy={75} r={4.5} fill={CREAM} stroke={OUTLINE} strokeWidth={3} />
         </g>
 
         {/* second bed, glimpsed at the left edge */}
@@ -151,7 +148,6 @@ export function ClinicScene({ children }: { children?: ReactNode }) {
         <path d="M163 52 H195" stroke={OUTLINE} strokeWidth={2.5} strokeLinecap="round" />
 
         {/* hanging exam lamp, centered over the main bed */}
-        <ellipse cx={228} cy={110} rx={52} ry={26} fill={GLOW} opacity={0.22} className="clinic-lamp-glow" />
         <g className="clinic-lamp-swing" style={{ transformOrigin: "228px 0px" }}>
           <path d="M228 0 V26" stroke={OUTLINE} strokeWidth={STROKE.scene} />
           <path
@@ -161,7 +157,11 @@ export function ClinicScene({ children }: { children?: ReactNode }) {
             strokeWidth={STROKE.scene}
             strokeLinejoin="round"
           />
-          <circle cx={228} cy={59} r={6} fill={GLOW} stroke={OUTLINE} strokeWidth={3} />
+          {/* the bulb flickers now and then, with a small halo around it */}
+          <g className="clinic-lamp-flicker">
+            <circle cx={228} cy={60} r={12} fill={GLOW} opacity={0.35} />
+            <circle cx={228} cy={59} r={6} fill={GLOW} stroke={OUTLINE} strokeWidth={3} />
+          </g>
         </g>
 
         {/* red cross plaque */}
