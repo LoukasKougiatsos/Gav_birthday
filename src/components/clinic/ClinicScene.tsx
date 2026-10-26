@@ -1,6 +1,9 @@
+"use client";
+
 import type { ReactNode } from "react";
 
 import { PALETTE, STROKE } from "@/design/tokens";
+import { WindowBackdrop, WindowForeground, useWindowWeather } from "@/components/clinic/ClinicWindowLife";
 
 /**
  * The Clinic's single fixed background, drawn in the same illustration
@@ -19,6 +22,13 @@ import { PALETTE, STROKE } from "@/design/tokens";
  * pen-and-ink style that isn't practical to hand-author as SVG paths, so
  * it's simplified here to flat fills with confident outlines while keeping
  * the same layout, object list, and palette.
+ *
+ * Ambient motion (globals.css, `clinic-*` classes; all transform/opacity,
+ * all off under prefers-reduced-motion): the tree sways from its trunk, the
+ * curtain breathes in a breeze, the lamp swings a hair and its glow pulses,
+ * and the window shows clouds, a passing bird and the real current weather
+ * (ClinicWindowLife). Animated groups only wrap the existing shapes - their
+ * geometry is unchanged.
  */
 const OUTLINE = PALETTE.outline;
 
@@ -50,6 +60,7 @@ const CAP_DARK = PALETTE.forest;
 const CAP_BROWN = PALETTE.honey;
 
 export function ClinicScene({ children }: { children?: ReactNode }) {
+  const weather = useWindowWeather();
   return (
     <div
       className="relative w-full overflow-hidden rounded-3xl border border-sand"
@@ -82,34 +93,41 @@ export function ClinicScene({ children }: { children?: ReactNode }) {
         />
         <rect x={12} y={14} width={104} height={130} fill={SKY} stroke={OUTLINE} strokeWidth={3} />
         <g clipPath="url(#clinic-window-pane)">
-          <circle cx={30} cy={124} r={28} fill={FOLIAGE_LIGHT} />
-          <circle cx={57} cy={98} r={23} fill={FOLIAGE_MID} />
-          <circle cx={83} cy={128} r={21} fill={FOLIAGE_DARK} />
-          <circle cx={97} cy={92} r={17} fill={FOLIAGE_LIGHT} />
-          <path d="M92 144 V96" stroke={TRUNK} strokeWidth={STROKE.scene} strokeLinecap="round" />
-          <circle cx={40} cy={112} r={3} fill={TAN_ACCENT} />
-          <circle cx={68} cy={102} r={3} fill={TAN_ACCENT} />
-          <circle cx={86} cy={118} r={3} fill={TAN_ACCENT} />
+          <WindowBackdrop weather={weather} />
+          {/* tree sways from the base of its trunk */}
+          <g className="clinic-tree-sway" style={{ transformOrigin: "92px 144px" }}>
+            <circle cx={30} cy={124} r={28} fill={FOLIAGE_LIGHT} />
+            <circle cx={57} cy={98} r={23} fill={FOLIAGE_MID} />
+            <circle cx={83} cy={128} r={21} fill={FOLIAGE_DARK} />
+            <circle cx={97} cy={92} r={17} fill={FOLIAGE_LIGHT} />
+            <path d="M92 144 V96" stroke={TRUNK} strokeWidth={STROKE.scene} strokeLinecap="round" />
+            <circle cx={40} cy={112} r={3} fill={TAN_ACCENT} />
+            <circle cx={68} cy={102} r={3} fill={TAN_ACCENT} />
+            <circle cx={86} cy={118} r={3} fill={TAN_ACCENT} />
+          </g>
+          <WindowForeground weather={weather} />
         </g>
         <path d="M64 14 V144" stroke={OUTLINE} strokeWidth={STROKE.scene} />
         <path d="M12 58 H116" stroke={OUTLINE} strokeWidth={STROKE.scene} />
         <path d="M12 100 H116" stroke={OUTLINE} strokeWidth={STROKE.scene} />
 
-        {/* terracotta curtain draped beside the window */}
-        <path
-          d="M120 8 C132 40 128 90 136 140 C150 146 158 120 156 90 C156 60 150 30 138 8 Z"
-          fill={CURTAIN}
-          stroke={OUTLINE}
-          strokeWidth={STROKE.scene}
-          strokeLinejoin="round"
-        />
-        <path
-          d="M126 78 C118 78 116 70 124 68 C126 60 138 60 142 66 C150 64 154 74 146 78 Z"
-          fill={CREAM}
-          stroke={OUTLINE}
-          strokeWidth={3}
-          strokeLinejoin="round"
-        />
+        {/* terracotta curtain draped beside the window - hangs from its top edge */}
+        <g className="clinic-curtain-breeze" style={{ transformOrigin: "138px 8px" }}>
+          <path
+            d="M120 8 C132 40 128 90 136 140 C150 146 158 120 156 90 C156 60 150 30 138 8 Z"
+            fill={CURTAIN}
+            stroke={OUTLINE}
+            strokeWidth={STROKE.scene}
+            strokeLinejoin="round"
+          />
+          <path
+            d="M126 78 C118 78 116 70 124 68 C126 60 138 60 142 66 C150 64 154 74 146 78 Z"
+            fill={CREAM}
+            stroke={OUTLINE}
+            strokeWidth={3}
+            strokeLinejoin="round"
+          />
+        </g>
 
         {/* second bed, glimpsed at the left edge */}
         <path d="M4 108 H96" stroke={OUTLINE} strokeWidth={STROKE.scene} strokeLinecap="round" />
@@ -133,16 +151,18 @@ export function ClinicScene({ children }: { children?: ReactNode }) {
         <path d="M163 52 H195" stroke={OUTLINE} strokeWidth={2.5} strokeLinecap="round" />
 
         {/* hanging exam lamp, centered over the main bed */}
-        <path d="M228 0 V26" stroke={OUTLINE} strokeWidth={STROKE.scene} />
-        <ellipse cx={228} cy={110} rx={52} ry={26} fill={GLOW} opacity={0.22} />
-        <path
-          d="M198 44 C198 28 211 18 228 18 C245 18 258 28 258 44 C258 49 254 52 247 52 H209 C202 52 198 49 198 44 Z"
-          fill={LAMP_METAL}
-          stroke={OUTLINE}
-          strokeWidth={STROKE.scene}
-          strokeLinejoin="round"
-        />
-        <circle cx={228} cy={59} r={6} fill={GLOW} stroke={OUTLINE} strokeWidth={3} />
+        <ellipse cx={228} cy={110} rx={52} ry={26} fill={GLOW} opacity={0.22} className="clinic-lamp-glow" />
+        <g className="clinic-lamp-swing" style={{ transformOrigin: "228px 0px" }}>
+          <path d="M228 0 V26" stroke={OUTLINE} strokeWidth={STROKE.scene} />
+          <path
+            d="M198 44 C198 28 211 18 228 18 C245 18 258 28 258 44 C258 49 254 52 247 52 H209 C202 52 198 49 198 44 Z"
+            fill={LAMP_METAL}
+            stroke={OUTLINE}
+            strokeWidth={STROKE.scene}
+            strokeLinejoin="round"
+          />
+          <circle cx={228} cy={59} r={6} fill={GLOW} stroke={OUTLINE} strokeWidth={3} />
+        </g>
 
         {/* red cross plaque */}
         <path

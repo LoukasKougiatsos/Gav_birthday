@@ -365,6 +365,161 @@
 }
 
 /* ---------------------------------------------------------------------
+   Clinic background ambience (src/components/clinic/ClinicScene.tsx and
+   ClinicWindowLife.tsx). All subtle - the animal on the bed stays the
+   focus. These target SVG elements; lengths in px are the scene's own
+   viewBox units. Pivots are set inline via transform-origin (view-box
+   coordinates), except the bird's wing, which flaps from its own box.
+   Rain/snow/bird rest outside the window pane, clouds rest inside it, so
+   the reduced-motion still frame looks deliberate.
+   --------------------------------------------------------------------- */
+.clinic-tree-sway {
+  animation: clinic-tree-sway 6.5s ease-in-out infinite;
+}
+.clinic-curtain-breeze {
+  animation: clinic-curtain-breeze 8s ease-in-out infinite;
+}
+.clinic-lamp-swing {
+  animation: clinic-lamp-swing 9s ease-in-out infinite;
+}
+.clinic-lamp-glow {
+  animation: clinic-lamp-glow 5s ease-in-out infinite;
+}
+.clinic-cloud {
+  animation: clinic-cloud-drift linear infinite;
+}
+.clinic-bird {
+  animation: clinic-bird-cross 29s linear infinite;
+}
+.clinic-bird-wing {
+  transform-box: fill-box;
+  transform-origin: 30% 100%;
+  animation: clinic-bird-flap 0.32s ease-in-out infinite;
+}
+.clinic-rain {
+  animation: clinic-rain-fall linear infinite;
+}
+.clinic-snow {
+  animation: clinic-snow-fall linear infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .clinic-tree-sway,
+  .clinic-curtain-breeze,
+  .clinic-lamp-swing,
+  .clinic-lamp-glow,
+  .clinic-cloud,
+  .clinic-bird,
+  .clinic-bird-wing,
+  .clinic-rain,
+  .clinic-snow {
+    animation: none;
+  }
+}
+
+@keyframes clinic-tree-sway {
+  0%,
+  100% {
+    transform: rotate(-1.2deg);
+  }
+  50% {
+    transform: rotate(1.2deg);
+  }
+}
+
+@keyframes clinic-curtain-breeze {
+  0%,
+  100% {
+    transform: rotate(0deg) skewX(0deg);
+  }
+  35% {
+    transform: rotate(1deg) skewX(-1deg);
+  }
+  65% {
+    transform: rotate(0.4deg) skewX(0.8deg);
+  }
+}
+
+@keyframes clinic-lamp-swing {
+  0%,
+  100% {
+    transform: rotate(-0.7deg);
+  }
+  50% {
+    transform: rotate(0.7deg);
+  }
+}
+
+@keyframes clinic-lamp-glow {
+  0%,
+  100% {
+    opacity: 0.16;
+  }
+  50% {
+    opacity: 0.3;
+  }
+}
+
+/* --cloud-from / --cloud-to are set per cloud so each drifts from just left
+   of the pane to just right of it, whatever its resting position. */
+@keyframes clinic-cloud-drift {
+  0% {
+    transform: translateX(var(--cloud-from));
+  }
+  100% {
+    transform: translateX(var(--cloud-to));
+  }
+}
+
+/* One crossing (~3.8 s) per 29 s cycle, waiting offscreen the rest. */
+@keyframes clinic-bird-cross {
+  0% {
+    transform: translate(0, 0);
+  }
+  4% {
+    transform: translate(60px, -3px);
+  }
+  8% {
+    transform: translate(120px, 2px);
+  }
+  13%,
+  100% {
+    transform: translate(190px, -2px);
+  }
+}
+
+@keyframes clinic-bird-flap {
+  0%,
+  100% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(-0.5);
+  }
+}
+
+@keyframes clinic-rain-fall {
+  0% {
+    transform: translate(0, 0);
+  }
+  100% {
+    transform: translate(-30px, 150px);
+  }
+}
+
+@keyframes clinic-snow-fall {
+  0% {
+    transform: translate(0, 0);
+  }
+  50% {
+    transform: translate(6px, 72px);
+  }
+  100% {
+    transform: translate(-2px, 145px);
+  }
+}
+
+/* ---------------------------------------------------------------------
    Exercise section (src/components/exercise/*). The owner explicitly
    asked for the calendar to "feel alive" rather than a static grid, so
    today's cell always carries a slow idle pulse, and a fresh "yes"
