@@ -11,6 +11,9 @@
  * unchanged, so none of this module's ~20 call sites needed to change.
  */
 
+import { CLINIC_PROGRESS_KEY, mergeClinicProgress } from "@/lib/clinicProgressMerge";
+import type { ClinicProgress } from "@/lib/clinic";
+
 const PREFIX = "km:"; // koritsaki_mou
 
 function isBrowser(): boolean {
@@ -89,6 +92,15 @@ export async function hydrateFromServer(): Promise<void> {
 
   for (const [key, value] of Object.entries(serverEntries)) {
     try {
+      if (key === CLINIC_PROGRESS_KEY) {
+        // Merged, not overwritten - see mergeClinicProgress. If this device
+        // knows animals the server doesn't, send them up too.
+        const local = getItem<Partial<ClinicProgress> | null>(key, null);
+        const merged = mergeClinicProgress(value as Partial<ClinicProgress>, local);
+        writeLocalOnly(key, merged);
+        if (local) pushToServer(key, merged);
+        continue;
+      }
       writeLocalOnly(key, value);
     } catch {
       // see setItem
