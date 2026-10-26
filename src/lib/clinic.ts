@@ -89,6 +89,8 @@ export interface ClinicProgress {
   sanctuary: string[];
   /** Streak milestones already celebrated, so they don't repeat. */
   milestonesSeen: number[];
+  /** Answers taken back after the fact - see mergeClinicProgress. */
+  undoneAnswers?: string[];
 }
 
 const EMPTY_PROGRESS: ClinicProgress = {
