@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-19",
+  "updatedAt": "2026-10-26",
   "source": "athinorama.gr/theatre/guide and /theatre/guide/premieres - refreshed weekly by a scheduled agent, see DEPLOY.md",
   "shows": [
     {
@@ -26,18 +26,6 @@
       "note": "12ος χρόνος για ένα κλασικό δικαστικό δράμα.",
       "ticketUrl": "https://www.more.com/theater/offer/oi-12-enorkoi-12os-xronos",
       "posterUrl": "https://www.athinorama.gr/Content/ImagesDatabase/p/600x500/crop/both/5f/5f2f62b2157c45ff8dea56571094064a.jpg?quality=81&404=default&v=4"
-    },
-    {
-      "id": "ta-paidia-enos-katoterou-theou-2026",
-      "addedAt": "2026-09-18",
-      "title": "Τα παιδιά ενός κατώτερου θεού",
-      "venue": "Άλφα - «Ληναίος-Φωτίου»",
-      "scheduleText": "Από 10/10, κάθε Σάβ. 6 μ.μ., Κυρ. 5 μ.μ.",
-      "priceText": "€ 20, 15, 10",
-      "until": "Ξεκινάει 10/10",
-      "status": "premiere",
-      "note": "Βραβευμένο έργο του Mark Medoff, καινούρια ανέβασμα.",
-      "ticketUrl": "https://www.more.com/theater/ta-paidia-enos-katoterou-theou"
     },
     {
       "id": "eftyxismenes-meres-2026",
@@ -175,27 +163,15 @@
       "posterUrl": "https://www.athinorama.gr/Content/ImagesDatabase/p/600x500/crop/both/61/614beaea102b4d5e940fdc4bf8985d44.jpg?quality=81&404=default&v=4"
     },
     {
-      "id": "fonissa-ethniko-2026",
-      "addedAt": "2026-10-19",
-      "title": "Φόνισσα",
-      "venue": "Εθνικό Θέατρο",
-      "scheduleText": "Παρ. 23/10 9 μ.μ., Σάβ. 24/10, Κυρ. 25/10 6 μ.μ./9 μ.μ.",
-      "priceText": "€ 25-5",
-      "until": "Έως 25/10",
-      "status": "premiere",
-      "note": "Μελόδραμα του Κουμεντάκη πάνω στην κλασική νουβέλα του Παπαδιαμάντη, στο Εθνικό Θέατρο - μόνο 3 παραστάσεις, 23-25/10, κλείσε θέση τώρα.",
-      "posterUrl": "https://www.athinorama.gr/Content/ImagesDatabase/p/600x500/crop/both/4b/4bb6725e3d6e405d8381a33a9fb76ba5.jpg?quality=81&404=default&v=4"
-    },
-    {
       "id": "o-emporos-tis-venetias-alkyonis-2026",
       "addedAt": "2026-10-12",
       "title": "Ο έμπορος της Βενετίας",
       "venue": "Αλκυονίς",
       "scheduleText": "Τετ., Κυρ. 7 μ.μ., Πέμ. 8 μ.μ., Παρ. 9 μ.μ., Σάβ. 6 μ.μ./9 μ.μ.",
       "priceText": "€ 25-18",
-      "until": "Πρεμιέρα 21/10",
-      "status": "premiere",
-      "note": "Ο Σαίξπηρ σε κλασική διασκευή, με τον Σάυλωκ στο επίκεντρο - πρεμιέρα 21/10, κλείσε θέση έγκαιρα.",
+      "until": "Έως 15/11",
+      "status": "running",
+      "note": "Ο Σαίξπηρ σε κλασική διασκευή, με τον Σάυλωκ στο επίκεντρο - σε εξέλιξη έως τα μέσα Νοεμβρίου.",
       "ticketUrl": "https://www.more.com/theater/o-emporos-tis-benetias-1",
       "posterUrl": "https://www.athinorama.gr/Content/ImagesDatabase/p/600x500/crop/both/ad/adf1dc4e57d74bbfa7e9432b0d40813d.jpg?quality=81&404=default&v=4"
     },
@@ -210,6 +186,32 @@
       "status": "running",
       "note": "Το φιλοσοφημένο κεφάλαιο των «Αδελφών Καραμάζοφ» του Ντοστογιέφσκι, μόνο Τετάρτες - σπάνια ευκαιρία να το δεις.",
       "posterUrl": "https://www.athinorama.gr/Content/ImagesDatabase/p/600x500/crop/both/17/176b7c73a9df41b1a2ef6fac4093e896.jpg?quality=81&404=default&v=4"
+    },
+    {
+      "id": "mompi-ntik-2026",
+      "addedAt": "2026-10-26",
+      "title": "Μόμπι Ντικ",
+      "venue": "Νέος Ακάδημος",
+      "scheduleText": "Δευτ., Τρ. 9.15 μ.μ.",
+      "priceText": "€ 20-18",
+      "until": "Πρεμιέρα 26/10",
+      "status": "premiere",
+      "note": "Το κλασικό μυθιστόρημα του Μέλβιλ ανεβαίνει στη σκηνή σήμερα - φρέσκια πρεμιέρα, αξίζει να κλείσεις θέση πριν γεμίσει.",
+      "ticketUrl": "https://www.more.com/theater/mompintik",
+      "posterUrl": "https://www.athinorama.gr/Content/ImagesDatabase/p/600x500/crop/both/Event_Photos/fe/fe3868635998d20b92557ac38000a577_3757©Patroklos_Skafidas.jpg?quality=81&404=default&v=4"
+    },
+    {
+      "id": "i-panagia-ton-parision-2026",
+      "addedAt": "2026-10-26",
+      "title": "Η Παναγία των Παρισίων",
+      "venue": "Θέατρον του Κέντρου Πολιτισμού Ελληνικός Κόσμος",
+      "scheduleText": "Σάβ. 2.30 μ.μ., Κυρ. 11.30 π.μ.",
+      "priceText": "€ 25-12",
+      "until": "Έως 13/12",
+      "status": "running",
+      "note": "Μεγάλη, οικογενειακή διασκευή του κλασικού του Ουγκό σε εντυπωσιακή σκηνή - Σάββατα και Κυριακές, μέχρι τα μέσα Δεκεμβρίου.",
+      "ticketUrl": "https://www.more.com/theater/children/i-panagia-ton-parision",
+      "posterUrl": "https://www.athinorama.gr/Content/ImagesDatabase/p/600x500/crop/both/e4/e4491aa1087b429bbb44fd006db3988f.jpg?quality=81&404=default&v=4"
     }
   ]
 }
