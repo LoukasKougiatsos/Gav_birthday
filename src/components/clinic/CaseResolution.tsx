@@ -31,7 +31,7 @@ export function CaseResolution({
 
       {!correct && <p className="text-sm text-ink/60">Επέλεξες: {chosenFood}</p>}
 
-      <SpeciesPhoto speciesEn={clinicCase.speciesEn} />
+      <SpeciesPhoto caseId={clinicCase.id} speciesEn={clinicCase.speciesEn} />
 
       <p className="text-sm text-ink/80">{clinicCase.note}</p>
 

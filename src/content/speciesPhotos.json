@@ -1,0 +1,310 @@
+{
+  "aesculapian-snake-juvenile": {
+    "attribution": "(c) Robinp24, some rights reserved (CC BY-NC), uploaded by Robinp24",
+    "license": "cc-by-nc",
+    "taxonId": 74009,
+    "taxonName": "Zamenis longissimus",
+    "source": "https://www.inaturalist.org/photos/659772128"
+  },
+  "audouins-gull-adult": {
+    "attribution": "(c) Xavier Rufray, some rights reserved (CC BY-NC), uploaded by Xavier Rufray",
+    "license": "cc-by-nc",
+    "taxonId": 144522,
+    "taxonName": "Ichthyaetus audouinii",
+    "source": "https://www.inaturalist.org/photos/107270089"
+  },
+  "balkan-green-lizard-juvenile": {
+    "attribution": "(c) Petr Kouba, some rights reserved (CC BY), uploaded by Petr Kouba",
+    "license": "cc-by",
+    "taxonId": 35871,
+    "taxonName": "Lacerta trilineata",
+    "source": "https://www.inaturalist.org/photos/92852456"
+  },
+  "barn-owl-juvenile": {
+    "attribution": "(c) caroline legg, some rights reserved (CC BY)",
+    "license": "cc-by",
+    "taxonId": 20445,
+    "taxonName": "Tyto alba",
+    "source": "https://www.inaturalist.org/photos/165796939"
+  },
+  "barn-swallow-fledgling": {
+    "attribution": "(c) Ad Konings, some rights reserved (CC BY-NC), uploaded by Ad Konings",
+    "license": "cc-by-nc",
+    "taxonId": 11901,
+    "taxonName": "Hirundo rustica",
+    "source": "https://www.inaturalist.org/photos/122469139"
+  },
+  "bornean-orangutan-infant-nestling": {
+    "attribution": "(c) Zoltan BAGOSI, some rights reserved (CC BY-NC), uploaded by Zoltan BAGOSI",
+    "license": "cc-by-nc",
+    "taxonId": 43582,
+    "taxonName": "Pongo pygmaeus",
+    "source": "https://www.inaturalist.org/photos/251457903"
+  },
+  "bottlenose-dolphin-calf-juvenile": {
+    "attribution": "(c) Frank Krasovec, some rights reserved (CC BY-NC), uploaded by Frank Krasovec",
+    "license": "cc-by-nc",
+    "taxonId": 41482,
+    "taxonName": "Tursiops truncatus",
+    "source": "https://www.inaturalist.org/photos/611231392"
+  },
+  "brown-bear-cub-juvenile": {
+    "attribution": "(c) Donna Pomeroy, some rights reserved (CC BY-NC), uploaded by Donna Pomeroy",
+    "license": "cc-by-nc",
+    "taxonId": 41641,
+    "taxonName": "Ursus arctos",
+    "source": "https://www.inaturalist.org/photos/1491897"
+  },
+  "collared-dove-juvenile": {
+    "attribution": "(c) mattecasti, some rights reserved (CC BY-NC)",
+    "license": "cc-by-nc",
+    "taxonId": 2969,
+    "taxonName": "Streptopelia decaocto",
+    "source": "https://www.inaturalist.org/photos/100117501"
+  },
+  "common-kestrel-juvenile": {
+    "attribution": "(c) Manuel Raab, some rights reserved (CC BY-NC), uploaded by Manuel Raab",
+    "license": "cc-by-nc",
+    "taxonId": 472766,
+    "taxonName": "Falco tinnunculus",
+    "source": "https://www.inaturalist.org/photos/598044895"
+  },
+  "cormorant-juvenile": {
+    "attribution": "(c) Дмитрий Осипов, some rights reserved (CC BY-NC), uploaded by Дмитрий Осипов",
+    "license": "cc-by-nc",
+    "taxonId": 4270,
+    "taxonName": "Phalacrocorax carbo",
+    "source": "https://www.inaturalist.org/photos/141367445"
+  },
+  "dalmatian-pelican-juvenile": {
+    "attribution": "(c) David F. Belmonte, some rights reserved (CC BY), uploaded by David F. Belmonte",
+    "license": "cc-by",
+    "taxonId": 4333,
+    "taxonName": "Pelecanus crispus",
+    "source": "https://www.inaturalist.org/photos/466241273"
+  },
+  "dice-snake-juvenile": {
+    "attribution": "(c) Manuel Raab, some rights reserved (CC BY-NC), uploaded by Manuel Raab",
+    "license": "cc-by-nc",
+    "taxonId": 64346,
+    "taxonName": "Natrix tessellata",
+    "source": "https://www.inaturalist.org/photos/333571124"
+  },
+  "egyptian-fruit-bat-juvenile": {
+    "attribution": "(c) Helen Taylor-Boyd, some rights reserved (CC BY-NC), uploaded by Helen Taylor-Boyd",
+    "license": "cc-by-nc",
+    "taxonId": 75042,
+    "taxonName": "Rousettus aegyptiacus",
+    "source": "https://www.inaturalist.org/photos/4091066"
+  },
+  "eurasian-blackbird-fledgling": {
+    "attribution": "(c) Luiz Lapa, some rights reserved (CC BY)",
+    "license": "cc-by",
+    "taxonId": 12716,
+    "taxonName": "Turdus merula",
+    "source": "https://www.inaturalist.org/photos/356885346"
+  },
+  "eurasian-hoopoe-fledgling": {
+    "attribution": "(c) Andrej Chudý, some rights reserved (CC BY-NC-SA)",
+    "license": "cc-by-nc-sa",
+    "taxonId": 20969,
+    "taxonName": "Upupa epops",
+    "source": "https://www.inaturalist.org/photos/60494705"
+  },
+  "eurasian-magpie-fledgling": {
+    "attribution": "(c) Agustín Povedano, some rights reserved (CC BY-NC-SA)",
+    "license": "cc-by-nc-sa",
+    "taxonId": 891696,
+    "taxonName": "Pica pica",
+    "source": "https://www.inaturalist.org/photos/103446096"
+  },
+  "eurasian-scops-owl-fledgling": {
+    "attribution": "(c) naturpel, some rights reserved (CC BY-NC), uploaded by naturpel",
+    "license": "cc-by-nc",
+    "taxonId": 20244,
+    "taxonName": "Otus scops",
+    "source": "https://www.inaturalist.org/photos/32019292"
+  },
+  "european-badger-juvenile": {
+    "attribution": "(c) caroline legg, some rights reserved (CC BY)",
+    "license": "cc-by",
+    "taxonId": 855297,
+    "taxonName": "Meles meles",
+    "source": "https://www.inaturalist.org/photos/172054371"
+  },
+  "european-bee-eater-fledgling": {
+    "attribution": "(c) brugorraiztelefonicanet, some rights reserved (CC BY-NC), uploaded by brugorraiztelefonicanet",
+    "license": "cc-by-nc",
+    "taxonId": 2191,
+    "taxonName": "Merops apiaster",
+    "source": "https://www.inaturalist.org/photos/70043412"
+  },
+  "european-pond-turtle-juvenile": {
+    "attribution": "(c) Laurent Barthe, some rights reserved (CC BY-NC), uploaded by Laurent Barthe",
+    "license": "cc-by-nc",
+    "taxonId": 39867,
+    "taxonName": "Emys orbicularis",
+    "source": "https://www.inaturalist.org/photos/230597692"
+  },
+  "feral-pigeon-juvenile": {
+    "attribution": "(c) Birds of Gilgit-Baltistan, some rights reserved (CC BY-SA)",
+    "license": "cc-by-sa",
+    "taxonId": 3017,
+    "taxonName": "Columba livia",
+    "source": "https://www.inaturalist.org/photos/466776975"
+  },
+  "golden-jackal-juvenile": {
+    "attribution": "(c) Balaji Venkatesh Sivaramakrishnan, some rights reserved (CC BY-NC-SA)",
+    "license": "cc-by-nc-sa",
+    "taxonId": 851014,
+    "taxonName": "Canis aureus",
+    "source": "https://www.inaturalist.org/photos/12400254"
+  },
+  "green-sea-turtle-hatchling": {
+    "attribution": "(c) MARC MARTIN SOLA, some rights reserved (CC BY-NC), uploaded by MARC MARTIN SOLA",
+    "license": "cc-by-nc",
+    "taxonId": 39659,
+    "taxonName": "Chelonia mydas",
+    "source": "https://www.inaturalist.org/photos/197457958"
+  },
+  "hare-leveret-nestling": {
+    "attribution": "(c) Paul Cools, some rights reserved (CC BY-NC), uploaded by Paul Cools",
+    "license": "cc-by-nc",
+    "taxonId": 43128,
+    "taxonName": "Lepus europaeus",
+    "source": "https://www.inaturalist.org/photos/1843520"
+  },
+  "hedgehog-juvenile": {
+    "attribution": "(c) Michael Gäbler, some rights reserved (CC BY-SA)",
+    "license": "cc-by-sa",
+    "taxonId": 43042,
+    "taxonName": "Erinaceus europaeus",
+    "source": "https://www.inaturalist.org/photos/132296376"
+  },
+  "hermanns-tortoise-juvenile": {
+    "attribution": "(c) Roberto Sindaco, some rights reserved (CC BY-NC-SA), uploaded by Roberto Sindaco",
+    "license": "cc-by-nc-sa",
+    "taxonId": 71212,
+    "taxonName": "Testudo hermanni",
+    "source": "https://www.inaturalist.org/photos/669249"
+  },
+  "house-sparrow-nestling": {
+    "attribution": "(c) Ximo Galarza, some rights reserved (CC BY-NC-SA)",
+    "license": "cc-by-nc-sa",
+    "taxonId": 13858,
+    "taxonName": "Passer domesticus",
+    "source": "https://www.inaturalist.org/photos/4608133"
+  },
+  "kotschys-gecko-juvenile": {
+    "attribution": "(c) Stamatis Kalogiannis, some rights reserved (CC BY-NC), uploaded by Stamatis Kalogiannis",
+    "license": "cc-by-nc",
+    "taxonId": 146280,
+    "taxonName": "Mediodactylus kotschyi",
+    "source": "https://www.inaturalist.org/photos/533004014"
+  },
+  "little-owl-fledgling": {
+    "attribution": "(c) Javisa Hun, some rights reserved (CC BY-NC), uploaded by Javisa Hun",
+    "license": "cc-by-nc",
+    "taxonId": 19998,
+    "taxonName": "Athene noctua",
+    "source": "https://www.inaturalist.org/photos/238739562"
+  },
+  "loggerhead-turtle-hatchling": {
+    "attribution": "(c) Roberto Pillon, some rights reserved (CC BY-NC), uploaded by Roberto Pillon",
+    "license": "cc-by-nc",
+    "taxonId": 39665,
+    "taxonName": "Caretta caretta",
+    "source": "https://www.inaturalist.org/photos/176772831"
+  },
+  "mallard-duckling": {
+    "attribution": "(c) anonymous, some rights reserved (CC BY-SA)",
+    "license": "cc-by-sa",
+    "taxonId": 6930,
+    "taxonName": "Anas platyrhynchos",
+    "source": "https://www.inaturalist.org/photos/95268822"
+  },
+  "marginated-tortoise-juvenile": {
+    "attribution": "(c) Roberto Sindaco, some rights reserved (CC BY-NC-SA), uploaded by Roberto Sindaco",
+    "license": "cc-by-nc-sa",
+    "taxonId": 40038,
+    "taxonName": "Testudo marginata",
+    "source": "https://www.inaturalist.org/photos/717380"
+  },
+  "mediterranean-chameleon-juvenile": {
+    "attribution": "(c) Roberto Sindaco, some rights reserved (CC BY-NC-SA), uploaded by Roberto Sindaco",
+    "license": "cc-by-nc-sa",
+    "taxonId": 32864,
+    "taxonName": "Chamaeleo chamaeleon",
+    "source": "https://www.inaturalist.org/photos/670567"
+  },
+  "monk-seal-pup-juvenile": {
+    "attribution": "(c) Yiannis Banakakis, some rights reserved (CC BY-NC), uploaded by Yiannis Banakakis",
+    "license": "cc-by-nc",
+    "taxonId": 41716,
+    "taxonName": "Monachus monachus",
+    "source": "https://www.inaturalist.org/photos/118296372"
+  },
+  "pipistrelle-bat-juvenile": {
+    "attribution": "(c) Jakob Fahr, some rights reserved (CC BY-NC), uploaded by Jakob Fahr",
+    "license": "cc-by-nc",
+    "taxonId": 40364,
+    "taxonName": "Pipistrellus pipistrellus",
+    "source": "https://www.inaturalist.org/photos/6156906"
+  },
+  "red-fox-kit-juvenile": {
+    "attribution": "(c) Joanne Muis Redwood, some rights reserved (CC BY-NC), uploaded by Joanne Muis Redwood",
+    "license": "cc-by-nc",
+    "taxonId": 42069,
+    "taxonName": "Vulpes vulpes",
+    "source": "https://www.inaturalist.org/photos/6568074"
+  },
+  "red-panda-juvenile": {
+    "attribution": "(c) pfaucher, some rights reserved (CC BY-NC), uploaded by pfaucher",
+    "license": "cc-by-nc",
+    "taxonId": 41653,
+    "taxonName": "Ailurus fulgens",
+    "source": "https://www.inaturalist.org/photos/26989188"
+  },
+  "red-squirrel-juvenile": {
+    "attribution": "(c) Rhododendrites, some rights reserved (CC BY-SA)",
+    "license": "cc-by-sa",
+    "taxonId": 46001,
+    "taxonName": "Sciurus vulgaris",
+    "source": "https://www.inaturalist.org/photos/462357539"
+  },
+  "roe-deer-fawn-nestling": {
+    "attribution": "(c) romanvrbicek, some rights reserved (CC BY-NC), uploaded by romanvrbicek",
+    "license": "cc-by-nc",
+    "taxonId": 42184,
+    "taxonName": "Capreolus capreolus",
+    "source": "https://www.inaturalist.org/photos/148547129"
+  },
+  "stone-marten-kit-juvenile": {
+    "attribution": "(c) janconl, some rights reserved (CC BY-NC-SA), uploaded by janconl",
+    "license": "cc-by-nc-sa",
+    "taxonId": 41800,
+    "taxonName": "Martes foina",
+    "source": "https://www.inaturalist.org/photos/161528563"
+  },
+  "striped-dolphin-calf-juvenile": {
+    "attribution": "(c) Sergio Martínez, some rights reserved (CC BY-NC), uploaded by Sergio Martínez",
+    "license": "cc-by-nc",
+    "taxonId": 41494,
+    "taxonName": "Stenella coeruleoalba",
+    "source": "https://www.inaturalist.org/photos/9394147"
+  },
+  "sunda-pangolin-juvenile": {
+    "attribution": "(c) Nadège Lanau, some rights reserved (CC BY-NC), uploaded by Nadège Lanau",
+    "license": "cc-by-nc",
+    "taxonId": 43364,
+    "taxonName": "Manis javanica",
+    "source": "https://www.inaturalist.org/photos/54208886"
+  },
+  "yellow-legged-gull-juvenile": {
+    "attribution": "(c) JÃ¶rg Hempel, some rights reserved (CC BY-SA), uploaded by JÃ¶rg Hempel",
+    "license": "cc-by-sa",
+    "taxonId": 59202,
+    "taxonName": "Larus michahellis",
+    "source": "https://www.inaturalist.org/photos/12831"
+  }
+}

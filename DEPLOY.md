@@ -193,9 +193,15 @@ to check their recent runs. Only the Clinic scout needs an env var (below).
   [Google AI Studio](https://aistudio.google.com/apikey)) set as an
   environment variable on the routines' cloud environment at
   claude.ai/code - without it the routine exits without changes.
+  Each new animal also gets its real photo for the info card, downloaded
+  from iNaturalist into `public/species-photos/<id>.jpg` with the
+  photographer's credit in `src/content/speciesPhotos.json`
+  (`npm run photo -- <id>`, Creative Commons photos only). The agent checks
+  the matched scientific name and looks at the photo: `--taxon <id>` fixes a
+  wrong species match, `--pick <n>` swaps a poor photo for the next one.
   `node scripts/check-clinic-portraits.mjs` confirms every case has its
-  portrait; run `npm run portrait -- <id> "<subject>" --photo <url>` to make
-  one by hand.
+  portrait and photo; run `npm run portrait -- <id> "<subject>" --photo <url>`
+  to make a portrait by hand.
 
 ---
 

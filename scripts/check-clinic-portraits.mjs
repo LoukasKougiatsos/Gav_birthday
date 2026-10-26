@@ -1,9 +1,11 @@
 #!/usr/bin/env node
 /**
- * Every built-in Clinic case must ship with its portrait: AnimalSprite
- * assumes /public/animals/<id>.png exists for each one. Exits non-zero
- * (listing the offenders) if a case is missing its PNG, or a PNG isn't the
- * 512x512 transparent format the other portraits use.
+ * Every built-in Clinic case must ship with its portrait and its species
+ * photo: AnimalSprite assumes /public/animals/<id>.png exists for each one,
+ * and the info card shows /public/species-photos/<id>.jpg with the credit
+ * from src/content/speciesPhotos.json. Exits non-zero (listing the
+ * offenders) if a case is missing either, or a PNG isn't the 512x512
+ * transparent format the other portraits use.
  */
 import { readFile } from "node:fs/promises";
 import { existsSync } from "node:fs";
@@ -13,9 +15,13 @@ import sharp from "sharp";
 
 const ROOT = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "..");
 const { cases } = JSON.parse(await readFile(path.join(ROOT, "src/content/clinicCases.json"), "utf8"));
+const photos = JSON.parse(await readFile(path.join(ROOT, "src/content/speciesPhotos.json"), "utf8"));
 
 const problems = [];
 for (const { id } of cases) {
+  if (!photos[id] || !existsSync(path.join(ROOT, "public/species-photos", `${id}.jpg`))) {
+    problems.push(`${id}: missing species photo - run npm run photo -- ${id}`);
+  }
   const file = path.join(ROOT, "public/animals", `${id}.png`);
   if (!existsSync(file)) {
     problems.push(`${id}: missing public/animals/${id}.png`);
@@ -31,4 +37,4 @@ if (problems.length) {
   console.error(problems.join("\n"));
   process.exit(1);
 }
-console.log(`All ${cases.length} clinic cases have portraits.`);
+console.log(`All ${cases.length} clinic cases have portraits and species photos.`);
