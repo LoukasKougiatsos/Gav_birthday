@@ -20,6 +20,13 @@
     "taxonName": "Lacerta trilineata",
     "source": "https://www.inaturalist.org/photos/92852456"
   },
+  "balkan-whip-snake-juvenile": {
+    "attribution": "(c) Benny Trapp, some rights reserved (CC BY)",
+    "license": "cc-by",
+    "taxonId": 29917,
+    "taxonName": "Hierophis gemonensis",
+    "source": "https://www.inaturalist.org/photos/218240"
+  },
   "barn-owl-juvenile": {
     "attribution": "(c) caroline legg, some rights reserved (CC BY)",
     "license": "cc-by",
@@ -33,6 +40,13 @@
     "taxonId": 11901,
     "taxonName": "Hirundo rustica",
     "source": "https://www.inaturalist.org/photos/122469139"
+  },
+  "bearded-vulture-juvenile": {
+    "attribution": "(c) petermcintyre, some rights reserved (CC BY-NC)",
+    "license": "cc-by-nc",
+    "taxonId": 5379,
+    "taxonName": "Gypaetus barbatus",
+    "source": "https://www.inaturalist.org/photos/277408147"
   },
   "bornean-orangutan-infant-nestling": {
     "attribution": "(c) Zoltan BAGOSI, some rights reserved (CC BY-NC), uploaded by Zoltan BAGOSI",
@@ -68,6 +82,13 @@
     "taxonId": 472766,
     "taxonName": "Falco tinnunculus",
     "source": "https://www.inaturalist.org/photos/598044895"
+  },
+  "common-swift-fledgling": {
+    "attribution": "(c) Алексей Эбель, some rights reserved (CC BY-NC), uploaded by Алексей Эбель",
+    "license": "cc-by-nc",
+    "taxonId": 6638,
+    "taxonName": "Apus apus",
+    "source": "https://www.inaturalist.org/photos/40612214"
   },
   "cormorant-juvenile": {
     "attribution": "(c) Дмитрий Осипов, some rights reserved (CC BY-NC), uploaded by Дмитрий Осипов",
@@ -160,6 +181,13 @@
     "taxonName": "Canis aureus",
     "source": "https://www.inaturalist.org/photos/12400254"
   },
+  "greek-tortoise-juvenile": {
+    "attribution": "(c) Paul Cools, some rights reserved (CC BY-NC), uploaded by Paul Cools",
+    "license": "cc-by-nc",
+    "taxonId": 40023,
+    "taxonName": "Testudo graeca",
+    "source": "https://www.inaturalist.org/photos/1843615"
+  },
   "green-sea-turtle-hatchling": {
     "attribution": "(c) MARC MARTIN SOLA, some rights reserved (CC BY-NC), uploaded by MARC MARTIN SOLA",
     "license": "cc-by-nc",
@@ -194,6 +222,13 @@
     "taxonId": 13858,
     "taxonName": "Passer domesticus",
     "source": "https://www.inaturalist.org/photos/4608133"
+  },
+  "koala-joey-nestling": {
+    "attribution": "(c) jirau, some rights reserved (CC BY-SA)",
+    "license": "cc-by-sa",
+    "taxonId": 42983,
+    "taxonName": "Phascolarctos cinereus",
+    "source": "https://www.inaturalist.org/photos/446727684"
   },
   "kotschys-gecko-juvenile": {
     "attribution": "(c) Stamatis Kalogiannis, some rights reserved (CC BY-NC), uploaded by Stamatis Kalogiannis",
@@ -272,6 +307,13 @@
     "taxonName": "Sciurus vulgaris",
     "source": "https://www.inaturalist.org/photos/462357539"
   },
+  "rissos-dolphin-calf-juvenile": {
+    "attribution": "(c) Robin Gwen Agarwal, some rights reserved (CC BY-NC), uploaded by Robin Gwen Agarwal",
+    "license": "cc-by-nc",
+    "taxonId": 41541,
+    "taxonName": "Grampus griseus",
+    "source": "https://www.inaturalist.org/photos/142809664"
+  },
   "roe-deer-fawn-nestling": {
     "attribution": "(c) romanvrbicek, some rights reserved (CC BY-NC), uploaded by romanvrbicek",
     "license": "cc-by-nc",
@@ -299,6 +341,13 @@
     "taxonId": 43364,
     "taxonName": "Manis javanica",
     "source": "https://www.inaturalist.org/photos/54208886"
+  },
+  "white-stork-juvenile": {
+    "attribution": "(c) xulescu_g, some rights reserved (CC BY-SA)",
+    "license": "cc-by-sa",
+    "taxonId": 4733,
+    "taxonName": "Ciconia ciconia",
+    "source": "https://www.inaturalist.org/photos/269104502"
   },
   "yellow-legged-gull-juvenile": {
     "attribution": "(c) JÃ¶rg Hempel, some rights reserved (CC BY-SA), uploaded by JÃ¶rg Hempel",

@@ -60,13 +60,13 @@ rules) so the list never runs dry.
 
 ## Week of 2026-11-04
 
-- [ ] normal | bird | Common Swift | fledgling
-- [ ] normal | bird | White Stork | juvenile
-- [ ] normal | reptile | Balkan Whip Snake | juvenile
-- [ ] normal | marine | Risso's Dolphin | juvenile (calf)
-- [ ] normal | reptile | Greek Tortoise | juvenile
-- [ ] rare | mammal | Koala | nestling (joey)
-- [ ] rare | bird | Bearded Vulture | juvenile
+- [x] normal | bird | Common Swift | fledgling
+- [x] normal | bird | White Stork | juvenile
+- [x] normal | reptile | Balkan Whip Snake | juvenile
+- [x] normal | marine | Risso's Dolphin | juvenile (calf)
+- [x] normal | reptile | Greek Tortoise | juvenile
+- [x] rare | mammal | Koala | nestling (joey)
+- [x] rare | bird | Bearded Vulture | juvenile
 
 ## Week of 2026-11-11
 
@@ -77,3 +77,23 @@ rules) so the list never runs dry.
 - [ ] normal | reptile | Four-lined Snake | juvenile
 - [ ] rare | bird | Egyptian Vulture | juvenile
 - [ ] rare | mammal | Amur Leopard | juvenile (cub)
+
+## Week of 2026-11-18
+
+- [ ] normal | bird | European Robin | juvenile
+- [ ] normal | mammal | Garden Dormouse | juvenile
+- [ ] normal | mammal | Egyptian Mongoose | juvenile
+- [ ] normal | reptile | Balkan Terrapin | juvenile
+- [ ] normal | reptile | Grass Snake | juvenile
+- [ ] rare | marine | Fin Whale | juvenile (calf)
+- [ ] rare | mammal | Iberian Lynx | juvenile (cub)
+
+## Week of 2026-11-25
+
+- [ ] normal | bird | Woodchat Shrike | juvenile
+- [ ] normal | mammal | Wild Boar | juvenile
+- [ ] normal | reptile | Leopard Snake | juvenile
+- [ ] normal | reptile | Moorish Gecko | juvenile
+- [ ] normal | reptile | Balkan Wall Lizard | juvenile
+- [ ] rare | marine | Sperm Whale | juvenile (calf)
+- [ ] rare | mammal | Snow Leopard | juvenile (cub)
