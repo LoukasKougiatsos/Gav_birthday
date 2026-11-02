@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-10-26",
+  "updatedAt": "2026-11-02",
   "source": "athinorama.gr/theatre/guide and /theatre/guide/premieres - refreshed weekly by a scheduled agent, see DEPLOY.md",
   "shows": [
     {
@@ -26,19 +26,6 @@
       "note": "12ος χρόνος για ένα κλασικό δικαστικό δράμα.",
       "ticketUrl": "https://www.more.com/theater/offer/oi-12-enorkoi-12os-xronos",
       "posterUrl": "https://www.athinorama.gr/Content/ImagesDatabase/p/600x500/crop/both/5f/5f2f62b2157c45ff8dea56571094064a.jpg?quality=81&404=default&v=4"
-    },
-    {
-      "id": "eftyxismenes-meres-2026",
-      "addedAt": "2026-09-22",
-      "title": "Ευτυχισμένες μέρες",
-      "venue": "Πορεία at Victoria",
-      "scheduleText": "Πέμ.-Σάβ. 9 μ.μ., Κυρ., Τετ. 8 μ.μ.",
-      "priceText": "€ 20, 15",
-      "until": "Έως 1/11",
-      "status": "running",
-      "note": "Μπέκετ από τον Τάρλοου με την Αγλαΐα Παππά - παίζεται μόνο έναν μήνα.",
-      "ticketUrl": "https://www.more.com/theater/eytyxismenes-meres",
-      "posterUrl": "https://www.athinorama.gr/Content/ImagesDatabase/p/600x500/crop/both/96/96a38010496b48ddae3c7414584d49c0.jpg?quality=81&404=default&v=4"
     },
     {
       "id": "ola-lathos-2026",
@@ -194,9 +181,9 @@
       "venue": "Νέος Ακάδημος",
       "scheduleText": "Δευτ., Τρ. 9.15 μ.μ.",
       "priceText": "€ 20-18",
-      "until": "Πρεμιέρα 26/10",
-      "status": "premiere",
-      "note": "Το κλασικό μυθιστόρημα του Μέλβιλ ανεβαίνει στη σκηνή σήμερα - φρέσκια πρεμιέρα, αξίζει να κλείσεις θέση πριν γεμίσει.",
+      "until": "Έως 5/1",
+      "status": "running",
+      "note": "Το κλασικό μυθιστόρημα του Μέλβιλ στη σκηνή του Νέου Ακάδημου - δυνατή παράσταση, σε εξέλιξη έως τον Ιανουάριο.",
       "ticketUrl": "https://www.more.com/theater/mompintik",
       "posterUrl": "https://www.athinorama.gr/Content/ImagesDatabase/p/600x500/crop/both/Event_Photos/fe/fe3868635998d20b92557ac38000a577_3757©Patroklos_Skafidas.jpg?quality=81&404=default&v=4"
     },
@@ -212,6 +199,18 @@
       "note": "Μεγάλη, οικογενειακή διασκευή του κλασικού του Ουγκό σε εντυπωσιακή σκηνή - Σάββατα και Κυριακές, μέχρι τα μέσα Δεκεμβρίου.",
       "ticketUrl": "https://www.more.com/theater/children/i-panagia-ton-parision",
       "posterUrl": "https://www.athinorama.gr/Content/ImagesDatabase/p/600x500/crop/both/e4/e4491aa1087b429bbb44fd006db3988f.jpg?quality=81&404=default&v=4"
+    },
+    {
+      "id": "vollmond-panselinos-2026",
+      "addedAt": "2026-11-02",
+      "title": "Vollmond (Πανσέληνος)",
+      "venue": "Μέγαρο Μουσικής",
+      "scheduleText": "Παρ.-Δευτ. 8 μ.μ.",
+      "priceText": "€ 80-15",
+      "until": "Πρεμιέρα 6/11",
+      "status": "premiere",
+      "note": "Η Πίνα Μπάους στο Μέγαρο Μουσικής για μόλις 4 παραστάσεις - σπάνια ευκαιρία, κλείσε θέση άμεσα.",
+      "posterUrl": "https://www.athinorama.gr/Content/ImagesDatabase/p/600x500/crop/both/Event_Photos/29/2920c88af54fad3491c11237e6086fe9_ΜΜΑ 26-27-Vollmond (Full Moon) A piece by Pina Bausch. Photo by Laurent Philippe.JPG?quality=81&404=default&v=4"
     }
   ]
 }
