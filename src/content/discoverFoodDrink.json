@@ -1,6 +1,6 @@
 {
   "disclaimer": "Curated for a specific vibe - modern, chef-driven, stylish-but-unstuffy spots in the spirit of Myoko (Glyfada) and Akra (Pangrati): creative/fusion cooking, small plates, natural wine, specialty bakeries. Not traditional tavernas, not white-tablecloth tasting menus. Each entry was found in a named 2025-2026 food-press source (see 'source'); coordinates are from OpenStreetMap - exact where the venue itself is mapped, street-level otherwise. Refreshed weekly by a scheduled agent (see DEPLOY.md). ALREADY BEEN - never add these back: Akra (Pangrati).",
-  "updatedAt": "2026-10-26",
+  "updatedAt": "2026-11-02",
   "places": [
     {
       "id": "myoko-glyfada",
@@ -313,6 +313,32 @@
       "neighborhood": "Κολωνάκι",
       "source": "LIFO.gr '12 νέα μαγαζιά στην Αθήνα για να μη θες να γυρίσεις σπίτι' (4.10.2026), Λεβέντη 5, Κολωνάκι. Coordinates are street-level.",
       "addedAt": "2026-10-26"
+    },
+    {
+      "id": "upon-palaio-faliro",
+      "name": "Upon",
+      "nameEl": "Upon",
+      "category": "restaurant",
+      "lat": 37.9317,
+      "lon": 23.70322,
+      "radius": "short_drive",
+      "description": "All-day μπιστρό στο Παλαιό Φάληρο από τον σεφ Γρηγόρη Κίκη (Herve) - καφές το πρωί, προσεγμένη μεσογειακή κουζίνα το μεσημέρι και το βράδυ, με καλή λίστα κρασιών και κοκτέιλ. Νέο στο Bib Gourmand του Michelin.",
+      "neighborhood": "Παλαιό Φάληρο",
+      "source": "MICHELIN Guide 2027 selection (new Bib Gourmand entry, 'Contemporary Greek and Mediterranean bistro'); Athens Voice 'Upon' feature, Δημοκρατίας 33, Παλαιό Φάληρο.",
+      "addedAt": "2026-11-02"
+    },
+    {
+      "id": "topa-kypseli",
+      "name": "¡Topa!",
+      "nameEl": "Topa",
+      "category": "bar",
+      "lat": 38.00156,
+      "lon": 23.73882,
+      "radius": "short_drive",
+      "description": "Αστικό καφενείο στη Φωκίωνος Νέγρη από την ομάδα του Oinoscent, που ενώνει τη βασκική μπαρ κουλτούρα με την κρητική κουζίνα - pintxos, τσιγαριαστό και σφακιανές πίτες, vermouth Topa Blanco και λίστα κρασιών με ελληνικές και ισπανικές ετικέτες.",
+      "neighborhood": "Κυψέλη",
+      "source": "FNL Guide '¡Topa!: A New Kafenio with a Basque Soul and a Cretan Spirit in the Heart of Fokionos Negri, Athens', Φωκίωνος Νέγρη 43, Κυψέλη.",
+      "addedAt": "2026-11-02"
     }
   ]
 }
