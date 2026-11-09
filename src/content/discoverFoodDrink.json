@@ -1,6 +1,6 @@
 {
   "disclaimer": "Curated for a specific vibe - modern, chef-driven, stylish-but-unstuffy spots in the spirit of Myoko (Glyfada) and Akra (Pangrati): creative/fusion cooking, small plates, natural wine, specialty bakeries. Not traditional tavernas, not white-tablecloth tasting menus. Each entry was found in a named 2025-2026 food-press source (see 'source'); coordinates are from OpenStreetMap - exact where the venue itself is mapped, street-level otherwise. Refreshed weekly by a scheduled agent (see DEPLOY.md). ALREADY BEEN - never add these back: Akra (Pangrati).",
-  "updatedAt": "2026-11-02",
+  "updatedAt": "2026-11-09",
   "places": [
     {
       "id": "myoko-glyfada",
@@ -339,6 +339,45 @@
       "neighborhood": "Κυψέλη",
       "source": "FNL Guide '¡Topa!: A New Kafenio with a Basque Soul and a Cretan Spirit in the Heart of Fokionos Negri, Athens', Φωκίωνος Νέγρη 43, Κυψέλη.",
       "addedAt": "2026-11-02"
+    },
+    {
+      "id": "kuchisabishii-koukaki",
+      "name": "Kuchisabishii",
+      "nameEl": "Kuchisabishii",
+      "category": "restaurant",
+      "lat": 37.96202,
+      "lon": 23.7224,
+      "radius": "short_drive",
+      "description": "Ιαπωνική sakaba στην καρδιά του Κουκακίου, εμπνευσμένη από τη Γιοκοχάμα της δεκαετίας του '80 - gyoza, σαλάτα soba, ιαπωνικό κάρι και σάκε, σε ατμόσφαιρα σαν βήμα πίσω στον χρόνο.",
+      "neighborhood": "Κουκάκι",
+      "source": "ToVima 'Kuchisabishii: The Japanese Pub Taking Athens by Storm'; NouPou.gr (3.2026); Athinorama 'Νέα εστιατόρια και νέα μπαρ στην Αθήνα' (1.4.2026), Φαλήρου 36, Κουκάκι. Coordinates are street-level.",
+      "addedAt": "2026-11-09"
+    },
+    {
+      "id": "vin-dalsace-pagkrati",
+      "name": "Vin d'Alsace",
+      "nameEl": "Vin d'Alsace",
+      "category": "bar",
+      "lat": 37.9657,
+      "lon": 23.74332,
+      "radius": "short_drive",
+      "description": "Μικροσκοπικό wine bar στην πλατεία Βαρνάβα, αφιερωμένο αποκλειστικά σε κρασιά της Αλσατίας από τον Κωστή Καρατζιά - ένα ποτήρι Riesling ή Gewürztraminer με απλά, καλοφτιαγμένα μεζεδάκια.",
+      "neighborhood": "Παγκράτι",
+      "source": "Athinorama 'Νέα εστιατόρια στα οποία αξίζει να φας τώρα στην Αθήνα' (4.10.2026); Athens Voice 'Όλα τα καινούργια εστιατόρια που μόλις άνοιξαν στην Αθήνα' (16.9.2026), Πλατεία Βαρνάβα 8, Παγκράτι. Coordinates are street-level (square).",
+      "addedAt": "2026-11-09"
+    },
+    {
+      "id": "pied-a-terre-ilisia",
+      "name": "Pied à Terre",
+      "nameEl": "Pied à Terre",
+      "category": "bar",
+      "lat": 37.97635,
+      "lon": 23.75118,
+      "radius": "short_drive",
+      "description": "Κομψό wine bistrot με παριζιάνικο αέρα στα Ιλίσια, πίσω από το πρώην Hilton - πιάτα φτιαγμένα για μοίρασμα και κάβα με περίπου 80 ετικέτες, ελληνικές και διεθνείς.",
+      "neighborhood": "Ιλίσια",
+      "source": "Athens Voice 'Pied à Terre: Ένα wine bistrot με παριζιάνικο αέρα που θα γίνει το δεύτερο σπίτι σου', Κωνσταντίνου Βεντήρη 3, Ιλίσια. Coordinates are street-level.",
+      "addedAt": "2026-11-09"
     }
   ]
 }
