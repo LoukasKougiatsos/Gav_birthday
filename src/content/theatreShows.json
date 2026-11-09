@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-02",
+  "updatedAt": "2026-11-09",
   "source": "athinorama.gr/theatre/guide and /theatre/guide/premieres - refreshed weekly by a scheduled agent, see DEPLOY.md",
   "shows": [
     {
@@ -78,17 +78,6 @@
       "posterUrl": "https://www.athinorama.gr/Content/ImagesDatabase/p/600x500/crop/both/dd/dd0510aa745f4b5ca0dc7183205de1b7.jpg?quality=81&404=default&v=4"
     },
     {
-      "id": "ierotelestia-2026",
-      "addedAt": "2026-09-18",
-      "title": "Ιεροτελεστία",
-      "venue": "Εθνικό Θέατρο",
-      "scheduleText": "Πέμ.-Σάβ. 8.30 μ.μ., Κυρ., Τετ. 7 μ.μ.",
-      "priceText": "€ 22-5",
-      "until": "Έως 29/11",
-      "status": "running",
-      "posterUrl": "https://www.athinorama.gr/Content/ImagesDatabase/p/600x500/crop/both/29/29d8a181397f4a209253609ffb80ecb5.jpg?quality=81&404=default&v=4"
-    },
-    {
       "id": "anthropoi-kai-pontikoi-2026",
       "addedAt": "2026-09-18",
       "title": "Άνθρωποι και ποντίκια",
@@ -136,18 +125,6 @@
       "status": "running",
       "note": "Αμερικανικό έργο για έναν συγγραφέα και την τεχνητή νοημοσύνη - σε εξέλιξη στον Νέο Ακάδημο.",
       "posterUrl": "https://www.athinorama.gr/Content/ImagesDatabase/p/600x500/crop/both/83/836e41b1fa374121a0a35f819d60f963.jpg?quality=81&404=default&v=4"
-    },
-    {
-      "id": "oliver-twist-neo-theatro-2026",
-      "addedAt": "2026-10-06",
-      "title": "Όλιβερ Τουίστ",
-      "venue": "Νέο Θέατρο «Κατερίνα Βασιλάκου-Μαριάννα Τόλη»",
-      "scheduleText": "Κυρ. 11.30 π.μ./3 μ.μ.",
-      "priceText": "Από € 13",
-      "until": "Έως 25/4",
-      "status": "running",
-      "note": "Οικογενειακή παράσταση με μουσική, μόνο Κυριακές - μεγάλη διάρκεια έως την άνοιξη.",
-      "posterUrl": "https://www.athinorama.gr/Content/ImagesDatabase/p/600x500/crop/both/61/614beaea102b4d5e940fdc4bf8985d44.jpg?quality=81&404=default&v=4"
     },
     {
       "id": "o-emporos-tis-venetias-alkyonis-2026",
@@ -201,16 +178,30 @@
       "posterUrl": "https://www.athinorama.gr/Content/ImagesDatabase/p/600x500/crop/both/e4/e4491aa1087b429bbb44fd006db3988f.jpg?quality=81&404=default&v=4"
     },
     {
-      "id": "vollmond-panselinos-2026",
-      "addedAt": "2026-11-02",
-      "title": "Vollmond (Πανσέληνος)",
-      "venue": "Μέγαρο Μουσικής",
-      "scheduleText": "Παρ.-Δευτ. 8 μ.μ.",
-      "priceText": "€ 80-15",
-      "until": "Πρεμιέρα 6/11",
-      "status": "premiere",
-      "note": "Η Πίνα Μπάους στο Μέγαρο Μουσικής για μόλις 4 παραστάσεις - σπάνια ευκαιρία, κλείσε θέση άμεσα.",
-      "posterUrl": "https://www.athinorama.gr/Content/ImagesDatabase/p/600x500/crop/both/Event_Photos/29/2920c88af54fad3491c11237e6086fe9_ΜΜΑ 26-27-Vollmond (Full Moon) A piece by Pina Bausch. Photo by Laurent Philippe.JPG?quality=81&404=default&v=4"
+      "id": "aias-i-trela-2026",
+      "addedAt": "2026-11-09",
+      "title": "Αίας, η τρέλα",
+      "venue": "Άττις",
+      "scheduleText": "Πέμ.-Σάβ. 9 μ.μ., Κυρ. 7 μ.μ.",
+      "priceText": "€ 20-15",
+      "until": "Έως 10/1",
+      "status": "running",
+      "note": "Ο διεθνώς αναγνωρισμένος Θ. Τερζόπουλος ξαναδιαβάζει τον Σοφοκλή σε μια σκληρή, αφαιρετική εκδοχή - για φίλους του πειραματικού θεάτρου.",
+      "ticketUrl": "https://www.more.com/theater/aias-i-trela",
+      "posterUrl": "https://www.athinorama.gr/Content/ImagesDatabase/p/600x500/crop/both/Event_Photos/ea/ea460fa9be0624062bdb7751802bad89_IMG_0907 resized.jpg?quality=81&404=default&v=4"
+    },
+    {
+      "id": "i-monaxia-tis-dysis-2026",
+      "addedAt": "2026-11-09",
+      "title": "Η μοναξιά της Δύσης",
+      "venue": "Επί Κολωνώ",
+      "scheduleText": "Πέμ., Παρ. 9 μ.μ., Σάβ. 9.15 μ.μ., Κυρ. 6 μ.μ., Τετ. 7.30 μ.μ.",
+      "priceText": "€ 18-12",
+      "until": "Έως 30/12",
+      "status": "running",
+      "note": "Σκοτεινή, καυστική κωμωδία του βραβευμένου Martin McDonagh για δύο αδέλφια σε απομονωμένο ιρλανδικό χωριό.",
+      "ticketUrl": "https://www.more.com/theater/i-monaksia-tis-dysis",
+      "posterUrl": "https://www.athinorama.gr/Content/ImagesDatabase/p/600x500/crop/both/e0/e070970c2e304780880e1cc300f4fa81.jpg?quality=81&404=default&v=4"
     }
   ]
 }
