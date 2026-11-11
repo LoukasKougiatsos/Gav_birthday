@@ -6,6 +6,13 @@
     "taxonName": "Zamenis longissimus",
     "source": "https://www.inaturalist.org/photos/659772128"
   },
+  "amur-leopard-cub-juvenile": {
+    "attribution": "no rights reserved, uploaded by Лариса Артемьева",
+    "license": "cc0",
+    "taxonId": 147734,
+    "taxonName": "Panthera pardus orientalis",
+    "source": "https://www.inaturalist.org/photos/182303394"
+  },
   "audouins-gull-adult": {
     "attribution": "(c) Xavier Rufray, some rights reserved (CC BY-NC), uploaded by Xavier Rufray",
     "license": "cc-by-nc",
@@ -69,6 +76,13 @@
     "taxonName": "Ursus arctos",
     "source": "https://www.inaturalist.org/photos/1491897"
   },
+  "caspian-turtle-juvenile": {
+    "attribution": "(c) Katya, some rights reserved (CC BY), uploaded by Katya",
+    "license": "cc-by",
+    "taxonId": 105329,
+    "taxonName": "Mauremys rivulata",
+    "source": "https://www.inaturalist.org/photos/12596407"
+  },
   "collared-dove-juvenile": {
     "attribution": "(c) mattecasti, some rights reserved (CC BY-NC)",
     "license": "cc-by-nc",
@@ -117,6 +131,13 @@
     "taxonId": 75042,
     "taxonName": "Rousettus aegyptiacus",
     "source": "https://www.inaturalist.org/photos/4091066"
+  },
+  "egyptian-vulture-juvenile": {
+    "attribution": "(c) Srihari Kulkarni, some rights reserved (CC BY-ND)",
+    "license": "cc-by-nd",
+    "taxonId": 5361,
+    "taxonName": "Neophron percnopterus",
+    "source": "https://www.inaturalist.org/photos/59184907"
   },
   "eurasian-blackbird-fledgling": {
     "attribution": "(c) Luiz Lapa, some rights reserved (CC BY)",
@@ -173,6 +194,13 @@
     "taxonId": 3017,
     "taxonName": "Columba livia",
     "source": "https://www.inaturalist.org/photos/466776975"
+  },
+  "four-lined-snake-juvenile": {
+    "attribution": "(c) Giuseppe Cillis, some rights reserved (CC BY-NC), uploaded by Giuseppe Cillis",
+    "license": "cc-by-nc",
+    "taxonId": 30237,
+    "taxonName": "Elaphe quatuorlineata",
+    "source": "https://www.inaturalist.org/photos/41982062"
   },
   "golden-jackal-juvenile": {
     "attribution": "(c) Balaji Venkatesh Sivaramakrishnan, some rights reserved (CC BY-NC-SA)",
@@ -237,6 +265,13 @@
     "taxonName": "Mediodactylus kotschyi",
     "source": "https://www.inaturalist.org/photos/533004014"
   },
+  "little-egret-juvenile": {
+    "attribution": "(c) Bengt Nyman, some rights reserved (CC BY)",
+    "license": "cc-by",
+    "taxonId": 4943,
+    "taxonName": "Egretta garzetta",
+    "source": "https://www.inaturalist.org/photos/205293169"
+  },
   "little-owl-fledgling": {
     "attribution": "(c) Javisa Hun, some rights reserved (CC BY-NC), uploaded by Javisa Hun",
     "license": "cc-by-nc",
@@ -279,6 +314,13 @@
     "taxonName": "Monachus monachus",
     "source": "https://www.inaturalist.org/photos/118296372"
   },
+  "pine-marten-juvenile": {
+    "attribution": "(c) tpa63, some rights reserved (CC BY-NC)",
+    "license": "cc-by-nc",
+    "taxonId": 41796,
+    "taxonName": "Martes martes",
+    "source": "https://www.inaturalist.org/photos/192797246"
+  },
   "pipistrelle-bat-juvenile": {
     "attribution": "(c) Jakob Fahr, some rights reserved (CC BY-NC), uploaded by Jakob Fahr",
     "license": "cc-by-nc",
@@ -320,6 +362,13 @@
     "taxonId": 42184,
     "taxonName": "Capreolus capreolus",
     "source": "https://www.inaturalist.org/photos/148547129"
+  },
+  "short-beaked-common-dolphin-calf-juvenile": {
+    "attribution": "(c) Steven Mlodinow, some rights reserved (CC BY-NC), uploaded by Steven Mlodinow",
+    "license": "cc-by-nc",
+    "taxonId": 41526,
+    "taxonName": "Delphinus delphis",
+    "source": "https://www.inaturalist.org/photos/316909109"
   },
   "stone-marten-kit-juvenile": {
     "attribution": "(c) janconl, some rights reserved (CC BY-NC-SA), uploaded by janconl",

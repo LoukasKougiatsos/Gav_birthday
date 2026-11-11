@@ -70,13 +70,13 @@ rules) so the list never runs dry.
 
 ## Week of 2026-11-11
 
-- [ ] normal | reptile | Caspian Turtle | juvenile
-- [ ] normal | marine | Short-beaked Common Dolphin | juvenile (calf)
-- [ ] normal | mammal | Pine Marten | juvenile
-- [ ] normal | bird | Little Egret | juvenile
-- [ ] normal | reptile | Four-lined Snake | juvenile
-- [ ] rare | bird | Egyptian Vulture | juvenile
-- [ ] rare | mammal | Amur Leopard | juvenile (cub)
+- [x] normal | reptile | Caspian Turtle | juvenile
+- [x] normal | marine | Short-beaked Common Dolphin | juvenile (calf)
+- [x] normal | mammal | Pine Marten | juvenile
+- [x] normal | bird | Little Egret | juvenile
+- [x] normal | reptile | Four-lined Snake | juvenile
+- [x] rare | bird | Egyptian Vulture | juvenile
+- [x] rare | mammal | Amur Leopard | juvenile (cub)
 
 ## Week of 2026-11-18
 
