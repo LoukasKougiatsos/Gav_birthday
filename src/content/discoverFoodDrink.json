@@ -1,6 +1,6 @@
 {
   "disclaimer": "Curated for a specific vibe - modern, chef-driven, stylish-but-unstuffy spots in the spirit of Myoko (Glyfada) and Akra (Pangrati): creative/fusion cooking, small plates, natural wine, specialty bakeries. Not traditional tavernas, not white-tablecloth tasting menus. Each entry was found in a named 2025-2026 food-press source (see 'source'); coordinates are from OpenStreetMap - exact where the venue itself is mapped, street-level otherwise. Refreshed weekly by a scheduled agent (see DEPLOY.md). ALREADY BEEN - never add these back: Akra (Pangrati).",
-  "updatedAt": "2026-11-09",
+  "updatedAt": "2026-11-16",
   "places": [
     {
       "id": "myoko-glyfada",
@@ -378,6 +378,45 @@
       "neighborhood": "Ιλίσια",
       "source": "Athens Voice 'Pied à Terre: Ένα wine bistrot με παριζιάνικο αέρα που θα γίνει το δεύτερο σπίτι σου', Κωνσταντίνου Βεντήρη 3, Ιλίσια. Coordinates are street-level.",
       "addedAt": "2026-11-09"
+    },
+    {
+      "id": "solene-kentro",
+      "name": "Soléne",
+      "nameEl": "Soléne",
+      "category": "restaurant",
+      "lat": 37.97995,
+      "lon": 23.7308,
+      "radius": "short_drive",
+      "description": "All-day μπιστρό στη Δραγατσανίου, κοντά στην Πλατεία Κοτζιά, από τον σεφ Αλέξανδρο Τσιωτίνη και τον pastry chef Αλέξανδρο Κούφα - το πρωί ξεχωρίζουν τα γλυκά, το βράδυ κλασικά γαλλικά πιάτα όπως tournedos Rossini και beef Wellington, σε μια κομψή σάλα ασυνήθιστη για αυτό το κομμάτι του κέντρου.",
+      "neighborhood": "Κέντρο Αθήνας",
+      "source": "FNL Guide 'Soléne: A Charming Modern Bistro with Serious Culinary Credentials in the Centre of Athens' (16.2.2026), Δραγατσανίου 6, Αθήνα.",
+      "addedAt": "2026-11-16"
+    },
+    {
+      "id": "focu-sauvage-rouf",
+      "name": "Focu Sauvage",
+      "nameEl": "Focu Sauvage",
+      "category": "restaurant",
+      "lat": 37.97586,
+      "lon": 23.71074,
+      "radius": "short_drive",
+      "description": "Το πρώτο μόνιμο σπίτι των Nomade et Sauvage, στα σύνορα Ρουφ και Κεραμεικού - όλο το μενού περνάει από τη φωτιά, σε σκεύη από χαλκό και σίδερο, για γεύσεις έντονες και καπνιστές σε χώρο όπου η φωτιά είναι παντού αλλά ποτέ επίδειξη.",
+      "neighborhood": "Ρουφ",
+      "source": "Athens Voice feature on Focu Sauvage (Nomade et Sauvage's new permanent home in Kerameikos/Rouf) and Newmoney.gr 'Εστιατόριο Focu: Το σπίτι της φωτιάς των Nomade et Sauvage', Μεγάλου Βασιλείου 52, Ρουφ. Coordinates are street-level.",
+      "addedAt": "2026-11-16"
+    },
+    {
+      "id": "pothos-exarchia",
+      "name": "Pothos",
+      "nameEl": "Pothos",
+      "category": "bar",
+      "lat": 37.98603,
+      "lon": 23.73385,
+      "radius": "short_drive",
+      "description": "Μικρό bar φυσικού κρασιού στην καρδιά των Εξαρχείων, στη Θεμιστοκλέους - εννιά ζωντανές ετικέτες το ποτήρι κάθε βράδυ, γαλλικές και ελληνικές, με απλά πιάτα συνοδείας και πιάτο τυριών για μοίρασμα.",
+      "neighborhood": "Εξάρχεια",
+      "source": "Ozon.gr 'Τα νέα wine bars της Αθήνας: 6 στέκια για κρασί που άνοιξαν πρόσφατα' (11.11.2026) και Muse.gr '5 νέα wine bars της Αθήνας που πρέπει να βάλεις στο radar σου', Θεμιστοκλέους 49, Εξάρχεια.",
+      "addedAt": "2026-11-16"
     }
   ]
 }
