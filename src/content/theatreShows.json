@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-09",
+  "updatedAt": "2026-11-16",
   "source": "athinorama.gr/theatre/guide and /theatre/guide/premieres - refreshed weekly by a scheduled agent, see DEPLOY.md",
   "shows": [
     {
@@ -9,9 +9,9 @@
       "venue": "Νέο Θέατρο «Κατερίνα Βασιλάκου-Μαριάννα Τόλη»",
       "scheduleText": "Πέμ., Παρ. 8.30 μ.μ., Σάβ. 6 μ.μ./9 μ.μ., Κυρ., Τετ. 7 μ.μ.",
       "priceText": "Από € 17",
-      "until": "Πρεμιέρα 13/11",
-      "status": "premiere",
-      "note": "Ο Σαίξπηρ σε καινούρια σκηνή - αξίζει να κλείσεις θέση νωρίς.",
+      "until": "Σε εξέλιξη",
+      "status": "running",
+      "note": "Ο πιο σκοτεινός Σαίξπηρ σε νέα, πολυμελή παραγωγή σε σκηνοθεσία Κ. Ευαγγελάτου.",
       "posterUrl": "https://www.athinorama.gr/Content/ImagesDatabase/p/600x500/crop/both/60/60c467c644d7416cba38f59bd937df2e.jpg?quality=81&404=default&v=4"
     },
     {
@@ -47,9 +47,9 @@
       "venue": "Ακροπόλ",
       "scheduleText": "Πέμ.-Σάβ. 9 μ.μ., Κυρ. 6 μ.μ., Τετ. 7 μ.μ.",
       "priceText": "Από € 20",
-      "until": "Πρεμιέρα 11/11",
-      "status": "premiere",
-      "note": "Ο πιο ρομαντικός ήρωας του θεάτρου σε μεγάλη σκηνή - αξίζει να κλείσεις νωρίς.",
+      "until": "Σε εξέλιξη",
+      "status": "running",
+      "note": "Ο πιο ρομαντικός ήρωας του θεάτρου σε μεγάλη σκηνή, πλέον σε εξέλιξη.",
       "ticketUrl": "https://www.more.com/theater/cyrano",
       "posterUrl": "https://www.athinorama.gr/Content/ImagesDatabase/p/600x500/crop/both/48/48d7ae9a319e4b21bbf85f7b6aa4b13d.jpg?quality=81&404=default&v=4"
     },
@@ -84,23 +84,11 @@
       "venue": "Cartel Τεχνοχώρος",
       "scheduleText": "Πέμ.-Κυρ. 9 μ.μ.",
       "priceText": "€ 25, 18, 15",
-      "until": "Πρεμιέρα 12/11",
-      "status": "premiere",
-      "note": "Στάινμπεκ σε μικρό, έντονο σκηνικό χώρο - πρεμιέρα 12/11, κλείσε νωρίς.",
+      "until": "Έως 6/12",
+      "status": "running",
+      "note": "Στάινμπεκ σε μικρό, έντονο σκηνικό χώρο - σε εξέλιξη έως τις 6/12.",
       "ticketUrl": "https://www.more.com/theater/anthropoi-kai-pontikia-tou-tzon-stainmpek",
       "posterUrl": "https://www.athinorama.gr/Content/ImagesDatabase/p/600x500/crop/both/d2/d2083b24db9d4d5f91d38dc47ad0c8bc.jpg?quality=81&404=default&v=4"
-    },
-    {
-      "id": "ioannis-gavriil-borkman-2026",
-      "addedAt": "2026-10-06",
-      "title": "Ιωάννης Γαβριήλ Μπόρκμαν",
-      "venue": "Αλκμήνη",
-      "scheduleText": "Σάβ. 9.30 μ.μ., Κυρ. 6.30 μ.μ.",
-      "priceText": "€ 15, 12",
-      "until": "Σε εξέλιξη",
-      "status": "running",
-      "note": "Σκοτεινό αριστούργημα του Ίψεν σε μικρή σκηνή - για φίλους του σοβαρού δράματος.",
-      "posterUrl": "https://www.athinorama.gr/Content/ImagesDatabase/p/600x500/crop/both/4e/4e73b2359a8c49e7bf2bc12393cf4377.jpg?quality=81&404=default&v=4"
     },
     {
       "id": "kokkino-2026",
@@ -125,31 +113,6 @@
       "status": "running",
       "note": "Αμερικανικό έργο για έναν συγγραφέα και την τεχνητή νοημοσύνη - σε εξέλιξη στον Νέο Ακάδημο.",
       "posterUrl": "https://www.athinorama.gr/Content/ImagesDatabase/p/600x500/crop/both/83/836e41b1fa374121a0a35f819d60f963.jpg?quality=81&404=default&v=4"
-    },
-    {
-      "id": "o-emporos-tis-venetias-alkyonis-2026",
-      "addedAt": "2026-10-12",
-      "title": "Ο έμπορος της Βενετίας",
-      "venue": "Αλκυονίς",
-      "scheduleText": "Τετ., Κυρ. 7 μ.μ., Πέμ. 8 μ.μ., Παρ. 9 μ.μ., Σάβ. 6 μ.μ./9 μ.μ.",
-      "priceText": "€ 25-18",
-      "until": "Έως 15/11",
-      "status": "running",
-      "note": "Ο Σαίξπηρ σε κλασική διασκευή, με τον Σάυλωκ στο επίκεντρο - σε εξέλιξη έως τα μέσα Νοεμβρίου.",
-      "ticketUrl": "https://www.more.com/theater/o-emporos-tis-benetias-1",
-      "posterUrl": "https://www.athinorama.gr/Content/ImagesDatabase/p/600x500/crop/both/ad/adf1dc4e57d74bbfa7e9432b0d40813d.jpg?quality=81&404=default&v=4"
-    },
-    {
-      "id": "o-megas-ieroeksetastis-2026",
-      "addedAt": "2026-10-12",
-      "title": "Ο Μέγας Ιεροεξεταστής",
-      "venue": "Αλκμήνη",
-      "scheduleText": "Τετ. 6.30 μ.μ.",
-      "priceText": "€ 20, 15, 10",
-      "until": "Έως 6/1",
-      "status": "running",
-      "note": "Το φιλοσοφημένο κεφάλαιο των «Αδελφών Καραμάζοφ» του Ντοστογιέφσκι, μόνο Τετάρτες - σπάνια ευκαιρία να το δεις.",
-      "posterUrl": "https://www.athinorama.gr/Content/ImagesDatabase/p/600x500/crop/both/17/176b7c73a9df41b1a2ef6fac4093e896.jpg?quality=81&404=default&v=4"
     },
     {
       "id": "mompi-ntik-2026",
@@ -202,6 +165,31 @@
       "note": "Σκοτεινή, καυστική κωμωδία του βραβευμένου Martin McDonagh για δύο αδέλφια σε απομονωμένο ιρλανδικό χωριό.",
       "ticketUrl": "https://www.more.com/theater/i-monaksia-tis-dysis",
       "posterUrl": "https://www.athinorama.gr/Content/ImagesDatabase/p/600x500/crop/both/e0/e070970c2e304780880e1cc300f4fa81.jpg?quality=81&404=default&v=4"
+    },
+    {
+      "id": "oidipodas-2026",
+      "addedAt": "2026-11-16",
+      "title": "Οιδίποδας",
+      "venue": "Στέγη Ιδρύματος Ωνάση",
+      "scheduleText": "Τετ.-Σάβ. 8.30 μ.μ., Κυρ. 2 μ.μ.",
+      "priceText": "€ 43-10",
+      "until": "Έως 13/12",
+      "status": "running",
+      "note": "Ο βραβευμένος με Olivier Ρόμπερτ Άικ διασκευάζει τον Οιδίποδα με ελληνικό θίασο - μετά τα sold-out στο Λονδίνο και τη Νέα Υόρκη, αναμένεται μεγάλη ζήτηση.",
+      "posterUrl": "https://www.athinorama.gr/Content/ImagesDatabase/p/600x500/crop/both/Event_Photos/39/398593c063ec2c089eab96db3f486f8a_Oedipus ©Yiorgos Kaplanidis_3.jpg?quality=81&404=default&v=4"
+    },
+    {
+      "id": "rosmersxolm-2026",
+      "addedAt": "2026-11-16",
+      "title": "Ρόσμερσχολμ",
+      "venue": "Τέχνης «Κάρολος Κουν»",
+      "scheduleText": "Τετ., Κυρ. 7 μ.μ., Πέμ.-Παρ. 8.30 μ.μ., Σάβ. 5.30 μ.μ./9 μ.μ.",
+      "priceText": "€ 25-18",
+      "until": "Έως 24/1",
+      "status": "running",
+      "note": "Ο Γιάννης Χουβαρδάς σκηνοθετεί τον Ίψεν στο ιστορικό Θέατρο Τέχνης - φρέσκια πρεμιέρα με δυνατό καστ, αξίζει να την προσέξεις.",
+      "ticketUrl": "https://www.more.com/theater/rosmersxolm",
+      "posterUrl": "https://www.athinorama.gr/Content/ImagesDatabase/p/600x500/crop/both/Event_Photos/cc/ccb257224ce91baf275b1e4aaf06a724_ΡΟΣΜΕΛΧΟΛΜ ΟΜΑΔΙΚΗ.jpg?quality=81&404=default&v=4"
     }
   ]
 }
