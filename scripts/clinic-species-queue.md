@@ -80,20 +80,52 @@ rules) so the list never runs dry.
 
 ## Week of 2026-11-18
 
-- [ ] normal | bird | European Robin | juvenile
-- [ ] normal | mammal | Garden Dormouse | juvenile
-- [ ] normal | mammal | Egyptian Mongoose | juvenile
-- [ ] normal | reptile | Balkan Terrapin | juvenile
-- [ ] normal | reptile | Grass Snake | juvenile
-- [ ] rare | marine | Fin Whale | juvenile (calf)
-- [ ] rare | mammal | Iberian Lynx | juvenile (cub)
+- [x] normal | bird | European Robin | juvenile
+- [!] normal | mammal | Garden Dormouse | juvenile — no reliable Greek name found; not confirmed native to Greece
+- [!] normal | mammal | Egyptian Mongoose | juvenile — not found in Greece (Iberia-only in Europe); no Greek common name found
+- [!] normal | mammal | Greater White-toothed Shrew | juvenile — Greek mainland presence unconfirmed/disputed; no species-specific Greek name found
+- [x] normal | mammal | Edible Dormouse | juvenile
+- [!] normal | reptile | Balkan Terrapin | juvenile — shares Greek name/identity with the existing Caspian Turtle case (Mauremys caspica/rivulata taxonomic overlap)
+- [!] normal | reptile | Grass Snake | juvenile — Greek Wikipedia name "Νερόφιδο" duplicates the existing Dice Snake case's display name
+- [x] rare | marine | Fin Whale | juvenile (calf)
+- [x] rare | mammal | Iberian Lynx | juvenile (cub)
 
 ## Week of 2026-11-25
 
 - [ ] normal | bird | Woodchat Shrike | juvenile
-- [ ] normal | mammal | Wild Boar | juvenile
-- [ ] normal | reptile | Leopard Snake | juvenile
-- [ ] normal | reptile | Moorish Gecko | juvenile
+- [x] normal | mammal | Wild Boar | juvenile
+- [x] normal | reptile | Leopard Snake | juvenile
+- [x] normal | reptile | Moorish Gecko | juvenile
 - [ ] normal | reptile | Balkan Wall Lizard | juvenile
 - [ ] rare | marine | Sperm Whale | juvenile (calf)
 - [ ] rare | mammal | Snow Leopard | juvenile (cub)
+
+## Week of 2026-12-02
+
+- [ ] normal | reptile | European Legless Lizard | juvenile
+- [ ] normal | reptile | Dahl's Whip Snake | juvenile
+- [ ] normal | marine | Long-finned Pilot Whale | juvenile (calf)
+- [ ] normal | bird | Common Nightingale | fledgling
+- [ ] normal | mammal | Eurasian Harvest Mouse | juvenile
+- [ ] rare | reptile | Milos Viper | juvenile
+- [ ] rare | mammal | Giant Panda | juvenile (cub)
+
+## Week of 2026-12-09
+
+- [ ] normal | reptile | Balkan Agama | juvenile
+- [ ] normal | reptile | Erhard's Wall Lizard | juvenile
+- [ ] normal | marine | Common Minke Whale | juvenile (calf)
+- [ ] normal | bird | European Goldfinch | fledgling
+- [ ] normal | mammal | European Wildcat | juvenile
+- [ ] rare | mammal | Eurasian Otter | juvenile
+- [ ] rare | bird | African Penguin | juvenile
+
+## Week of 2026-12-16
+
+- [ ] normal | reptile | Snake-eyed Skink | juvenile
+- [ ] normal | bird | Eurasian Jay | fledgling
+- [ ] normal | bird | European Serin | fledgling
+- [ ] normal | mammal | Least Weasel | juvenile
+- [ ] normal | mammal | European Mole | juvenile
+- [ ] rare | bird | Red-breasted Goose | juvenile
+- [ ] rare | marine | Hawksbill Sea Turtle | nestling (hatchling)

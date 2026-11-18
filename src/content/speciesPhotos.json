@@ -125,6 +125,13 @@
     "taxonName": "Natrix tessellata",
     "source": "https://www.inaturalist.org/photos/333571124"
   },
+  "edible-dormouse-juvenile": {
+    "attribution": "(c) Martin Grimm, some rights reserved (CC BY-NC), uploaded by Martin Grimm",
+    "license": "cc-by-nc",
+    "taxonId": 74383,
+    "taxonName": "Glis glis",
+    "source": "https://www.inaturalist.org/photos/4627877"
+  },
   "egyptian-fruit-bat-juvenile": {
     "attribution": "(c) Helen Taylor-Boyd, some rights reserved (CC BY-NC), uploaded by Helen Taylor-Boyd",
     "license": "cc-by-nc",
@@ -188,12 +195,26 @@
     "taxonName": "Emys orbicularis",
     "source": "https://www.inaturalist.org/photos/230597692"
   },
+  "european-robin-juvenile": {
+    "attribution": "(c) naturpel, some rights reserved (CC BY-NC), uploaded by naturpel",
+    "license": "cc-by-nc",
+    "taxonId": 13094,
+    "taxonName": "Erithacus rubecula",
+    "source": "https://www.inaturalist.org/photos/104940884"
+  },
   "feral-pigeon-juvenile": {
     "attribution": "(c) Birds of Gilgit-Baltistan, some rights reserved (CC BY-SA)",
     "license": "cc-by-sa",
     "taxonId": 3017,
     "taxonName": "Columba livia",
     "source": "https://www.inaturalist.org/photos/466776975"
+  },
+  "fin-whale-calf-juvenile": {
+    "attribution": "(c) Artie Kopelman, some rights reserved (CC BY-NC-ND)",
+    "license": "cc-by-nc-nd",
+    "taxonId": 41562,
+    "taxonName": "Balaenoptera physalus",
+    "source": "https://www.inaturalist.org/photos/13381641"
   },
   "four-lined-snake-juvenile": {
     "attribution": "(c) Giuseppe Cillis, some rights reserved (CC BY-NC), uploaded by Giuseppe Cillis",
@@ -251,6 +272,13 @@
     "taxonName": "Passer domesticus",
     "source": "https://www.inaturalist.org/photos/4608133"
   },
+  "iberian-lynx-cub-juvenile": {
+    "attribution": "(c) juan1960, some rights reserved (CC BY-NC), uploaded by juan1960",
+    "license": "cc-by-nc",
+    "taxonId": 41975,
+    "taxonName": "Lynx pardinus",
+    "source": "https://www.inaturalist.org/photos/176881049"
+  },
   "koala-joey-nestling": {
     "attribution": "(c) jirau, some rights reserved (CC BY-SA)",
     "license": "cc-by-sa",
@@ -264,6 +292,13 @@
     "taxonId": 146280,
     "taxonName": "Mediodactylus kotschyi",
     "source": "https://www.inaturalist.org/photos/533004014"
+  },
+  "leopard-snake-juvenile": {
+    "attribution": "(c) Gert Jan Verspui, some rights reserved (CC BY-NC), uploaded by Gert Jan Verspui",
+    "license": "cc-by-nc",
+    "taxonId": 74011,
+    "taxonName": "Zamenis situla",
+    "source": "https://www.inaturalist.org/photos/61069105"
   },
   "little-egret-juvenile": {
     "attribution": "(c) Bengt Nyman, some rights reserved (CC BY)",
@@ -313,6 +348,13 @@
     "taxonId": 41716,
     "taxonName": "Monachus monachus",
     "source": "https://www.inaturalist.org/photos/118296372"
+  },
+  "moorish-gecko-juvenile": {
+    "attribution": "(c) Associação Vita Nativa, some rights reserved (CC BY-NC), uploaded by Associação Vita Nativa",
+    "license": "cc-by-nc",
+    "taxonId": 33602,
+    "taxonName": "Tarentola mauritanica",
+    "source": "https://www.inaturalist.org/photos/122821734"
   },
   "pine-marten-juvenile": {
     "attribution": "(c) tpa63, some rights reserved (CC BY-NC)",
@@ -397,6 +439,13 @@
     "taxonId": 4733,
     "taxonName": "Ciconia ciconia",
     "source": "https://www.inaturalist.org/photos/269104502"
+  },
+  "wild-boar-juvenile": {
+    "attribution": "(c) Nathalie Hausser, some rights reserved (CC BY-NC-ND)",
+    "license": "cc-by-nc-nd",
+    "taxonId": 42134,
+    "taxonName": "Sus scrofa",
+    "source": "https://www.inaturalist.org/photos/414500081"
   },
   "yellow-legged-gull-juvenile": {
     "attribution": "(c) JÃ¶rg Hempel, some rights reserved (CC BY-SA), uploaded by JÃ¶rg Hempel",
