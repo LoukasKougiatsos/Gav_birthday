@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-11-16",
+  "updatedAt": "2026-11-23",
   "source": "athinorama.gr/theatre/guide and /theatre/guide/premieres - refreshed weekly by a scheduled agent, see DEPLOY.md",
   "shows": [
     {
@@ -64,18 +64,6 @@
       "status": "premiere",
       "note": "Τσέχωφ στο Εθνικό - μεγάλη παραγωγή, κλείσε θέση νωρίς για την πρεμιέρα.",
       "posterUrl": "https://www.athinorama.gr/Content/ImagesDatabase/p/600x500/crop/both/3e/3ea35987240b4fcd8abf82df4b8b2351.jpg?quality=81&404=default&v=4"
-    },
-    {
-      "id": "kontakthof-2026",
-      "addedAt": "2026-09-18",
-      "title": "Kontakthof",
-      "venue": "Εθνικό Θέατρο",
-      "scheduleText": "Παρ., Σάβ. 8 μ.μ., Κυρ., Τετ. 6 μ.μ.",
-      "priceText": "€ 25-5",
-      "until": "Έως 22/11",
-      "status": "running",
-      "note": "Χορογραφία της Pina Bausch από ελληνικό θίασο - μετά τα sold out, λίγες ακόμη παραστάσεις στο Εθνικό.",
-      "posterUrl": "https://www.athinorama.gr/Content/ImagesDatabase/p/600x500/crop/both/dd/dd0510aa745f4b5ca0dc7183205de1b7.jpg?quality=81&404=default&v=4"
     },
     {
       "id": "anthropoi-kai-pontikoi-2026",
@@ -190,6 +178,31 @@
       "note": "Ο Γιάννης Χουβαρδάς σκηνοθετεί τον Ίψεν στο ιστορικό Θέατρο Τέχνης - φρέσκια πρεμιέρα με δυνατό καστ, αξίζει να την προσέξεις.",
       "ticketUrl": "https://www.more.com/theater/rosmersxolm",
       "posterUrl": "https://www.athinorama.gr/Content/ImagesDatabase/p/600x500/crop/both/Event_Photos/cc/ccb257224ce91baf275b1e4aaf06a724_ΡΟΣΜΕΛΧΟΛΜ ΟΜΑΔΙΚΗ.jpg?quality=81&404=default&v=4"
+    },
+    {
+      "id": "dogville-2026",
+      "addedAt": "2026-11-23",
+      "title": "Dogville",
+      "venue": "Δημοτικό Θέατρο Πειραιά",
+      "scheduleText": "Τετ., Κυρ. 7 μ.μ., Πέμ.-Παρ. 8.30 μ.μ., Σάβ. 5.30 μ.μ./9 μ.μ.",
+      "priceText": "€ 35-15",
+      "until": "Πρεμιέρα 25/11",
+      "status": "premiere",
+      "note": "Ο Άρης Μπινιάρης μεταφέρει στη σκηνή την εμβληματική ταινία του Λαρς φον Τρίερ - πρεμιέρα 25/11, από τις πιο αναμενόμενες παραγωγές της σεζόν στο Δημοτικό Θέατρο Πειραιά.",
+      "posterUrl": "https://www.athinorama.gr/Content/ImagesDatabase/p/600x500/crop/both/Event_Photos/f1/f1f27f7768db67d0927656258f5799dd_DOGVILLE_Palivos©_high-50.jpg?quality=81&404=default&v=4"
+    },
+    {
+      "id": "people-places-and-things-2026",
+      "addedAt": "2026-11-23",
+      "title": "People, Places and Things",
+      "venue": "Κνωσός",
+      "scheduleText": "Τετ., Κυρ. 8 μ.μ., Πέμ.-Παρ. 9 μ.μ., Σάβ. 6.30 μ.μ./9.15 μ.μ.",
+      "priceText": "€ 18-12",
+      "until": "Έως 20/12",
+      "status": "running",
+      "note": "Βραβευμένο σύγχρονο βρετανικό έργο για την εξάρτηση και την επιστροφή στη ζωή - μόλις ανέβηκε στην Κνωσό, ξεχωρίζει για το δυνατό θέμα του.",
+      "ticketUrl": "https://www.more.com/theater/people-places-things-1",
+      "posterUrl": "https://www.athinorama.gr/Content/ImagesDatabase/p/600x500/crop/both/Event_Photos/11/1138851ffb90a446d9380453e940b769_People Places _ Things _Χρήστος Συμεωνίδης (2).jpg?quality=81&404=default&v=4"
     }
   ]
 }
