@@ -1,6 +1,6 @@
 {
   "disclaimer": "Curated for a specific vibe - modern, chef-driven, stylish-but-unstuffy spots in the spirit of Myoko (Glyfada) and Akra (Pangrati): creative/fusion cooking, small plates, natural wine, specialty bakeries. Not traditional tavernas, not white-tablecloth tasting menus. Each entry was found in a named 2025-2026 food-press source (see 'source'); coordinates are from OpenStreetMap - exact where the venue itself is mapped, street-level otherwise. Refreshed weekly by a scheduled agent (see DEPLOY.md). ALREADY BEEN - never add these back: Akra (Pangrati).",
-  "updatedAt": "2026-11-16",
+  "updatedAt": "2026-11-23",
   "places": [
     {
       "id": "myoko-glyfada",
@@ -417,6 +417,45 @@
       "neighborhood": "Εξάρχεια",
       "source": "Ozon.gr 'Τα νέα wine bars της Αθήνας: 6 στέκια για κρασί που άνοιξαν πρόσφατα' (11.11.2026) και Muse.gr '5 νέα wine bars της Αθήνας που πρέπει να βάλεις στο radar σου', Θεμιστοκλέους 49, Εξάρχεια.",
       "addedAt": "2026-11-16"
+    },
+    {
+      "id": "zohos-plaka",
+      "name": "Zohós",
+      "nameEl": "Ζοχός",
+      "category": "restaurant",
+      "lat": 37.97364,
+      "lon": 23.73053,
+      "radius": "short_drive",
+      "description": "Μοντέρνη ελληνική κουζίνα στον κήπο του Electra Palace, εμπνευσμένη από το χόρτο ζωχό - πιάτα μεζέ για μοίρασμα με ντόπιους παραγωγούς και nose-to-tail φιλοσοφία, φέτος νέο Bib Gourmand στον οδηγό Michelin.",
+      "neighborhood": "Πλάκα",
+      "source": "MICHELIN Guide Athens-Thessaloniki-Santorini 2027 (νέο Bib Gourmand, Οκτώβριος 2026); Electra Hotels & Resorts (electrahotels.gr), Ναυάρχου Νικοδήμου 18-20, Πλάκα. Coordinates are street-level.",
+      "addedAt": "2026-11-23"
+    },
+    {
+      "id": "gamay-kentro",
+      "name": "Gamay",
+      "nameEl": "Gamay",
+      "category": "bar",
+      "lat": 37.97851,
+      "lon": 23.72837,
+      "radius": "short_drive",
+      "description": "Wine bar αφιερωμένο σε φυσικά και low-intervention κρασιά, με λίστα πάνω από 130 ετικέτες και μικρά πιάτα συνοδείας σε παλιό νεοκλασικό του 1928 - πρόσφατα μετακόμισε από τα Εξάρχεια στο Εμπορικό Τρίγωνο.",
+      "neighborhood": "Κέντρο Αθήνας",
+      "source": "Athinorama.gr 'Εκεί τρώει και πίνει τώρα η Αθήνα' (7.10.2026): μετακόμισε στη Νικίου 18, Αθήνα.",
+      "addedAt": "2026-11-23"
+    },
+    {
+      "id": "amphibian-onassis-stegi",
+      "name": "Amphibian",
+      "nameEl": "Amphibian",
+      "category": "restaurant",
+      "lat": 37.95796,
+      "lon": 23.71924,
+      "radius": "short_drive",
+      "description": "Δημιουργική, μεταβατική κουζίνα στον 6ο και 7ο όροφο της Στέγης Ιδρύματος Ωνάση, από τον σεφ Τάσο Μάντη (Soil) - εποχικό à la carte μενού, θέα στην Ακρόπολη και κοκτέιλ με χαρακτήρα, ανοιχτό σε όλους χωρίς απαραίτητα κράτηση.",
+      "neighborhood": "Νέος Κόσμος",
+      "source": "Onassis.org 'Amphibian - Transitional Gastronomy'; Athinorama.gr νέα-ανοίγματα 2026, Λεωφ. Συγγρού 107-109, Νέος Κόσμος.",
+      "addedAt": "2026-11-23"
     }
   ]
 }
