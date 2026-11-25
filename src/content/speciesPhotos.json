@@ -27,6 +27,13 @@
     "taxonName": "Lacerta trilineata",
     "source": "https://www.inaturalist.org/photos/92852456"
   },
+  "balkan-wall-lizard-juvenile": {
+    "attribution": "(c) Ingmar van der Brugge, some rights reserved (CC BY-NC-ND), uploaded by Ingmar van der Brugge",
+    "license": "cc-by-nc-nd",
+    "taxonId": 73920,
+    "taxonName": "Podarcis tauricus",
+    "source": "https://www.inaturalist.org/photos/264856665"
+  },
   "balkan-whip-snake-juvenile": {
     "attribution": "(c) Benny Trapp, some rights reserved (CC BY)",
     "license": "cc-by",
@@ -111,6 +118,13 @@
     "taxonName": "Phalacrocorax carbo",
     "source": "https://www.inaturalist.org/photos/141367445"
   },
+  "dahls-whip-snake-juvenile": {
+    "attribution": "(c) Bart, some rights reserved (CC BY), uploaded by Bart",
+    "license": "cc-by",
+    "taxonId": 73910,
+    "taxonName": "Platyceps najadum",
+    "source": "https://www.inaturalist.org/photos/2683447"
+  },
   "dalmatian-pelican-juvenile": {
     "attribution": "(c) David F. Belmonte, some rights reserved (CC BY), uploaded by David F. Belmonte",
     "license": "cc-by",
@@ -187,6 +201,13 @@
     "taxonId": 2191,
     "taxonName": "Merops apiaster",
     "source": "https://www.inaturalist.org/photos/70043412"
+  },
+  "european-legless-lizard-juvenile": {
+    "attribution": "(c) Ingmar van der Brugge, some rights reserved (CC BY-NC-ND), uploaded by Ingmar van der Brugge",
+    "license": "cc-by-nc-nd",
+    "taxonId": 31975,
+    "taxonName": "Pseudopus apodus",
+    "source": "https://www.inaturalist.org/photos/264866176"
   },
   "european-pond-turtle-juvenile": {
     "attribution": "(c) Laurent Barthe, some rights reserved (CC BY-NC), uploaded by Laurent Barthe",
@@ -446,6 +467,13 @@
     "taxonId": 42134,
     "taxonName": "Sus scrofa",
     "source": "https://www.inaturalist.org/photos/414500081"
+  },
+  "woodchat-shrike-juvenile": {
+    "attribution": "(c) naturpel, some rights reserved (CC BY-NC), uploaded by naturpel",
+    "license": "cc-by-nc",
+    "taxonId": 12039,
+    "taxonName": "Lanius senator",
+    "source": "https://www.inaturalist.org/photos/376219537"
   },
   "yellow-legged-gull-juvenile": {
     "attribution": "(c) JÃ¶rg Hempel, some rights reserved (CC BY-SA), uploaded by JÃ¶rg Hempel",

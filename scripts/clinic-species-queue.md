@@ -92,21 +92,21 @@ rules) so the list never runs dry.
 
 ## Week of 2026-11-25
 
-- [ ] normal | bird | Woodchat Shrike | juvenile
+- [x] normal | bird | Woodchat Shrike | juvenile
 - [x] normal | mammal | Wild Boar | juvenile
 - [x] normal | reptile | Leopard Snake | juvenile
 - [x] normal | reptile | Moorish Gecko | juvenile
-- [ ] normal | reptile | Balkan Wall Lizard | juvenile
-- [ ] rare | marine | Sperm Whale | juvenile (calf)
-- [ ] rare | mammal | Snow Leopard | juvenile (cub)
+- [x] normal | reptile | Balkan Wall Lizard | juvenile
+- [ ] rare | marine | Sperm Whale | juvenile (calf) — Gemini image quota exhausted mid-run, carried over
+- [ ] rare | mammal | Snow Leopard | juvenile (cub) — Gemini image quota exhausted mid-run, carried over
 
 ## Week of 2026-12-02
 
-- [ ] normal | reptile | European Legless Lizard | juvenile
-- [ ] normal | reptile | Dahl's Whip Snake | juvenile
-- [ ] normal | marine | Long-finned Pilot Whale | juvenile (calf)
-- [ ] normal | bird | Common Nightingale | fledgling
-- [ ] normal | mammal | Eurasian Harvest Mouse | juvenile
+- [x] normal | reptile | European Legless Lizard | juvenile
+- [x] normal | reptile | Dahl's Whip Snake | juvenile
+- [!] normal | marine | Long-finned Pilot Whale | juvenile (calf) — occurrence in Greek seas is unconfirmed/considered an erroneous historical record (Pelagos/HCMR review), not a realistic Greek rescue-centre patient
+- [!] normal | bird | Common Nightingale | fledgling — portrait kept leaving an un-keyed white gap near the legs after 3 attempts
+- [ ] normal | mammal | Eurasian Harvest Mouse | juvenile — Gemini image quota exhausted mid-run, carried over
 - [ ] rare | reptile | Milos Viper | juvenile
 - [ ] rare | mammal | Giant Panda | juvenile (cub)
 
